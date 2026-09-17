@@ -1,0 +1,14 @@
+# Fichiers que Semgrep n'a pas à analyser.
+
+# Dépendances et artefacts : ce n'est pas notre code.
+.venv/
+__pycache__/
+*.pyc
+
+# Données, jamais du code.
+data/
+recettes/
+
+# Les tests contiennent délibérément des mots de passe factices et des
+# tentatives d'accès frauduleuses : c'est leur raison d'être, pas un défaut.
+tests/
