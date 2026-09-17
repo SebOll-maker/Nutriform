@@ -16,6 +16,9 @@ Environment=NF_DB=/opt/nutriform/data/nutriform.db
 Environment=NF_HOST=127.0.0.1
 Environment=NF_PORT=5001
 Environment=PYTHONUTF8=1
+# Le serveur est en UTC. Sans ce fuseau, date.today() daterait de la
+# veille tout ce qui est saisi entre minuit et 2 h, heure de Paris.
+Environment=TZ=Europe/Paris
 # Pas de NF_PASSWORD : l'authentification est par compte nominatif depuis la
 # V2. Les comptes se créent avec tools/gerer_comptes.py (voir DEPLOY.md).
 # NE JAMAIS définir NF_PERSONNE_DEFAUT ici : cela court-circuiterait l'écran

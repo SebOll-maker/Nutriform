@@ -2,16 +2,18 @@
 # Installation / mise à jour de Nutriform sur le VPS.
 #
 # À exécuter EN ROOT SUR LE SERVEUR, après y avoir déposé /tmp/nutriform.tgz
-# (et éventuellement /tmp/nutriform.db pour emporter une base existante) :
+# (et, au tout premier déploiement seulement, /tmp/nutriform.db pour emporter
+# une base déjà remplie) :
 #
 #     bash /tmp/installer-vps.sh
 #
-# Le script est idempotent : le relancer met simplement le code à jour sans
-# toucher à la base, aux comptes, ni au certificat.
+# Le script est idempotent : le relancer met le code à jour sans toucher à la
+# base, aux comptes, au NF_SECRET ni au certificat.
 set -euo pipefail
 
 DOMAINE=nutriform.seboll.tech
 RACINE=/opt/nutriform
+UNITE=/etc/systemd/system/nutriform.service
 ARCHIVE=/tmp/nutriform.tgz
 BASE_IMPORTEE=/tmp/nutriform.db
 
@@ -21,9 +23,11 @@ etape() { echo; echo "=== $* ==="; }
 [[ -f $ARCHIVE ]] || { echo "Archive absente : $ARCHIVE"; exit 1; }
 
 etape "Utilisateur de service"
-id nutriform >/dev/null 2>&1 \
-    && echo "déjà présent" \
-    || adduser --system --group --home "$RACINE" nutriform
+if id nutriform >/dev/null 2>&1; then
+    echo "déjà présent"
+else
+    adduser --system --group --home "$RACINE" nutriform
+fi
 
 etape "Code"
 mkdir -p "$RACINE"
@@ -40,8 +44,8 @@ cd "$RACINE"
 etape "Base de données"
 mkdir -p "$RACINE/data" "$RACINE/data/sauvegardes"
 if [[ -f $RACINE/data/nutriform.db ]]; then
-    # Une base existe déjà : on ne l'écrase jamais, on la sauvegarde et on
-    # laisse db.py appliquer d'éventuelles migrations de schéma.
+    # Une base existe déjà : elle fait foi. On la sauvegarde et on laisse
+    # db.py appliquer d'éventuelles migrations de schéma.
     cp "$RACINE/data/nutriform.db" \
        "$RACINE/data/sauvegardes/avant-maj-$(date +%F-%H%M).db"
     echo "base existante conservée (sauvegarde prise)"
@@ -61,21 +65,38 @@ chown -R nutriform:nutriform "$RACINE"
 chmod 750 "$RACINE/data"
 
 etape "Service systemd"
-if [[ ! -f /etc/systemd/system/nutriform.service ]]; then
-    install -m 644 "$RACINE/deploy/nutriform.service" \
-                   /etc/systemd/system/nutriform.service
+if [[ -f $UNITE ]]; then
+    echo "unité déjà installée, NF_SECRET conservé"
+else
+    install -m 644 "$RACINE/deploy/nutriform.service" "$UNITE"
     # Clé de signature des cookies : générée ici, jamais dans le dépôt.
-    sed -i "s|A_REMPLACER_PAR_UNE_CLE_ALEATOIRE|$(openssl rand -hex 32)|" \
-           /etc/systemd/system/nutriform.service
+    sed -i "s|A_REMPLACER_PAR_UNE_CLE_ALEATOIRE|$(openssl rand -hex 32)|" "$UNITE"
     systemctl daemon-reload
     systemctl enable nutriform
     echo "unité installée, NF_SECRET généré"
-else
-    echo "unité déjà installée, NF_SECRET conservé"
 fi
-grep -q NF_PERSONNE_DEFAUT /etc/systemd/system/nutriform.service \
-    && { echo "ERREUR : NF_PERSONNE_DEFAUT présent dans l'unité."; exit 1; } \
-    || true
+
+# Le serveur tourne en UTC. Sans fuseau explicite, date.today() daterait de la
+# veille tout ce qui est saisi entre minuit et 2 h, heure de Paris — pour un
+# journal alimentaire ce n'est pas un détail. Rattrapage des unités installées
+# avant l'existence de cette ligne.
+if ! grep -qE '^[[:space:]]*Environment=TZ=' "$UNITE"; then
+    sed -i '/^Environment=PYTHONUTF8=1/a Environment=TZ=Europe/Paris' "$UNITE"
+    systemctl daemon-reload
+    echo "fuseau Europe/Paris ajouté à l'unité"
+fi
+
+# Une vraie affectation, pas le commentaire qui l'interdit : sans le
+# ^Environment= ce garde-fou se déclencherait sur sa propre mise en garde.
+if grep -qE '^[[:space:]]*Environment=NF_PERSONNE_DEFAUT' "$UNITE"; then
+    echo "ERREUR : NF_PERSONNE_DEFAUT est défini dans l'unité systemd."
+    echo "Cela donnerait ce compte à n'importe quel visiteur. Retirer la ligne."
+    exit 1
+fi
+
+# Toujours recharger : l unite a pu changer sur disque sans passer par les
+# branches ci-dessus, et systemd garderait alors l ancienne version.
+systemctl daemon-reload
 systemctl restart nutriform
 sleep 2
 curl -fsS http://127.0.0.1:5001/sante && echo
@@ -97,7 +118,7 @@ else
 fi
 
 etape "Sauvegarde quotidienne"
-# Les pesées et les journaux de plusieurs personnes n'existent qu'ici.
+# Les pesées et les journaux de plusieurs personnes n'existent plus qu'ici.
 install -m 755 /dev/stdin /etc/cron.daily/nutriform-sauvegarde <<'CRON'
 #!/bin/sh
 mkdir -p /root/sauvegardes
@@ -109,6 +130,7 @@ CRON
 
 etape "Terminé"
 systemctl is-active nutriform
+TZ=Europe/Paris date '+%F %H:%M %Z'
 curl -fsS "https://$DOMAINE/sante" && echo
 sudo -u nutriform env PYTHONUTF8=1 "$RACINE/.venv/bin/python" \
     "$RACINE/tools/gerer_comptes.py" lister
