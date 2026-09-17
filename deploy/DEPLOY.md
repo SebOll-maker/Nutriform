@@ -1,13 +1,39 @@
 # Déployer Nutriform sur le VPS Hostinger
 
-> **Rien de tout ceci n'a été exécuté.** Ces instructions sont prêtes pour le
-> jour où l'application quittera le PC. Elles reprennent la procédure déjà
-> éprouvée pour `demo-ncr.seboll.tech`, où nginx et certbot sont **déjà en
-> place** — on ajoute juste un vhost, on ne touche pas à l'existant.
+Ces instructions reprennent la procédure déjà éprouvée pour
+`demo-ncr.seboll.tech`, où nginx et certbot sont **déjà en place** — on ajoute
+juste un vhost, on ne touche pas à l'existant.
 
 Le VPS héberge déjà `chat.seboll.tech`, `demo-ncr.seboll.tech` et Ollama.
 Nutriform s'ajoute à côté, sur son propre port (**5001**, l'intranet occupe
 le 5000).
+
+## La voie courte
+
+[`installer-vps.sh`](installer-vps.sh) fait tout ce qui suit, et le fait de
+manière **idempotente** : le relancer met le code à jour sans toucher à la
+base, aux comptes ni au certificat. Il prend une sauvegarde avant chaque mise
+à jour, et refuse de démarrer si `NF_PERSONNE_DEFAUT` traîne dans l'unité
+systemd.
+
+Depuis le PC :
+
+```bash
+cd "C:/Users/sebas/Dev/Application Nutriform"
+tar --exclude=.venv --exclude=.git --exclude=__pycache__     --exclude='*/__pycache__' --exclude=data/ciqual     --exclude=data/sauvegardes --exclude='data/*.db'     --exclude='recettes/Photos Recette' -czf /tmp/nutriform.tgz .
+scp /tmp/nutriform.tgz deploy/installer-vps.sh root@76.13.63.150:/tmp/
+scp data/nutriform.db root@76.13.63.150:/tmp/     # 1re fois seulement
+ssh root@76.13.63.150 "bash /tmp/installer-vps.sh"
+```
+
+La troisième ligne n'est utile qu'au premier déploiement, pour emporter les
+comptes et les données déjà saisis. **Ensuite, ne jamais la refaire** : elle
+écraserait les données du serveur, qui sont devenues les vraies. Le script
+protège d'ailleurs contre cela — si une base existe déjà sur le serveur, il la
+garde et ignore `/tmp/nutriform.db`.
+
+Le reste de ce document explique chaque étape, pour la comprendre ou la
+reprendre à la main.
 
 ## 1. Choisir le sous-domaine
 
