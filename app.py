@@ -24,6 +24,7 @@ recettes.py (fichiers), planning.py, courses.py, journal.py et personnes.py.
 import os
 from datetime import date, timedelta
 from functools import wraps
+from urllib.parse import urlsplit
 
 from flask import (Flask, g, render_template, request, redirect, url_for,
                    session, flash, jsonify)
@@ -64,6 +65,29 @@ def personne_courante() -> dict | None:
 def pid() -> int:
     """Identifiant de la personne connectée. La seule source autorisée."""
     return g.personne["id"]
+
+
+def redirection_locale(cible: str | None, defaut: str) -> str:
+    """N'accepte une destination que si elle reste sur le site.
+
+    Sans ce filtre, `/connexion?suivant=https://un-site-malveillant/` renvoie
+    la personne, *une fois authentifiée*, vers un site tiers — qui n'a plus
+    qu'à imiter l'écran de connexion pour récolter son mot de passe. Le lien
+    est crédible puisqu'il commence par la vraie adresse de l'application.
+
+    On n'accepte donc qu'un chemin absolu, sans schéma ni hôte. Les formes
+    `//ailleurs.example` et `/\\ailleurs.example` méritent leur test propre :
+    les navigateurs les interprètent comme des adresses complètes alors
+    qu'elles commencent bien par « / ».
+    """
+    if not cible:
+        return defaut
+    morceaux = urlsplit(cible)
+    if (morceaux.scheme or morceaux.netloc
+            or not cible.startswith("/")
+            or cible.startswith(("//", "/\\"))):
+        return defaut
+    return cible
 
 
 def login_required(vue):
@@ -169,7 +193,8 @@ def login():
         if personne:
             session["personne_id"] = personne["id"]
             session.permanent = True
-            return redirect(request.args.get("suivant") or url_for("accueil"))
+            return redirect(redirection_locale(request.args.get("suivant"),
+                                               url_for("accueil")))
         # Message unique : ne pas révéler si l'identifiant existe.
         flash("Identifiant ou mot de passe incorrect.", "erreur")
     return render_template("connexion.html", aucun_compte=aucun_compte)
@@ -272,15 +297,16 @@ def planning_ajouter():
             pid(), jour, creneau, recette_id,
             kcal_cible=_nombre_positif(request.form.get("kcal_cible")),
             portions=_nombre_positif(request.form.get("portions")) or 1)
-    return redirect(request.form.get("retour")
-                    or url_for("page_planning", semaine=jour))
+    return redirect(redirection_locale(
+        request.form.get("retour"), url_for("page_planning", semaine=jour)))
 
 
 @app.route("/planning/supprimer/<int:entree_id>", methods=["POST"])
 @login_required
 def planning_supprimer(entree_id):
     mod_planning.supprimer(pid(), entree_id)
-    return redirect(request.form.get("retour") or url_for("page_planning"))
+    return redirect(redirection_locale(request.form.get("retour"),
+                                       url_for("page_planning")))
 
 
 @app.route("/planning/dupliquer", methods=["POST"])

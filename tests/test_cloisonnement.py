@@ -326,6 +326,43 @@ for nom, fonction, arguments in appels_v1:
         verifier(True, f"l'ancien appel {nom} ne passe plus (TypeError)")
 
 print()
+print("=== la connexion ne renvoie jamais hors du site ===")
+# Une redirection ouverte après authentification est une machine à hameçonner :
+# le lien commence par la vraie adresse, la personne se connecte pour de bon,
+# et atterrit sur une copie de l'écran de connexion qui redemande le mot de
+# passe. Signalé par Semgrep (règle open-redirect) et corrigé.
+DEFAUT = "/accueil"
+for cible, attendu, libelle in (
+        ("/journal", "/journal", "un chemin interne est conservé"),
+        ("/journal?date=2026-04-06", "/journal?date=2026-04-06",
+         "avec sa chaîne de requête"),
+        (None, DEFAUT, "absente -> destination par défaut"),
+        ("", DEFAUT, "vide -> destination par défaut"),
+        ("https://exemple-malveillant.test/", DEFAUT, "URL absolue refusée"),
+        ("http://exemple-malveillant.test/", DEFAUT, "en clair aussi"),
+        ("//exemple-malveillant.test/", DEFAUT,
+         "double barre : une URL déguisée en chemin"),
+        ("/\\exemple-malveillant.test/", DEFAUT,
+         "barre + antislash : même ruse, autre orthographe"),
+        ("javascript:alert(1)", DEFAUT, "schéma javascript refusé"),
+        ("  https://exemple-malveillant.test", DEFAUT,
+         "espaces de tête ne sauvent pas l'URL"),
+        ("journal", DEFAUT, "chemin relatif refusé"),
+):
+    obtenu = mod_app.redirection_locale(cible, DEFAUT)
+    verifier(obtenu == attendu, libelle, f"{cible!r} -> {obtenu!r}")
+
+# Et par la porte d'entrée : le paramètre « suivant » de /connexion.
+c = mod_app.app.test_client()
+reponse = c.post("/connexion?suivant=https://exemple-malveillant.test/",
+                 data={"identifiant": "alice",
+                       "motdepasse": "mot-de-passe-alice"})
+destination = reponse.headers.get("Location", "")
+verifier("exemple-malveillant" not in destination,
+         "/connexion?suivant=<site tiers> ne renvoie pas chez le tiers",
+         destination)
+
+print()
 shutil.rmtree(DOSSIER, ignore_errors=True)
 shutil.rmtree(BASE.parent, ignore_errors=True)
 
