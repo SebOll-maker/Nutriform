@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% set page = 'aliments' %}
+{% block titre %}Aliments — Nutriform{% endblock %}
+{% block entete %}Aliments{% endblock %}
+{% block contenu %}
+
+<form method="get" class="carte">
+  <div class="ligne">
+    <div>
+      <label for="q">Rechercher un aliment</label>
+      <input type="search" id="q" name="q" value="{{ terme }}"
+             placeholder="blanc de poulet, lentilles vertes…" autofocus>
+    </div>
+    <div>
+      <label for="groupe">Groupe</label>
+      <select id="groupe" name="groupe">
+        <option value="">tous</option>
+        {% for g in groupes %}
+          <option value="{{ g }}" {{ 'selected' if g == groupe }}>{{ g }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit">Chercher</button>
+  </div>
+  <p class="muet">Les valeurs sont exprimées pour 100 g.</p>
+</form>
+
+{% if terme or groupe %}
+  {% if resultats %}
+    <div class="carte">
+      <h2>{{ resultats|length }} résultat{{ 's' if resultats|length > 1 }}</h2>
+      <table>
+        <thead>
+          <tr><th>Aliment</th><th class="num">kcal</th><th class="num">Prot.</th>
+              <th class="num">Gluc.</th><th class="num">Lip.</th></tr>
+        </thead>
+        <tbody>
+        {% for a in resultats %}
+          <tr>
+            <td><a href="{{ url_for('page_aliment', code=a.code) }}">{{ a.nom }}</a>
+                {% if a.source == 'perso' %}<span class="pastille">perso</span>{% endif %}</td>
+            <td class="num">{{ a.kcal | nombre }}{% if a.kcal_estimee %}<span
+                class="muet" title="Énergie calculée depuis les macronutriments">*</span>{% endif %}</td>
+            <td class="num">{{ a.proteines | nombre }}</td>
+            <td class="num">{{ a.glucides | nombre }}</td>
+            <td class="num">{{ a.lipides | nombre }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      {% if resultats | selectattr('kcal_estimee') | list %}
+        <p class="muet">* énergie calculée depuis les macronutriments : Ciqual
+          ne la fournit pas pour cet aliment.</p>
+      {% endif %}
+    </div>
+  {% else %}
+    <p class="vide">Aucun aliment ne correspond à « {{ terme }} ».</p>
+  {% endif %}
+{% endif %}
+
+<details class="carte">
+  <summary style="cursor:pointer"><strong>Créer un aliment perso</strong></summary>
+  <p class="muet">
+    Pour ce que Ciqual ne connaît pas : un produit de marque, une préparation
+    du boulanger. Recopier les valeurs de l'étiquette, pour 100 g. Un aliment
+    perso n'est jamais écrasé par un ré-import de la table Ciqual.
+  </p>
+  <form method="post" action="{{ url_for('aliment_nouveau') }}">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom" required
+           placeholder="Pain de campagne du boulanger">
+    <div class="ligne">
+      <div>
+        <label for="kcal">kcal / 100 g</label>
+        <input type="number" id="kcal" name="kcal" min="0" step="1" required>
+      </div>
+      <div>
+        <label for="proteines">Protéines (g)</label>
+        <input type="number" id="proteines" name="proteines" min="0" step="0.1">
+      </div>
+    </div>
+    <div class="ligne">
+      <div>
+        <label for="glucides">Glucides (g)</label>
+        <input type="number" id="glucides" name="glucides" min="0" step="0.1">
+      </div>
+      <div>
+        <label for="lipides">Lipides (g)</label>
+        <input type="number" id="lipides" name="lipides" min="0" step="0.1">
+      </div>
+    </div>
+    <p><button type="submit">Créer</button></p>
+  </form>
+</details>
+
+{% endblock %}

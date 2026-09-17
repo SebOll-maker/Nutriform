@@ -1,0 +1,215 @@
+/* Nutriform — feuille de style unique, mobile-first, sans framework.
+   Palette verte (nutrition), thème clair + sombre automatique. */
+
+:root {
+  --vert:        #2e7d55;
+  --vert-clair:  #e6f3ec;
+  --vert-fonce:  #1d5338;
+  --accent:      #d97706;   /* orange : alertes douces, écarts */
+  --rouge:       #c0392b;
+
+  --fond:        #f6f7f5;
+  --carte:       #ffffff;
+  --texte:       #1c2420;
+  --texte-doux:  #6b7770;
+  --bord:        #e2e6e3;
+  --ombre:       0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --rayon:       12px;
+  --nav-h:       58px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --vert:       #4caf80;
+    --vert-clair: #1b2b23;
+    --vert-fonce: #7fd3a8;
+    --fond:       #141816;
+    --carte:      #1d231f;
+    --texte:      #e8ece9;
+    --texte-doux: #9aa8a0;
+    --bord:       #2d3531;
+    --ombre:      0 1px 3px rgba(0,0,0,.4);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 0 calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)) 0;
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ----------------------------------------------------------- en-tête */
+header.appbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: .6rem;
+  padding: calc(.7rem + env(safe-area-inset-top, 0px)) 1rem .7rem;
+  background: var(--vert); color: #fff;
+  box-shadow: var(--ombre);
+}
+header.appbar .titre { font-weight: 650; font-size: 1.05rem; letter-spacing: .2px; }
+header.appbar .grandir { flex: 1; }
+header.appbar a { color: #fff; text-decoration: none; opacity: .92; font-size: 1.15rem; }
+header.appbar a:hover { opacity: 1; }
+
+main { padding: 1rem; max-width: 900px; margin: 0 auto; }
+
+/* ------------------------------------------------- navigation basse */
+nav.tabbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+  display: flex;
+  background: var(--carte);
+  border-top: 1px solid var(--bord);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+nav.tabbar a {
+  flex: 1; text-align: center; text-decoration: none;
+  color: var(--texte-doux);
+  padding: .45rem .2rem .5rem;
+  font-size: .68rem; line-height: 1.25;
+  display: flex; flex-direction: column; align-items: center; gap: .15rem;
+}
+nav.tabbar a .ico { font-size: 1.3rem; line-height: 1; }
+nav.tabbar a.actif { color: var(--vert); font-weight: 600; }
+
+/* ------------------------------------------------------------ cartes */
+.carte {
+  background: var(--carte);
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  padding: 1rem;
+  margin-bottom: .9rem;
+  box-shadow: var(--ombre);
+}
+.carte h2 { margin: 0 0 .7rem; font-size: 1rem; letter-spacing: .2px; }
+.carte.lien { display: block; text-decoration: none; color: inherit; }
+.carte.lien:hover { border-color: var(--vert); }
+
+h1 { font-size: 1.35rem; margin: .2rem 0 1rem; }
+a { color: var(--vert-fonce); }
+
+/* ------------------------------------------------------ macros / kpi */
+/* 2x2 sur téléphone, une seule rangée dès qu'il y a la place : évite la
+   4e tuile orpheline sur toute une ligne. */
+.macros { display: grid; gap: .5rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 480px) { .macros { grid-template-columns: repeat(4, 1fr); } }
+.macro {
+  background: var(--vert-clair); border-radius: 10px;
+  padding: .55rem .6rem; text-align: center;
+}
+.macro .val { font-size: 1.15rem; font-weight: 650; display: block; }
+.macro .lib { font-size: .7rem; color: var(--texte-doux); text-transform: uppercase; letter-spacing: .4px; }
+
+/* ------------------------------------------------- formulaires */
+label { display: block; font-size: .8rem; color: var(--texte-doux);
+        margin: .6rem 0 .2rem; font-weight: 600; }
+input, select, textarea, button {
+  font: inherit; color: var(--texte);
+  background: var(--carte);
+  border: 1px solid var(--bord); border-radius: 9px;
+  padding: .6rem .7rem; width: 100%;
+}
+input[type="checkbox"] { width: auto; }
+button, .bouton {
+  background: var(--vert); color: #fff; border: none; font-weight: 600;
+  cursor: pointer; text-align: center; text-decoration: none;
+  display: inline-block; padding: .65rem 1rem; width: auto;
+}
+button:hover, .bouton:hover { background: var(--vert-fonce); }
+button.secondaire, .bouton.secondaire {
+  background: var(--carte); color: var(--vert-fonce); border: 1px solid var(--bord);
+}
+.ligne { display: flex; gap: .6rem; align-items: flex-end; flex-wrap: wrap; }
+.ligne > * { flex: 1; min-width: 7rem; }
+.ligne > button, .ligne > .bouton { flex: 0 0 auto; }
+
+/* ------------------------------------------------------------ tables */
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th, td { text-align: left; padding: .45rem .4rem; border-bottom: 1px solid var(--bord); }
+th { font-size: .72rem; text-transform: uppercase; letter-spacing: .4px;
+     color: var(--texte-doux); font-weight: 650; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------ divers */
+.muet { color: var(--texte-doux); font-size: .85rem; }
+.vide { text-align: center; color: var(--texte-doux); padding: 2rem 1rem; }
+.pastille { display: inline-block; font-size: .7rem; padding: .12rem .45rem;
+            border-radius: 99px; background: var(--vert-clair); color: var(--vert-fonce);
+            font-weight: 600; }
+.pastille.fixe { background: #fdf0d8; color: #8a5a00; }
+
+.alerte { border-left: 3px solid var(--accent); background: var(--carte);
+          padding: .6rem .8rem; border-radius: 8px; margin: .6rem 0; font-size: .88rem; }
+.alerte.erreur { border-left-color: var(--rouge); }
+
+/* ------------------------------------------- navigation semaine / journée */
+/* Barre à part entière : réutiliser .ligne ferait passer les flèches à
+   7rem de large (min-width) et les ferait tomber sous le titre. */
+.nav-periode { display: flex; align-items: center; gap: .5rem;
+               margin-bottom: .8rem; }
+.nav-periode .titre-periode { flex: 1; text-align: center; margin: 0;
+                              font-size: 1.02rem; font-weight: 650; }
+.nav-periode a { flex: 0 0 auto; padding: .5rem .8rem; }
+
+/* ----------------------------------------------------- repas (planning, journal) */
+.repas { display: flex; align-items: baseline; gap: .5rem;
+         padding: .45rem 0; border-bottom: 1px solid var(--bord); }
+.repas:last-of-type { border-bottom: none; }
+.repas-corps { flex: 1; min-width: 0; }
+.repas-creneau { display: block; font-size: .7rem; text-transform: uppercase;
+                 letter-spacing: .4px; color: var(--texte-doux);
+                 font-weight: 650; }
+.repas-kcal { font-weight: 650; font-variant-numeric: tabular-nums;
+              white-space: nowrap; }
+.repas form { display: inline; }
+button.retirer { background: none; border: none; color: var(--texte-doux);
+                 width: auto; padding: .1rem .25rem; font-size: .95rem;
+                 cursor: pointer; }
+button.retirer:hover { background: none; color: var(--rouge); }
+
+/* ------------------------------------------------------- jauges d'objectif */
+.jauge-bloc { margin-bottom: .6rem; }
+.jauge-tete { display: flex; justify-content: space-between;
+              font-size: .85rem; margin-bottom: .2rem; }
+.jauge { height: 8px; border-radius: 99px; background: var(--bord);
+         overflow: hidden; }
+.jauge span { display: block; height: 100%; background: var(--vert);
+              border-radius: 99px; }
+.jauge span.depasse { background: var(--accent); }
+
+/* --------------------------------------------------------- liste de courses */
+ul.courses { list-style: none; margin: 0; padding: 0; }
+ul.courses li { display: flex; align-items: baseline; gap: .5rem;
+                padding: .4rem 0; border-bottom: 1px solid var(--bord); }
+ul.courses li:last-child { border-bottom: none; }
+ul.courses li.coche .courses-nom,
+ul.courses li.coche .courses-qte { text-decoration: line-through;
+                                   color: var(--texte-doux); }
+.courses-nom { flex: 1; font-size: .92rem; }
+.courses-qte { font-weight: 650; font-variant-numeric: tabular-nums;
+               white-space: nowrap; }
+button.case { background: none; border: none; color: var(--vert);
+              font-size: 1.25rem; line-height: 1; padding: 0 .1rem;
+              width: auto; cursor: pointer; }
+button.case:hover { background: none; }
+ul.courses form { display: inline; }
+
+/* ----------------------------------------------------------- courbe simple */
+svg.courbe { width: 100%; height: 90px; color: var(--vert);
+             margin: .6rem 0 .2rem; display: block; }
+
+details summary { padding: .3rem 0; }
+
+footer.credit { text-align: center; color: var(--texte-doux);
+                font-size: .72rem; padding: 1.2rem 1rem 0; }
+
+@media (min-width: 720px) {
+  nav.tabbar { position: static; border-top: none; border-bottom: 1px solid var(--bord); }
+  body { padding-bottom: 1rem; }
+  nav.tabbar a { flex-direction: row; gap: .4rem; font-size: .85rem; padding: .7rem; }
+  nav.tabbar a .ico { font-size: 1.05rem; }
+}

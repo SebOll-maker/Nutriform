@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block titre %}Connexion — Nutriform{% endblock %}
+{% block entete %}Connexion{% endblock %}
+{% block contenu %}
+<div class="carte">
+  <form method="post">
+    <label for="mdp">Mot de passe</label>
+    <input type="password" id="mdp" name="motdepasse" autocomplete="current-password" autofocus>
+    <p><button type="submit">Entrer</button></p>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{
+  "id": "pates-bolognaise",
+  "titre": "Pâtes à la bolognaise",
+  "source": "MyFitRace — « Pâtes à la bolognaise (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Steak haché de boeuf 15 % MG",
+      "ciqual_code": "6254",
+      "quantite": 130,
+      "unite": "g",
+      "quantite_affichee": "130 g de steak haché 15 % MG",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Pâtes sèches",
+      "ciqual_code": "9810",
+      "quantite": 60,
+      "unite": "g",
+      "quantite_affichee": "60 g de pâtes crues",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Purée de tomate",
+      "ciqual_code": "20170",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de purée de tomate",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Carotte",
+      "ciqual_code": "20009",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "1 petite carotte",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "1/4 d'oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 6.8,
+      "unite": "g",
+      "quantite_affichee": "1/2 c. à soupe (7,5 ml)",
+      "echelle": "fixe",
+      "notes": "Sert à faire revenir l'oignon et la carotte : matière grasse de cuisson, donc « fixe ». 7,5 ml pèsent 6,8 g."
+    },
+    {
+      "nom": "Basilic séché",
+      "ciqual_code": "11032",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "basilic séché, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée : la recette d'origine ne la chiffre pas."
+    },
+    {
+      "nom": "Thym séché",
+      "ciqual_code": "11038",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "thym séché, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée."
+    },
+    {
+      "nom": "Ail en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "ail en poudre, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée."
+    }
+  ],
+  "etapes": [
+    "Légumes — éplucher et couper la carotte en petits dés, émincer l'oignon. Dans une poêle chaude avec l'huile d'olive, les faire revenir 5 minutes à feu moyen.",
+    "Viande et herbes — ajouter l'ail en poudre, le thym et le basilic. Incorporer le steak haché et cuire 3 minutes en remuant régulièrement.",
+    "Sauce — verser la purée de tomate, saler, poivrer et bien mélanger. Laisser mijoter 15 minutes à feu doux, jusqu'à ce que la carotte soit fondante.",
+    "Pâtes — pendant que la sauce mijote, cuire les pâtes 9 minutes dans une casserole d'eau bouillante salée, puis les égoutter.",
+    "Assemblage — ajouter les pâtes égouttées à la sauce, mélanger et servir immédiatement."
+  ],
+  "notes": "Variantes de la recette d'origine : un trait de vinaigre balsamique ou une pincée de sucre pour équilibrer l'acidité de la tomate ; du céleri ou des champignons finement hachés dans la sauce ; 10 à 15 minutes de mijotage en plus pour des carottes ultra-fondantes ; des carottes râpées crues sur le dessus pour le croquant ; une petite louche d'eau de cuisson des pâtes incorporée à la sauce avant d'ajouter les pâtes.\n\nPlat très peu salé : environ 0,6 g, l'un des plus bas du répertoire, puisque rien n'est charcuterie ni conserve salée. Le sel de l'eau de cuisson des pâtes et le « saler à convenance » ne sont pas comptabilisés.\n\nLes trois herbes sont « fixes » avec des quantités estimées à 1 g, la recette d'origine disant « à votre convenance ». Elles pèsent peu en calories mais beaucoup en fibres : le basilic et le thym séchés en contiennent près de 37 g pour 100 g."
+}

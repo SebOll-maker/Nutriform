@@ -1,0 +1,101 @@
+{
+  "id": "poulet-curry-coco",
+  "titre": "Poulet au curry et lait de coco, riz basmati",
+  "source": "recette d'exemple (livrée avec l'application)",
+  "portions_base": 4,
+  "temps_prepa_min": 15,
+  "temps_cuisson_min": 25,
+  "tags": ["plat", "volaille", "asiatique"],
+  "ingredients": [
+    {
+      "nom": "Blanc de poulet",
+      "ciqual_code": "36007",
+      "quantite": 600,
+      "unite": "g",
+      "quantite_affichee": "4 blancs de poulet (600 g)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Lait de coco",
+      "ciqual_code": "18041",
+      "quantite": 200,
+      "unite": "ml",
+      "quantite_affichee": "1/2 boîte de lait de coco (200 ml)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Riz basmati cru",
+      "ciqual_code": "9119",
+      "quantite": 240,
+      "unite": "g",
+      "quantite_affichee": "240 g de riz basmati cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "1 gros oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 15,
+      "unite": "g",
+      "quantite_affichee": "1 c. à soupe d'huile d'olive",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Ail",
+      "ciqual_code": "11000",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "2 gousses d'ail",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Curry en poudre",
+      "ciqual_code": "11005",
+      "quantite": 8,
+      "unite": "g",
+      "quantite_affichee": "2 c. à café de curry",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Gingembre frais",
+      "ciqual_code": "11074",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "1 cm de gingembre râpé",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Sel",
+      "ciqual_code": "11083",
+      "quantite": 4,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café de sel",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Poivre noir",
+      "ciqual_code": "11015",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "poivre du moulin",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Couper les blancs de poulet en cubes de 2 cm. Émincer l'oignon, hacher l'ail et le gingembre.",
+    "Faire chauffer l'huile d'olive dans une sauteuse, faire revenir l'oignon 5 minutes à feu moyen.",
+    "Ajouter l'ail, le gingembre et le curry. Remuer 1 minute pour réveiller les épices.",
+    "Ajouter le poulet, saler, poivrer, et faire dorer 5 minutes en remuant.",
+    "Verser le lait de coco, baisser le feu et laisser mijoter 15 minutes à couvert.",
+    "Pendant ce temps, cuire le riz basmati dans deux fois son volume d'eau salée.",
+    "Servir le curry sur le riz."
+  ],
+  "notes": "Les assaisonnements (ail, curry, gingembre, sel, poivre) sont marqués « fixe » : ils ne bougent pas quand on recalibre la recette sur une cible calorique."
+}

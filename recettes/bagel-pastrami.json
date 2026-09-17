@@ -1,0 +1,97 @@
+{
+  "id": "bagel-pastrami",
+  "titre": "Bagel au pastrami, salade verte",
+  "source": "MyFitRace — « Bagel au pastrami (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 0,
+  "tags": ["plat", "rapide", "sans cuisson"],
+  "ingredients": [
+    {
+      "nom": "Pain bagel",
+      "ciqual_code": "7258",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "1 bagel",
+      "echelle": "variable",
+      "unite_piece": 80,
+      "nom_piece": "bagel"
+    },
+    {
+      "nom": "Pastrami de boeuf",
+      "ciqual_code": "PERSO-0002",
+      "quantite": 120,
+      "unite": "g",
+      "quantite_affichee": "120 g de pastrami en tranches",
+      "echelle": "variable",
+      "notes": "Ciqual ne référence aucun pastrami : aliment perso PERSO-0002, saisi d'après l'étiquette du produit réellement utilisé (Fleury Michon, viande de boeuf 96 % : 118 kcal, 21 g de protéines, 3,4 g de lipides, 1,9 g de sel pour 100 g). Le plus proche dans Ciqual serait la Viande des Grisons (38,9 g de protéines), trop éloignée."
+    },
+    {
+      "nom": "Cream cheese",
+      "ciqual_code": "12068",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "40 g de cream cheese",
+      "echelle": "variable",
+      "notes": "Ciqual n'a pas d'entrée « cream cheese » : retenu « Fromage frais nature à tartiner, en barquette, non allégée en matière grasse » (225 kcal, 20,7 g de lipides), qui en est le profil exact."
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "quelques rondelles d'oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Cornichon",
+      "ciqual_code": "11004",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "2 cornichons en lamelles",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Moutarde",
+      "ciqual_code": "11013",
+      "quantite": 5,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à café de moutarde de Dijon",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "25604",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de salade verte",
+      "echelle": "fixe",
+      "notes": "Accompagnement : sa quantité ne suit pas la cible calorique."
+    },
+    {
+      "nom": "Huile d'olive (salade)",
+      "ciqual_code": "17270",
+      "quantite": 13.7,
+      "unite": "g",
+      "quantite_affichee": "1 c. à soupe (15 ml)",
+      "echelle": "variable",
+      "notes": "La liste d'ingrédients d'origine dit 1 c. à soupe (15 ml), son mode opératoire dit 1/2 c. à soupe. La quantité chiffrée est retenue. 15 ml pèsent 13,7 g."
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe de vinaigre balsamique",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Préparation — émincer finement l'oignon en rondelles et couper les cornichons en fines lamelles.",
+    "Bagel — le couper en deux et le griller légèrement, pour plus de croustillant.",
+    "Montage — tartiner la base du bagel de moutarde et le chapeau de cream cheese. Disposer les tranches de pastrami, puis les cornichons et l'oignon cru.",
+    "Finalisation — refermer le bagel, presser légèrement, saler et poivrer. Déguster immédiatement.",
+    "Salade — laver et essorer la salade, puis la mélanger avec le vinaigre balsamique et l'huile d'olive. Saler, poivrer."
+  ],
+  "notes": "Variantes de la recette d'origine : faire revenir les oignons 2 minutes à feu doux avec un filet d'huile pour les adoucir ; des graines de sésame ou de la salade iceberg pour le croquant ; une pincée de piment d'Espelette ou un trait de miel sur le pastrami ; garder la vinaigrette à part si la salade est préparée à l'avance.\n\nLe bagel est compté en pièce entière (80 g) : le calibrage arrondit au bagel près et réajuste le pastrami, le cream cheese et l'oignon. Le plancher est donc élevé (environ 267 kcal) : un bagel garni ne peut pas descendre plus bas.\n\nPlat très salé : environ 4,3 g de sel, soit les deux tiers du repère journalier de 6 g. Le pastrami en apporte l'essentiel (2,3 g pour 120 g), le bagel 0,8 g, les cornichons et la moutarde le reste. La fiche d'origine annonce 4,64 g, ce qui concorde."
+}

@@ -1,0 +1,112 @@
+{
+  "id": "dahl-legumes",
+  "titre": "Dahl de lentilles corail aux légumes",
+  "source": "MyFitRace — « Dahl aux légumes [600] »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 20,
+  "tags": ["plat", "végétarien", "sans gluten", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Lentilles corail sèches",
+      "ciqual_code": "20535",
+      "quantite": 60,
+      "unite": "g",
+      "quantite_affichee": "60 g de lentilles corail sèches",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Poivron rouge",
+      "ciqual_code": "20087",
+      "quantite": 164,
+      "unite": "g",
+      "quantite_affichee": "1 gros poivron",
+      "echelle": "variable",
+      "notes": "La recette d'origine ne précise pas la couleur. Le rouge est retenu ; le vert ferait 18 kcal de moins."
+    },
+    {
+      "nom": "Carotte",
+      "ciqual_code": "20009",
+      "quantite": 120,
+      "unite": "g",
+      "quantite_affichee": "2 carottes moyennes",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Épinard frais",
+      "ciqual_code": "20059",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "2 poignées d'épinards",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 45,
+      "unite": "g",
+      "quantite_affichee": "1/3 de gros oignon",
+      "echelle": "variable",
+      "notes": "45 g = le calcul de la recette d'origine pour « 1/3 d'un gros oignon ». Sa fiche portait une mention « 50 g » à côté, écartée au profit du calcul, pour rester cohérent avec l'omelette paysanne qui utilise la même formulation."
+    },
+    {
+      "nom": "Lait de coco",
+      "ciqual_code": "18041",
+      "quantite": 50,
+      "unite": "ml",
+      "quantite_affichee": "50 ml de lait de coco",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 13.7,
+      "unite": "g",
+      "quantite_affichee": "1 c. à soupe (15 ml)",
+      "echelle": "fixe",
+      "notes": "Sert à faire revenir les légumes : classée « fixe » comme toute matière grasse de cuisson. Elle pèse lourd (123 kcal) et relève donc le plancher de la recette à environ 157 kcal par portion."
+    },
+    {
+      "nom": "Bouillon de légumes déshydraté",
+      "ciqual_code": "11041",
+      "quantite": 7.5,
+      "unite": "g",
+      "quantite_affichee": "1/2 cube de bouillon",
+      "echelle": "fixe",
+      "notes": "Ciqual donne 47,7 g de sel pour 100 g de cube : ce demi-cube apporte à lui seul près de 3,6 g de sel, soit l'essentiel du sel de la recette."
+    },
+    {
+      "nom": "Ail en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "1 pincée d'ail en poudre",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Curry en poudre",
+      "ciqual_code": "11005",
+      "quantite": 2,
+      "unite": "g",
+      "quantite_affichee": "curry, à votre convenance",
+      "echelle": "fixe",
+      "notes": "La recette d'origine ne donne pas de quantité : 2 g est une estimation, pour que l'épice apparaisse dans la liste de courses."
+    },
+    {
+      "nom": "Paprika en poudre",
+      "ciqual_code": "11049",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "paprika, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée, la recette d'origine dit « à votre convenance »."
+    }
+  ],
+  "etapes": [
+    "Lentilles — les rincer à l'eau claire, puis les mettre dans une casserole avec 250 ml d'eau et le demi-cube de bouillon émietté. Porter à ébullition, puis laisser mijoter 15 à 20 minutes jusqu'à ce qu'elles soient tendres, en remuant de temps en temps et en ajoutant un peu d'eau si nécessaire.",
+    "Légumes — pendant ce temps, faire chauffer l'huile d'olive dans une grande poêle. Ajouter l'oignon émincé, la carotte coupée en petits morceaux et le poivron émincé. Faire revenir 3 minutes à feu moyen.",
+    "Épices et lait de coco — saupoudrer le curry, le paprika et l'ail en poudre sur les légumes, mélanger pour bien enrober. Ajouter les lentilles cuites, verser le lait de coco et mélanger à nouveau. Laisser mijoter 2 à 3 minutes pour que les saveurs se développent.",
+    "Finalisation — ajouter les épinards 2 minutes avant la fin, bien mélanger, saler et poivrer. Servir chaud."
+  ],
+  "notes": "Variantes de la recette d'origine : du cumin pour un goût plus profond, du gingembre pour une touche piquante, du curcuma pour la couleur ; une feuille de laurier dans l'eau de cuisson des lentilles (à retirer avant de mélanger).\n\nAttention au sel : le demi-cube de bouillon apporte environ 3,6 g de sel, soit près de 60 % du repère journalier de 6 g. La fiche MyFitRace n'annonce que 0,35 g, ce qui est impossible avec un demi-cube — elle ne l'a manifestement pas compté. Pour alléger : un demi-cube réduit en sel, ou remplacer par de l'eau et des épices.\n\nL'huile d'olive et le bouillon sont « fixes », ce qui porte le plancher à environ 157 kcal par portion : descendre sous 300 kcal déformerait fortement la recette."
+}

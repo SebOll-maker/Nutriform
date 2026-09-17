@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% set page = 'journal' %}
+{% block titre %}Journal — Nutriform{% endblock %}
+{% block entete %}Journal{% endblock %}
+{% block contenu %}
+
+<div class="nav-periode">
+  <a class="bouton secondaire" href="{{ url_for('page_journal', date=veille) }}">←</a>
+  <h1 class="titre-periode">{{ jour | jour_fr }}</h1>
+  <a class="bouton secondaire" href="{{ url_for('page_journal', date=lendemain) }}">→</a>
+</div>
+
+<!-- ------------------------------------------------ bilan du jour -->
+<div class="carte">
+  <h2>Bilan</h2>
+  <div class="macros">
+    <div class="macro"><span class="val">{{ journal.totaux.kcal | nombre }}</span>
+      <span class="lib">kcal{% if objectif_kcal %} / {{ objectif_kcal | nombre }}{% endif %}</span></div>
+    <div class="macro"><span class="val">{{ journal.totaux.proteines | nombre }} g</span><span class="lib">Protéines</span></div>
+    <div class="macro"><span class="val">{{ journal.totaux.glucides | nombre }} g</span><span class="lib">Glucides</span></div>
+    <div class="macro"><span class="val">{{ journal.totaux.lipides | nombre }} g</span><span class="lib">Lipides</span></div>
+  </div>
+</div>
+
+<!-- ------------------------------------------------ repas saisis -->
+<div class="carte">
+  <h2>Ce que j'ai mangé</h2>
+  {% if journal.entrees %}
+    {% for creneau in creneaux %}
+      {% set lignes = journal.entrees | selectattr('creneau', 'equalto', creneau) | list %}
+      {% if lignes %}
+        <p class="muet" style="margin:.6rem 0 .1rem; font-weight:600">
+          {{ creneau_libelle[creneau] }}
+          — {{ journal.par_creneau[creneau].kcal | nombre }} kcal
+          {%- if cibles[creneau] %} / {{ cibles[creneau] }} kcal prévues{% endif %}
+        </p>
+        {% for l in lignes %}
+          <div class="repas">
+            <div class="repas-corps">
+              {{ l.libelle }}
+              {% if l.grammes %}<span class="muet">{{ l.grammes | nombre }} g</span>{% endif %}
+              {% if l.portions and l.recette_id %}
+                <span class="muet">× {{ l.portions | nombre }} portion{{ 's' if l.portions > 1 }}</span>
+              {% endif %}
+            </div>
+            <span class="repas-kcal">{{ l.kcal | nombre }} kcal</span>
+            <form method="post" action="{{ url_for('journal_supprimer', entree_id=l.id) }}">
+              <input type="hidden" name="date" value="{{ jour }}">
+              <button type="submit" class="retirer" title="Retirer">✕</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p class="muet">Rien pour l'instant.</p>
+  {% endif %}
+
+  {% if prevu %}
+    <form method="post" action="{{ url_for('journal_depuis_planning') }}"
+          style="margin-top:.8rem">
+      <input type="hidden" name="date" value="{{ jour }}">
+      <button type="submit" class="secondaire">
+        Reprendre le planning du jour ({{ prevu | length }} repas)</button>
+    </form>
+  {% endif %}
+</div>
+
+<!-- ------------------------------------------------ ajouter une recette -->
+<div class="carte">
+  <h2>Ajouter une recette</h2>
+  <form method="post" action="{{ url_for('journal_recette') }}">
+    <input type="hidden" name="date" value="{{ jour }}">
+    <label>Recette</label>
+    <select name="recette_id" required>
+      <option value="">— choisir —</option>
+      {% for r in recettes_dispo %}
+        <option value="{{ r.id }}">{{ r.titre }}</option>
+      {% endfor %}
+    </select>
+    <div class="ligne">
+      <div>
+        <label>Créneau</label>
+        <select name="creneau">
+          {% for c in creneaux %}<option value="{{ c }}">{{ creneau_libelle[c] }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label>Cible kcal / portion</label>
+        <input type="number" name="kcal_cible" min="1" step="10" placeholder="au choix">
+      </div>
+      <div>
+        <label>Portions</label>
+        <input type="number" name="portions" min="1" step="1" value="1">
+      </div>
+    </div>
+    <p><button type="submit">Ajouter au journal</button></p>
+  </form>
+</div>
+
+<!-- ------------------------------------------------ ajouter un aliment -->
+<div class="carte">
+  <h2>Ajouter un aliment seul</h2>
+  <form method="get" action="{{ url_for('page_journal') }}">
+    <input type="hidden" name="date" value="{{ jour }}">
+    <div class="ligne">
+      <div>
+        <label for="q">Chercher</label>
+        <input type="search" id="q" name="q" value="{{ recherche }}"
+               placeholder="yaourt nature, banane…">
+      </div>
+      <button type="submit">Chercher</button>
+    </div>
+  </form>
+
+  {% if trouves %}
+    <table style="margin-top:.6rem">
+      {% for a in trouves %}
+        <tr>
+          <td>{{ a.nom }}<br><span class="muet">{{ a.kcal | nombre }} kcal / 100 g</span></td>
+          <td style="width:9.5rem">
+            <form method="post" action="{{ url_for('journal_aliment') }}">
+              <input type="hidden" name="date" value="{{ jour }}">
+              <input type="hidden" name="aliment_code" value="{{ a.code }}">
+              <div class="ligne" style="gap:.3rem">
+                <input type="number" name="grammes" min="1" step="10"
+                       placeholder="g" required style="min-width:4rem">
+                <select name="creneau" style="min-width:4rem">
+                  {% for c in creneaux %}<option value="{{ c }}">{{ creneau_libelle[c][:5] }}</option>{% endfor %}
+                </select>
+                <button type="submit" style="padding:.5rem .6rem">+</button>
+              </div>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% elif recherche %}
+    <p class="muet">Aucun aliment pour « {{ recherche }} ».</p>
+  {% endif %}
+</div>
+
+<!-- ------------------------------------------------ poids -->
+<div class="carte" id="poids">
+  <h2>Poids</h2>
+  <form method="post" action="{{ url_for('journal_poids') }}">
+    <input type="hidden" name="date" value="{{ jour }}">
+    <div class="ligne">
+      <div>
+        <label for="poids_kg">Poids du jour (kg)</label>
+        <input type="number" id="poids_kg" name="poids_kg" min="20" max="400"
+               step="0.1" placeholder="ex. 78,4">
+      </div>
+      <button type="submit">Enregistrer</button>
+    </div>
+  </form>
+
+  {% if poids | length > 1 %}
+    {% set valeurs = poids | map(attribute='poids_kg') | list %}
+    {% set mini = valeurs | min %}
+    {% set maxi = valeurs | max %}
+    {% set etendue = (maxi - mini) or 1 %}
+    <svg class="courbe" viewBox="0 0 300 90" preserveAspectRatio="none"
+         role="img" aria-label="Évolution du poids">
+      <polyline fill="none" stroke="currentColor" stroke-width="2"
+        points="{% for p in poids %}{{ loop.index0 / ((poids|length - 1) or 1) * 300 }},{{ 80 - (p.poids_kg - mini) / etendue * 70 }} {% endfor %}" />
+    </svg>
+    <p class="muet">
+      {{ poids | length }} pesages du {{ poids[0].date | jour_fr }} au
+      {{ poids[-1].date | jour_fr }} · de {{ mini | nombre }} à {{ maxi | nombre }} kg
+    </p>
+  {% elif dernier_poids %}
+    <p class="muet">Dernier pesage : {{ dernier_poids.poids_kg | nombre }} kg
+      le {{ dernier_poids.date | jour_fr }}. Un deuxième point et la courbe apparaît.</p>
+  {% else %}
+    <p class="muet">Aucun pesage enregistré.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

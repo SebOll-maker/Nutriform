@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% set page = 'planning' %}
+{% block titre %}Planning — Nutriform{% endblock %}
+{% block entete %}Planning{% endblock %}
+{% block contenu %}
+
+<div class="nav-periode">
+  <a class="bouton secondaire" href="{{ url_for('page_planning', semaine=precedente) }}">←</a>
+  <h1 class="titre-periode">Semaine du {{ semaine.jours[0] | jour_fr }}</h1>
+  <a class="bouton secondaire" href="{{ url_for('page_planning', semaine=suivante) }}">→</a>
+</div>
+
+{% for jour in semaine.jours %}
+  {% set cle = jour.isoformat() %}
+  {% set total = semaine.totaux[cle] %}
+  <div class="carte">
+    <h2 style="display:flex; align-items:baseline; gap:.5rem">
+      <span style="flex:1">{{ jour | jour_fr }}</span>
+      {% if total.kcal %}
+        <span class="pastille {{ 'fixe' if objectif_kcal and total.kcal > objectif_kcal * 1.05 }}">
+          {{ total.kcal | nombre }} kcal
+          {%- if objectif_kcal %} / {{ objectif_kcal | nombre }}{% endif %}
+        </span>
+      {% endif %}
+    </h2>
+
+    {% for creneau in creneaux %}
+      {% for e in semaine.grille[cle][creneau] %}
+        <div class="repas">
+          <div class="repas-corps">
+            <span class="repas-creneau">{{ creneau_libelle[creneau] }}</span>
+            {% if e.orpheline %}
+              <span class="muet">recette « {{ e.recette_id }} » introuvable</span>
+            {% else %}
+              <a href="{{ url_for('page_recette', recette_id=e.recette_id, kcal=e.kcal_cible | int if e.kcal_cible else none, portions=e.portions | int) }}">{{ e.recette.titre }}</a>
+              {% if e.portions and e.portions != 1 %}
+                <span class="muet">× {{ e.portions | nombre }}</span>{% endif %}
+            {% endif %}
+          </div>
+          <span class="repas-kcal">
+            {{ e.calcul.total.kcal | nombre if e.calcul else '—' }} kcal</span>
+          <form method="post" action="{{ url_for('planning_supprimer', entree_id=e.id) }}">
+            <input type="hidden" name="retour"
+                   value="{{ url_for('page_planning', semaine=semaine.lundi.isoformat()) }}">
+            <button type="submit" class="retirer" title="Retirer ce repas">✕</button>
+          </form>
+        </div>
+      {% endfor %}
+    {% endfor %}
+
+    <details>
+      <summary class="muet" style="cursor:pointer; font-size:.85rem">
+        Ajouter un repas</summary>
+      <form method="post" action="{{ url_for('planning_ajouter') }}"
+            style="margin-top:.5rem">
+        <input type="hidden" name="date" value="{{ cle }}">
+        <input type="hidden" name="retour"
+               value="{{ url_for('page_planning', semaine=semaine.lundi.isoformat()) }}">
+        <label>Recette</label>
+        <select name="recette_id" required>
+          <option value="">— choisir —</option>
+          {% for r in recettes_dispo %}
+            <option value="{{ r.id }}">{{ r.titre }}</option>
+          {% endfor %}
+        </select>
+        <div class="ligne">
+          <div>
+            <label>Créneau</label>
+            <select name="creneau">
+              {% for c in creneaux %}
+                <option value="{{ c }}">{{ creneau_libelle[c] }}
+                  {%- if cibles[c] %} ({{ cibles[c] }} kcal){% endif %}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label>Cible kcal</label>
+            <input type="number" name="kcal_cible" min="1" step="10"
+                   placeholder="au choix">
+          </div>
+          <div>
+            <label>Portions</label>
+            <input type="number" name="portions" min="1" step="1" value="1">
+          </div>
+        </div>
+        <p><button type="submit">Ajouter</button></p>
+      </form>
+    </details>
+  </div>
+{% endfor %}
+
+<div class="carte">
+  <h2>Outils</h2>
+  <form method="post" action="{{ url_for('planning_dupliquer') }}">
+    <input type="hidden" name="semaine" value="{{ semaine.lundi.isoformat() }}">
+    <button type="submit" class="secondaire">
+      Recopier cette semaine sur la suivante</button>
+  </form>
+  <p><a class="bouton secondaire"
+        href="{{ url_for('page_courses', debut=semaine.jours[0].isoformat(), fin=semaine.jours[6].isoformat()) }}">
+     Liste de courses de la semaine</a></p>
+</div>
+
+{% endblock %}

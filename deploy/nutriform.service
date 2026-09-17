@@ -1,0 +1,31 @@
+# Service systemd — Nutriform
+# À copier dans /etc/systemd/system/nutriform.service puis :
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now nutriform
+# Journaux : journalctl -u nutriform -f
+[Unit]
+Description=Nutriform - suivi nutritionnel
+After=network.target
+
+[Service]
+Type=simple
+User=nutriform
+Group=nutriform
+WorkingDirectory=/opt/nutriform
+Environment=NF_DB=/opt/nutriform/data/nutriform.db
+Environment=NF_HOST=127.0.0.1
+Environment=NF_PORT=5001
+Environment=PYTHONUTF8=1
+# Mot de passe d'accès. Tant que cette variable n'est PAS définie, l'application
+# est ouverte sans authentification : ne jamais la laisser vide sur un serveur
+# exposé à Internet.
+Environment=NF_PASSWORD=A_REMPLACER_PAR_UN_MOT_DE_PASSE
+# Clé de signature des cookies de session :
+#   python3 -c "import secrets; print(secrets.token_hex(32))"
+Environment=NF_SECRET=A_REMPLACER_PAR_UNE_CLE_ALEATOIRE
+ExecStart=/opt/nutriform/.venv/bin/python serve.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

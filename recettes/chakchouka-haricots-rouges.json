@@ -1,0 +1,97 @@
+{
+  "id": "chakchouka-haricots-rouges",
+  "titre": "Chakchouka gratinée aux œufs et haricots rouges",
+  "source": "MyFitRace — « Chakchouka gratinée aux œufs et haricots rouges (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "végétarien", "sans gluten"],
+  "ingredients": [
+    {
+      "nom": "Oeufs",
+      "ciqual_code": "22000",
+      "quantite": 116,
+      "unite": "g",
+      "quantite_affichee": "2 œufs moyens",
+      "echelle": "variable",
+      "unite_piece": 58,
+      "nom_piece": "œuf"
+    },
+    {
+      "nom": "Tomates pelées en conserve",
+      "ciqual_code": "20137",
+      "quantite": 200,
+      "unite": "g",
+      "quantite_affichee": "1 petite boîte de tomates pelées (200 g)",
+      "echelle": "variable",
+      "notes": "Entrée « au jus, non égouttée » : dans une chakchouka le jus fait la sauce. La version égouttée (20048) donnerait 11 kcal de moins et 0,6 g de sel de plus."
+    },
+    {
+      "nom": "Haricots rouges en conserve",
+      "ciqual_code": "20524",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de haricots rouges égouttés",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 75,
+      "unite": "g",
+      "quantite_affichee": "1/2 gros oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Parmesan",
+      "ciqual_code": "12120",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de parmesan râpé",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 13.7,
+      "unite": "g",
+      "quantite_affichee": "1 c. à soupe (15 ml)",
+      "echelle": "fixe",
+      "notes": "Sert à faire revenir l'oignon et l'ail : matière grasse de cuisson, donc « fixe ». 15 ml pèsent 13,7 g, soit 123 kcal — c'est elle qui fixe l'essentiel du plancher de la recette."
+    },
+    {
+      "nom": "Ail en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "ail, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée. La recette d'origine parle d'ail frais émincé dans le mode opératoire et d'ail en poudre dans la liste : la poudre est retenue, c'est elle qui est listée."
+    },
+    {
+      "nom": "Paprika en poudre",
+      "ciqual_code": "11049",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "paprika, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée."
+    },
+    {
+      "nom": "Mélange d'épices mexicaines",
+      "ciqual_code": "11081",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "épices mexicaines (chilli), à votre convenance",
+      "echelle": "fixe",
+      "notes": "Ciqual n'a pas d'entrée pour un mélange mexicain : retenu « Epice (aliment moyen) », la moyenne des épices de la table, faute de composition connue. Quantité estimée."
+    }
+  ],
+  "etapes": [
+    "Préparation — peler et émincer finement l'oignon et l'ail. Couper les tomates pelées en morceaux.",
+    "Base — faire revenir l'oignon et l'ail avec l'huile d'olive à feu moyen, jusqu'à ce qu'ils deviennent translucides. Ajouter les tomates et les épices, saler, poivrer, et laisser mijoter 5 minutes en remuant.",
+    "Assemblage — étaler les haricots rouges au fond d'une cocotte ou d'un plat allant au four, puis verser la préparation à la tomate par-dessus. Casser les œufs sur le mélange et saupoudrer de parmesan.",
+    "Four — enfourner à 180 °C pendant 15 minutes, jusqu'à ce que les œufs soient pris. Déguster dès la sortie du four."
+  ],
+  "notes": "Variantes de la recette d'origine : du cumin, de la coriandre moulue ou une pointe de curcuma à la place ou en plus des épices mexicaines ; 12 minutes de cuisson au lieu de 15 pour un jaune d'œuf coulant.\n\nLes œufs sont comptés en pièces entières (58 g l'unité) : le calibrage arrondit à l'œuf près et réajuste les haricots, les tomates, l'oignon et le parmesan pour retomber sur la cible.\n\nRecette la plus riche en fibres du répertoire, grâce aux 150 g de haricots rouges. À noter que la fiche d'origine est contradictoire sur le sel : elle annonce 1,81 g mais 1 296 mg de sodium, ce qui correspondrait à 3,24 g."
+}

@@ -1,0 +1,79 @@
+{
+  "id": "wraps-jambon",
+  "titre": "Wraps au jambon et à la roquette",
+  "source": "MyFitRace — « Wraps au jambon (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 0,
+  "tags": ["plat", "rapide", "sans cuisson"],
+  "ingredients": [
+    {
+      "nom": "Tortillas de blé",
+      "ciqual_code": "7815",
+      "quantite": 82,
+      "unite": "g",
+      "quantite_affichee": "2 tortillas souples",
+      "echelle": "variable",
+      "unite_piece": 41,
+      "nom_piece": "tortilla"
+    },
+    {
+      "nom": "Jambon blanc",
+      "ciqual_code": "28906",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "3 tranches de jambon (150 g)",
+      "echelle": "variable",
+      "notes": "Même choix que l'omelette paysanne : « Jambon cuit, supérieur, découenné dégraissé ». La recette d'origine laisse l'option dinde (code 28964)."
+    },
+    {
+      "nom": "Crème fraîche épaisse 30 % MG",
+      "ciqual_code": "19410",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "2 c. à soupe de crème épaisse",
+      "echelle": "variable",
+      "notes": "La liste d'ingrédients d'origine dit « crème fraîche 30 % MG », son mode opératoire dit « fromage blanc ». La crème est retenue car c'est elle qui est quantifiée — et ses valeurs collent aux lipides annoncés. Avec du fromage blanc, la recette serait environ 70 kcal plus légère."
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 75,
+      "unite": "g",
+      "quantite_affichee": "1/2 gros oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Roquette",
+      "ciqual_code": "20217",
+      "quantite": 23,
+      "unite": "g",
+      "quantite_affichee": "1 poignée de roquette",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 4.6,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café (5 ml)",
+      "echelle": "variable",
+      "notes": "Mélangée au jus de citron pour attendrir l'oignon : c'est un assaisonnement, pas une matière grasse de cuisson — elle suit donc la cible. 5 ml pèsent 4,6 g."
+    },
+    {
+      "nom": "Citron",
+      "ciqual_code": "13009",
+      "quantite": 29,
+      "unite": "g",
+      "quantite_affichee": "1/2 citron, à presser",
+      "echelle": "fixe",
+      "notes": "Son jus joue le rôle d'un vinaigre : classé « fixe » comme les autres acidifiants."
+    }
+  ],
+  "etapes": [
+    "Oignon citronné — émincer finement l'oignon. Dans un bol, presser le jus de citron, ajouter l'huile d'olive, puis y mélanger l'oignon pour l'attendrir légèrement.",
+    "Montage — étaler la crème sur les tortillas. Répartir la roquette, les tranches de jambon et l'oignon citronné.",
+    "Finalisation — rouler fermement chaque wrap et le couper en deux si besoin. Déguster immédiatement ou réserver au frais."
+  ],
+  "notes": "Variantes de la recette d'origine : de l'aneth ou de la ciboulette dans la crème ; des rondelles de concombre ou des graines de sésame pour le croquant ; envelopper le wrap dans du film alimentaire et le laisser reposer 5 minutes avant de couper, pour qu'il ne se déroule pas.\n\nLes tortillas sont comptées en pièces entières (41 g l'unité) : on ne garnit pas 1,3 wrap. Le calibrage arrondit à la tortilla près et réajuste le jambon, la crème et les légumes pour retomber sur la cible.\n\nPlat naturellement salé : environ 4 g de sel, dont 2,7 g pour le jambon et 1,2 g pour les tortillas. La fiche d'origine annonce 3,75 g, ce qui concorde."
+}

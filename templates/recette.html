@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% set page = 'recettes' %}
+{% block titre %}{{ recette.titre }} — Nutriform{% endblock %}
+{% block entete %}Recette{% endblock %}
+{% block contenu %}
+
+<h1>{{ recette.titre }}</h1>
+<p class="muet">
+  {% if recette.source %}{{ recette.source }} · {% endif %}
+  recette d'origine : {{ calcul.portions_base | nombre }} portion{{ 's' if calcul.portions_base > 1 }}
+  {% if recette.temps_prepa_min %} · prépa {{ recette.temps_prepa_min }} min{% endif %}
+  {% if recette.temps_cuisson_min %} · cuisson {{ recette.temps_cuisson_min }} min{% endif %}
+</p>
+
+{% if erreurs %}
+  <div class="alerte erreur">
+    <strong>Recette à corriger :</strong> {{ erreurs | join(' ; ') }}
+  </div>
+{% endif %}
+
+<!-- ------------------------------------------------ calibrage -->
+<form method="get" class="carte">
+  <h2>Calibrer la portion</h2>
+  <div class="ligne">
+    <div>
+      <label for="kcal">Cible par portion (kcal)</label>
+      <input type="number" id="kcal" name="kcal" min="1" step="10"
+             value="{{ calcul.kcal_cible | int if calcul.kcal_cible else '' }}"
+             placeholder="ex. 500">
+    </div>
+    <div>
+      <label for="portions">Nombre de portions</label>
+      <input type="number" id="portions" name="portions" min="1" step="1"
+             value="{{ calcul.portions | int }}">
+    </div>
+    <button type="submit">Calculer</button>
+  </div>
+  <p class="muet" style="margin-bottom:.2rem">Cibles de mes créneaux :</p>
+  <p>
+    {% for creneau in creneaux %}
+      {% if cibles[creneau] %}
+        <a class="bouton secondaire" style="padding:.35rem .6rem;font-size:.8rem"
+           href="{{ url_for('page_recette', recette_id=recette.id, kcal=cibles[creneau], portions=calcul.portions | int) }}">
+          {{ creneau_libelle[creneau] }} {{ cibles[creneau] }} kcal</a>
+      {% endif %}
+    {% endfor %}
+    <a class="bouton secondaire" style="padding:.35rem .6rem;font-size:.8rem"
+       href="{{ url_for('page_recette', recette_id=recette.id) }}">recette d'origine</a>
+  </p>
+</form>
+
+{% if calcul.message %}
+  <div class="alerte erreur">{{ calcul.message }}</div>
+{% endif %}
+{% for avertissement in calcul.avertissements %}
+  <div class="alerte">{{ avertissement }}</div>
+{% endfor %}
+
+<!-- ------------------------------------------------ macros -->
+<div class="carte">
+  <h2>
+    Par portion
+    {% if calcul.kcal_cible and calcul.possible %}
+      <span class="pastille">calibré sur {{ calcul.kcal_cible | int }} kcal</span>
+    {% endif %}
+  </h2>
+  <div class="macros">
+    <div class="macro"><span class="val">{{ calcul.par_portion.kcal | nombre }}</span><span class="lib">kcal</span></div>
+    <div class="macro"><span class="val">{{ calcul.par_portion.proteines | nombre }} g</span><span class="lib">Protéines</span></div>
+    <div class="macro"><span class="val">{{ calcul.par_portion.glucides | nombre }} g</span><span class="lib">Glucides</span></div>
+    <div class="macro"><span class="val">{{ calcul.par_portion.lipides | nombre }} g</span><span class="lib">Lipides</span></div>
+  </div>
+  <p class="muet" style="margin-top:.7rem">
+    Total pour {{ calcul.portions | nombre }} portion{{ 's' if calcul.portions > 1 }} :
+    {{ calcul.total.kcal | nombre }} kcal ·
+    fibres {{ calcul.par_portion.fibres | nombre }} g ·
+    sel {{ calcul.par_portion.sel | nombre }} g par portion
+  </p>
+</div>
+
+<!-- ------------------------------------------------ ingrédients -->
+<div class="carte">
+  <h2>Ingrédients pour {{ calcul.portions | nombre }} portion{{ 's' if calcul.portions > 1 }}</h2>
+  <table>
+    <thead>
+      <tr><th>Ingrédient</th><th class="num">Quantité</th><th class="num">kcal</th></tr>
+    </thead>
+    <tbody>
+    {% for i in calcul.ingredients %}
+      <tr>
+        <td>
+          {{ i.nom }}
+          {% if i.echelle == 'fixe' %}<span class="pastille fixe">fixe</span>{% endif %}
+          {% if not i.connu %}<span class="pastille fixe">valeur inconnue</span>{% endif %}
+          {% if i.apercu %}<br><span class="muet">{{ i.apercu }}</span>{% endif %}
+        </td>
+        <td class="num">
+          {% if i.libelle_piece %}
+            <strong>{{ i.libelle_piece }}</strong><br>
+            <span class="muet">{{ i.grammes | nombre }} g</span>
+          {% else %}
+            <strong>{{ i.grammes | nombre }} g</strong>
+          {% endif %}
+        </td>
+        <td class="num">{{ i.macros.kcal | nombre }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {# Ne pas expliquer une pastille absente : certaines recettes (une collation
+     d'un seul ingrédient) n'ont aucun ingrédient fixe. #}
+  {% if calcul.ingredients | selectattr('echelle', 'equalto', 'fixe') | list %}
+    <p class="muet">
+      Les ingrédients marqués <span class="pastille fixe">fixe</span> ne varient pas
+      avec la cible calorique : ce sont les assaisonnements.
+    </p>
+  {% endif %}
+</div>
+
+<!-- ------------------------------------------------ mode opératoire -->
+{% if recette.etapes %}
+<div class="carte">
+  <h2>Mode opératoire</h2>
+  <ol style="padding-left:1.2rem; margin:0">
+    {% for etape in recette.etapes %}
+      <li style="margin-bottom:.5rem">{{ etape }}</li>
+    {% endfor %}
+  </ol>
+</div>
+{% endif %}
+
+{% if recette.notes %}
+  <div class="carte"><h2>Notes</h2><p class="muet">{{ recette.notes }}</p></div>
+{% endif %}
+
+<p><a class="bouton secondaire" href="{{ url_for('page_recettes') }}">← Toutes les recettes</a></p>
+{% endblock %}

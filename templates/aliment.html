@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% set page = 'aliments' %}
+{% block titre %}{{ aliment.nom }} — Nutriform{% endblock %}
+{% block entete %}Aliment{% endblock %}
+{% block contenu %}
+
+<h1>{{ aliment.nom }}</h1>
+<p class="muet">
+  Code {{ aliment.code }}
+  {% if aliment.groupe %}· {{ aliment.groupe }}{% endif %}
+  {% if aliment.sous_groupe %}· {{ aliment.sous_groupe }}{% endif %}
+  {% if aliment.source == 'perso' %}<span class="pastille">aliment perso</span>{% endif %}
+</p>
+
+<div class="carte">
+  <h2>Pour 100 g</h2>
+  <div class="macros">
+    <div class="macro"><span class="val">{{ aliment.kcal | nombre }}</span>
+      <span class="lib">kcal{{ ' calculées' if aliment.kcal_estimee }}</span></div>
+    <div class="macro"><span class="val">{{ aliment.proteines | nombre }} g</span><span class="lib">Protéines</span></div>
+    <div class="macro"><span class="val">{{ aliment.glucides | nombre }} g</span><span class="lib">Glucides</span></div>
+    <div class="macro"><span class="val">{{ aliment.lipides | nombre }} g</span><span class="lib">Lipides</span></div>
+  </div>
+  <table style="margin-top:.9rem">
+    <tr><th>Fibres</th><td class="num">{{ aliment.fibres | nombre }} g</td></tr>
+    <tr><th>Sucres</th><td class="num">{{ aliment.sucres | nombre }} g</td></tr>
+    <tr><th>Sel</th><td class="num">{{ aliment.sel | nombre }} g</td></tr>
+  </table>
+  {% if aliment.kcal is none %}
+    <div class="alerte">Ciqual ne fournit pas l'énergie de cet aliment, et ses
+      macronutriments sont trop incomplets pour la calculer. Il comptera pour
+      0 kcal dans une recette, qui le signalera.</div>
+  {% elif aliment.kcal_estimee %}
+    <div class="alerte">
+      <strong>Énergie calculée, non fournie par Ciqual.</strong>
+      La table de l'ANSES laisse la case énergie vide pour cet aliment : la
+      valeur ci-dessus est reconstituée depuis ses macronutriments, avec les
+      coefficients du règlement (UE) 1169/2011 — 4 kcal/g pour les protéines
+      et les glucides, 9 pour les lipides, 2 pour les fibres, 2,4 pour les
+      polyols, 7 pour l'alcool et 3 pour les acides organiques. Ce sont ceux
+      avec lesquels l'ANSES calcule elle-même sa colonne énergie.
+    </div>
+  {% endif %}
+</div>
+
+{% if aliment.source == 'perso' %}
+<details class="carte">
+  <summary style="cursor:pointer"><strong>Corriger les valeurs</strong></summary>
+  <p class="muet">
+    Recopier l'étiquette du produit, pour 100 g. Laisser un champ vide pour
+    conserver sa valeur actuelle.
+  </p>
+  <form method="post" action="{{ url_for('aliment_modifier', code=aliment.code) }}">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom" value="{{ aliment.nom }}">
+    <div class="ligne">
+      <div>
+        <label for="kcal">kcal</label>
+        <input type="number" id="kcal" name="kcal" step="1"
+               value="{{ aliment.kcal if aliment.kcal is not none }}">
+      </div>
+      <div>
+        <label for="proteines">Protéines (g)</label>
+        <input type="number" id="proteines" name="proteines" step="0.1"
+               value="{{ aliment.proteines if aliment.proteines is not none }}">
+      </div>
+    </div>
+    <div class="ligne">
+      <div>
+        <label for="glucides">Glucides (g)</label>
+        <input type="number" id="glucides" name="glucides" step="0.1"
+               value="{{ aliment.glucides if aliment.glucides is not none }}">
+      </div>
+      <div>
+        <label for="lipides">Lipides (g)</label>
+        <input type="number" id="lipides" name="lipides" step="0.1"
+               value="{{ aliment.lipides if aliment.lipides is not none }}">
+      </div>
+    </div>
+    <div class="ligne">
+      <div>
+        <label for="fibres">Fibres (g)</label>
+        <input type="number" id="fibres" name="fibres" step="0.1"
+               value="{{ aliment.fibres if aliment.fibres is not none }}">
+      </div>
+      <div>
+        <label for="sucres">Sucres (g)</label>
+        <input type="number" id="sucres" name="sucres" step="0.1"
+               value="{{ aliment.sucres if aliment.sucres is not none }}">
+      </div>
+      <div>
+        <label for="sel">Sel (g)</label>
+        <input type="number" id="sel" name="sel" step="0.01"
+               value="{{ aliment.sel if aliment.sel is not none }}">
+      </div>
+    </div>
+    <p><button type="submit">Enregistrer</button></p>
+  </form>
+</details>
+{% endif %}
+
+<div class="carte">
+  <h2>Équivalences d'unités</h2>
+  <table>
+    {% for unite, grammes in unites.items() %}
+      <tr><th>1 {{ unite }}</th><td class="num">{{ grammes | nombre }} g</td></tr>
+    {% endfor %}
+  </table>
+  <p class="muet">Utilisées pour la saisie rapide au journal. Les recettes, elles,
+     stockent directement des grammes.</p>
+  <form method="post" action="{{ url_for('aliment_unite', code=aliment.code) }}">
+    <div class="ligne">
+      <div>
+        <label for="unite">Unité</label>
+        <input type="text" id="unite" name="unite" placeholder="gousse, unité…">
+      </div>
+      <div>
+        <label for="grammes">Pèse (g)</label>
+        <input type="number" id="grammes" name="grammes" min="0.1" step="0.1">
+      </div>
+      <button type="submit" class="secondaire">Définir</button>
+    </div>
+  </form>
+</div>
+
+<p><a class="bouton secondaire" href="{{ url_for('page_aliments') }}">← Retour aux aliments</a></p>
+{% endblock %}

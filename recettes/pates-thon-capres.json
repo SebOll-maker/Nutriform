@@ -1,0 +1,78 @@
+{
+  "id": "pates-thon-capres",
+  "titre": "Pâtes au thon et aux câpres",
+  "source": "MyFitRace — « Pâtes au thon et aux câpres (400) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 10,
+  "tags": ["plat", "poisson", "rapide"],
+  "ingredients": [
+    {
+      "nom": "Pâtes sèches",
+      "ciqual_code": "9810",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de pâtes crues",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Thon albacore au naturel",
+      "ciqual_code": "26181",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de thon égoutté",
+      "echelle": "variable",
+      "notes": "Entrée « Thon albacore », fidèle au libellé de la recette. L'entrée générique « Thon, au naturel » (26039) collerait mieux aux valeurs de MyFitRace, mais le choix retenu est l'albacore."
+    },
+    {
+      "nom": "Coulis de tomate",
+      "ciqual_code": "20260",
+      "quantite": 70,
+      "unite": "g",
+      "quantite_affichee": "70 g de coulis de tomate",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Crème fraîche épaisse 30 % MG",
+      "ciqual_code": "19410",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café de crème épaisse",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 6.8,
+      "unite": "g",
+      "quantite_affichee": "1/2 c. à soupe (7,5 ml)",
+      "echelle": "variable",
+      "notes": "Elle entre dans la sauce, elle ne sert pas à graisser une poêle : elle suit donc la cible calorique. 7,5 ml pèsent 6,8 g."
+    },
+    {
+      "nom": "Câpres",
+      "ciqual_code": "11040",
+      "quantite": 7,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café de câpres",
+      "echelle": "fixe",
+      "notes": "Ciqual ne renseigne pas l'énergie des câpres au vinaigre : elles comptent pour 0 kcal, soit environ 2 kcal manquantes sur la recette. L'application le signale."
+    },
+    {
+      "nom": "Cornichon",
+      "ciqual_code": "11004",
+      "quantite": 7,
+      "unite": "g",
+      "quantite_affichee": "1 cornichon, en rondelles",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Pâtes — cuire les pâtes selon les indications du paquet, dans une grande casserole d'eau bouillante salée.",
+    "Pendant ce temps — couper les cornichons en rondelles et émietter le thon à la fourchette.",
+    "Sauce — dans une casserole à feu doux, faire chauffer le coulis de tomate avec la crème épaisse, les câpres, les cornichons et l'huile d'olive. Ajouter le thon, mélanger, et laisser cuire 4 à 5 minutes pour lier la sauce. Saler et poivrer.",
+    "Assemblage — égoutter les pâtes et les verser dans la casserole de sauce. Mélanger pour bien les enrober.",
+    "Servir immédiatement, en ajustant l'assaisonnement."
+  ],
+  "notes": "Variantes de la recette d'origine : parsemer de persil ou de basilic ciselé avant de servir ; si la sauce est trop épaisse, l'assouplir avec une cuillère d'eau de cuisson des pâtes.\n\nSont marqués « fixe » les câpres et les cornichons (condiments). L'huile d'olive reste « variable » : ici elle entre dans la sauce, contrairement à l'huile de coco des pancakes qui ne fait que graisser la poêle.\n\nLe sel de l'eau de cuisson des pâtes et le « saler à convenance » ne sont pas comptabilisés : la teneur en sel affichée est un minimum."
+}

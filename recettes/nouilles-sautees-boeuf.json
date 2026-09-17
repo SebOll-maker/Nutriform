@@ -1,0 +1,77 @@
+{
+  "id": "nouilles-sautees-boeuf",
+  "titre": "Nouilles sautées au bœuf",
+  "source": "MyFitRace — « Nouilles sautées au boeuf (400) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 10,
+  "tags": ["plat", "rapide", "sans lactose", "asiatique"],
+  "ingredients": [
+    {
+      "nom": "Faux-filet de bœuf",
+      "ciqual_code": "6111",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de faux-filet",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Nouilles chinoises aux œufs",
+      "ciqual_code": "9863",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de nouilles sèches",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Poivron rouge",
+      "ciqual_code": "20087",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "1/2 poivron rouge",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Courgette",
+      "ciqual_code": "20020",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "1/2 courgette",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "1/4 d'oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Sauce soja",
+      "ciqual_code": "11104",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à soupe de sauce soja",
+      "echelle": "fixe",
+      "notes": "Assaisonnement, donc « fixe ». C'est elle qui apporte l'essentiel du sel du plat."
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 2.3,
+      "unite": "g",
+      "quantite_affichee": "1/2 c. à café (2,5 ml)",
+      "echelle": "fixe",
+      "notes": "Sert à saisir au wok : matière grasse de cuisson, donc « fixe ». 2,5 ml pèsent 2,3 g."
+    }
+  ],
+  "etapes": [
+    "Nouilles — porter une casserole d'eau à ébullition, y plonger les nouilles et cuire selon les indications du sachet. Égoutter et réserver.",
+    "Découpe — tailler le bœuf, le poivron et l'oignon en lamelles. Couper la courgette en petits morceaux.",
+    "Wok — dans un wok ou une poêle bien chaude, mettre l'huile d'olive puis le bœuf, le poivron, la courgette et l'oignon. Faire sauter à feu vif 5 minutes en remuant régulièrement.",
+    "Sauce et nouilles — ajouter la sauce soja et laisser mijoter 2 minutes à feu doux. Incorporer les nouilles égouttées, bien mélanger et cuire encore 1 à 2 minutes pour que les saveurs s'imprègnent.",
+    "Dressage — servir, saler et poivrer selon le goût. Des herbes fraîches (coriandre, persil, ciboulette) s'y ajoutent très bien."
+  ],
+  "notes": "Variantes de la recette d'origine : saisir le bœuf rapidement à feu vif et l'ajouter en dernier pour qu'il ne durcisse pas ; des graines de sésame ou des cacahuètes concassées juste avant de servir ; quelques gouttes de sriracha ou une pincée de piment en poudre.\n\nLa recette d'origine laisse le choix entre sauce soja salée et sauce soja salée sans gluten — c'est l'entrée Ciqual générique qui est retenue, la version sans gluten n'étant pas référencée.\n\nPlat léger en matières grasses : une demi-cuillère à café d'huile seulement, le faux-filet étant naturellement maigre (6,7 g de lipides pour 100 g).\n\nAttention au sel, en revanche : environ 2,6 g, dont 2,0 g pour la seule cuillère à soupe de sauce soja (13,1 g de sel pour 100 g selon Ciqual) et 0,5 g pour les nouilles sèches. La fiche d'origine n'annonce que 0,64 g et 254 mg de sodium, ce qui est impossible : la sauce soja en apporte à elle seule 786 mg. Comme pour le bouillon cube du dahl, le condiment salé n'a pas été compté. Pour alléger : une demi-cuillère de sauce soja, ou une version réduite en sel."
+}

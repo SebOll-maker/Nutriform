@@ -1,0 +1,82 @@
+{
+  "id": "omelette-paysanne",
+  "titre": "Omelette paysanne",
+  "source": "MyFitRace — « Omelette paysanne (400) »",
+  "portions_base": 1,
+  "temps_prepa_min": 20,
+  "temps_cuisson_min": 25,
+  "tags": ["plat", "sans gluten", "rapide"],
+  "ingredients": [
+    {
+      "nom": "Oeufs",
+      "ciqual_code": "22000",
+      "quantite": 174,
+      "unite": "g",
+      "quantite_affichee": "3 œufs moyens",
+      "echelle": "variable",
+      "unite_piece": 58,
+      "nom_piece": "œuf"
+    },
+    {
+      "nom": "Jambon blanc",
+      "ciqual_code": "28906",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "2 tranches de jambon (80 g)",
+      "echelle": "variable",
+      "notes": "La recette d'origine laisse le choix « jambon ou jambon de dinde ». Retenu : « Jambon cuit, supérieur, découenné dégraissé », le jambon blanc courant en tranches. Pour la version dinde, passer sur le code 28964 (99 kcal au lieu de 115 pour 100 g)."
+    },
+    {
+      "nom": "Comté",
+      "ciqual_code": "12110",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de comté en dés",
+      "echelle": "variable",
+      "notes": "Variante de la recette d'origine : parmesan ou cheddar pour un goût plus marqué."
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 45,
+      "unite": "g",
+      "quantite_affichee": "1/3 de gros oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 2.3,
+      "unite": "g",
+      "quantite_affichee": "1/2 c. à café (2,5 ml)",
+      "echelle": "fixe",
+      "notes": "Sert à faire revenir l'oignon : matière grasse de cuisson, donc « fixe ». 2,5 ml pèsent 2,3 g."
+    },
+    {
+      "nom": "Persil frais",
+      "ciqual_code": "11014",
+      "quantite": 3,
+      "unite": "g",
+      "quantite_affichee": "persil ciselé, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée (une petite branche) : la recette d'origine dit « à votre convenance »."
+    },
+    {
+      "nom": "Ail en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "ail en poudre, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée."
+    }
+  ],
+  "etapes": [
+    "Préparation — émincer l'oignon, couper le jambon en morceaux et tailler le comté en petits dés. Battre les œufs.",
+    "Oignon — faire chauffer l'huile d'olive dans une poêle, ajouter l'oignon et faire revenir 2 minutes à feu moyen.",
+    "Jambon — incorporer le jambon et cuire encore 2 minutes pour l'imprégner des saveurs.",
+    "Omelette — verser les œufs battus dans la poêle. Parsemer de comté. Couvrir et laisser cuire à feu doux jusqu'à ce que les œufs soient pris.",
+    "Service — parsemer de persil ciselé, saler et poivrer."
+  ],
+  "notes": "Variantes de la recette d'origine : une pincée de muscade ou de paprika dans les œufs battus ; parmesan ou cheddar à la place du comté.\n\nLes œufs sont comptés en pièces entières (58 g l'unité) : la recette part de 3 œufs, et le calibrage arrondit à l'œuf près en réajustant le jambon, le comté et l'oignon pour retomber sur la cible.\n\nLe sel affiché ne comptabilise pas le « saler à convenance » du service. À noter que la fiche MyFitRace est ici contradictoire : elle annonce 1,65 g de sel mais 1 525 mg de sodium, ce qui correspondrait à 3,8 g de sel."
+}

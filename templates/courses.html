@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% set page = 'courses' %}
+{% block titre %}Courses — Nutriform{% endblock %}
+{% block entete %}Courses{% endblock %}
+{% block contenu %}
+
+<form method="get" class="carte">
+  <h2>Période</h2>
+  <div class="ligne">
+    <div>
+      <label for="debut">Du</label>
+      <input type="date" id="debut" name="debut" value="{{ debut }}">
+    </div>
+    <div>
+      <label for="fin">Au</label>
+      <input type="date" id="fin" name="fin" value="{{ fin }}">
+    </div>
+    <button type="submit">Générer</button>
+  </div>
+</form>
+
+{% if liste.rayons %}
+  <p class="muet">
+    {{ liste.n_lignes }} ingrédient{{ 's' if liste.n_lignes > 1 }} ·
+    {{ liste.n_repas }} repas planifié{{ 's' if liste.n_repas > 1 }} ·
+    <strong>{{ liste.restant }} restant{{ 's' if liste.restant > 1 }}</strong>
+  </p>
+
+  {% for rayon, lignes in liste.rayons %}
+    <div class="carte">
+      <h2>{{ rayon }}</h2>
+      <ul class="courses">
+        {% for l in lignes %}
+          <li class="{{ 'coche' if l.coche }}">
+            <form method="post" action="{{ url_for('courses_cocher') }}">
+              <input type="hidden" name="debut" value="{{ liste.debut }}">
+              <input type="hidden" name="fin" value="{{ liste.fin }}">
+              <input type="hidden" name="cle" value="{{ l.cle }}">
+              <input type="hidden" name="coche" value="{{ '0' if l.coche else '1' }}">
+              <button type="submit" class="case" title="Cocher">
+                {{ '☑' if l.coche else '☐' }}</button>
+            </form>
+            <span class="courses-nom">
+              {{ l.nom }}
+              <span class="muet">— {{ l.recettes | join(', ') }}</span>
+            </span>
+            <span class="courses-qte">{{ l.quantite }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+
+  <form method="post" action="{{ url_for('courses_vider') }}">
+    <input type="hidden" name="debut" value="{{ liste.debut }}">
+    <input type="hidden" name="fin" value="{{ liste.fin }}">
+    <button type="submit" class="secondaire">Décocher tout</button>
+  </form>
+{% else %}
+  <p class="vide">
+    Aucun repas planifié entre ces deux dates.<br>
+    <a href="{{ url_for('page_planning') }}">Remplir le planning</a> d'abord.
+  </p>
+{% endif %}
+
+{% if liste.repas_sans_recette %}
+  <div class="alerte">
+    {{ liste.repas_sans_recette | length }} repas planifié(s) renvoient à une
+    recette introuvable : leurs ingrédients ne sont pas dans cette liste.
+  </div>
+{% endif %}
+
+{% endblock %}

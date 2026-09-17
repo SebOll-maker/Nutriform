@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% set page = 'accueil' %}
+{% block titre %}Nutriform{% endblock %}
+{% block entete %}Nutriform{% endblock %}
+{% block contenu %}
+
+{% macro jauge(consomme, objectif, libelle, unite='') -%}
+  {% set pct = (consomme / objectif * 100) if objectif else 0 %}
+  <div class="jauge-bloc">
+    <div class="jauge-tete">
+      <span>{{ libelle }}</span>
+      <span class="muet">{{ consomme | nombre }}{{ unite }}
+        {% if objectif %}/ {{ objectif | nombre }}{{ unite }}{% endif %}</span>
+    </div>
+    <div class="jauge"><span class="{{ 'depasse' if pct > 105 }}"
+         style="width: {{ [pct, 100] | min }}%"></span></div>
+  </div>
+{%- endmacro %}
+
+<h1>{{ jour | jour_fr }}</h1>
+
+<div class="carte">
+  <h2>Journée en cours</h2>
+  {{ jauge(journal.totaux.kcal, objectifs.kcal, 'Énergie', ' kcal') }}
+  {{ jauge(journal.totaux.proteines, objectifs.proteines, 'Protéines', ' g') }}
+  {{ jauge(journal.totaux.glucides, objectifs.glucides, 'Glucides', ' g') }}
+  {{ jauge(journal.totaux.lipides, objectifs.lipides, 'Lipides', ' g') }}
+  {% set reste = objectifs.kcal - journal.totaux.kcal %}
+  <p class="muet" style="margin-bottom:0">
+    {% if not journal.entrees %}
+      Rien de saisi pour aujourd'hui.
+    {% elif reste > 0 %}
+      Il reste <strong>{{ reste | nombre }} kcal</strong> avant d'atteindre l'objectif.
+    {% else %}
+      Objectif dépassé de <strong>{{ (-reste) | nombre }} kcal</strong>.
+    {% endif %}
+  </p>
+  <p><a class="bouton" href="{{ url_for('page_journal', date=jour) }}">Saisir un repas</a></p>
+</div>
+
+<div class="carte">
+  <h2>Prévu au planning</h2>
+  {% if prevu %}
+    {% for creneau in creneaux %}
+      {% for e in prevu if e.creneau == creneau %}
+        <div class="repas">
+          <div class="repas-corps">
+            <span class="repas-creneau">{{ creneau_libelle[creneau] }}</span>
+            {% if e.orpheline %}
+              <span class="muet">recette « {{ e.recette_id }} » supprimée</span>
+            {% else %}
+              <a href="{{ url_for('page_recette', recette_id=e.recette_id, kcal=e.kcal_cible | int if e.kcal_cible else none, portions=e.portions | int) }}">{{ e.recette.titre }}</a>
+            {% endif %}
+          </div>
+          <span class="repas-kcal">
+            {{ e.calcul.total.kcal | nombre if e.calcul else '—' }} kcal</span>
+        </div>
+      {% endfor %}
+    {% endfor %}
+    <p><form method="post" action="{{ url_for('journal_depuis_planning') }}">
+      <input type="hidden" name="date" value="{{ jour }}">
+      <button class="secondaire" type="submit">J'ai mangé ce qui était prévu</button>
+    </form></p>
+  {% else %}
+    <p class="muet">Aucun repas planifié ce jour.
+      <a href="{{ url_for('page_planning', semaine=jour) }}">Ouvrir le planning</a>.</p>
+  {% endif %}
+</div>
+
+<div class="carte">
+  <h2>Poids</h2>
+  {% if dernier_poids %}
+    <div class="macros">
+      <div class="macro">
+        <span class="val">{{ dernier_poids.poids_kg | nombre }} kg</span>
+        <span class="lib">{{ dernier_poids.date | jour_fr }}</span>
+      </div>
+      {% if tendance %}
+        <div class="macro">
+          <span class="val">{{ '+' if tendance.ecart > 0 }}{{ tendance.ecart | nombre }} kg</span>
+          <span class="lib">sur 30 jours</span>
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <p class="muet">Aucun pesage enregistré.</p>
+  {% endif %}
+  <p><a class="bouton secondaire" href="{{ url_for('page_journal', date=jour) }}#poids">Me peser</a></p>
+</div>
+
+<div class="carte">
+  <h2>Référentiel</h2>
+  <p class="muet">
+    {{ n_recettes }} recette{{ 's' if n_recettes > 1 }} ·
+    {{ n_aliments }} aliments en base
+  </p>
+  <p>
+    <a class="bouton secondaire" href="{{ url_for('page_recettes') }}">Recettes</a>
+    <a class="bouton secondaire" href="{{ url_for('page_aliments') }}">Aliments</a>
+  </p>
+</div>
+
+{% endblock %}

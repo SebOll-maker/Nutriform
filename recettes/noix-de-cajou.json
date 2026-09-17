@@ -1,0 +1,24 @@
+{
+  "id": "noix-de-cajou",
+  "titre": "Noix de cajou non salées",
+  "source": "MyFitRace — « Noix de cajou non salées [100] »",
+  "portions_base": 1,
+  "temps_prepa_min": 1,
+  "temps_cuisson_min": 0,
+  "tags": ["collation", "végétarien", "sans gluten", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Noix de cajou grillées",
+      "ciqual_code": "15054",
+      "quantite": 15,
+      "unite": "g",
+      "quantite_affichee": "une petite poignée (15 g)",
+      "echelle": "variable",
+      "notes": "Entrée « grillée, sans sel ajouté », conforme au libellé. La variante salée (15019) apporterait 1,15 g de sel pour 100 g."
+    }
+  ],
+  "etapes": [
+    "Peser la quantité voulue et déguster."
+  ],
+  "notes": "Collation à ingrédient unique : tout est « variable », le calibrage se ramène donc à une simple pesée. Viser 150 kcal donne 24 g, viser 200 kcal donne 32 g.\n\nÀ noter : une collation de ce type peut aussi se saisir directement au journal (« Ajouter un aliment seul »), sans passer par une recette. L'intérêt d'en faire une recette est qu'elle peut alors être posée au planning et qu'elle alimente la liste de courses."
+}

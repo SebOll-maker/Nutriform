@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block titre %}Nutriform{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta name="theme-color" content="#2e7d55">
+
+  <!-- PWA : installation sur l'écran d'accueil (iOS a besoin de ses propres
+       métas, il ignore une partie du manifeste). -->
+  <link rel="manifest" href="{{ url_for('manifeste') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icone-180.png') }}">
+  <link rel="icon" href="{{ url_for('static', filename='icons/icone-192.png') }}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nutriform">
+</head>
+<body>
+
+<header class="appbar">
+  <span class="titre">{% block entete %}Nutriform{% endblock %}</span>
+  <span class="grandir"></span>
+  <a href="{{ url_for('page_aliments') }}" title="Rechercher un aliment">🔍</a>
+  <a href="{{ url_for('page_reglages') }}" title="Réglages">⚙</a>
+  {% if auth_active %}<a href="{{ url_for('logout') }}" title="Se déconnecter">⎋</a>{% endif %}
+</header>
+
+<nav class="tabbar">
+  <a href="{{ url_for('accueil') }}" class="{{ 'actif' if page == 'accueil' }}">
+     <span class="ico">📊</span>Aujourd'hui</a>
+  <a href="{{ url_for('page_recettes') }}" class="{{ 'actif' if page == 'recettes' }}">
+     <span class="ico">🍲</span>Recettes</a>
+  <a href="{{ url_for('page_planning') }}" class="{{ 'actif' if page == 'planning' }}">
+     <span class="ico">🗓️</span>Planning</a>
+  <a href="{{ url_for('page_courses') }}" class="{{ 'actif' if page == 'courses' }}">
+     <span class="ico">🛒</span>Courses</a>
+  <a href="{{ url_for('page_journal') }}" class="{{ 'actif' if page == 'journal' }}">
+     <span class="ico">✍️</span>Journal</a>
+</nav>
+
+<main>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for categorie, message in messages %}
+      <div class="alerte {{ 'erreur' if categorie == 'erreur' }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  {% block contenu %}{% endblock %}
+
+  <footer class="credit">
+    Données nutritionnelles : Anses. 2025. Table de composition nutritionnelle
+    des aliments Ciqual — Licence Etalab 2.0
+  </footer>
+</main>
+
+<script>
+  // Le service worker exige un contexte sécurisé : il s'active en HTTPS et
+  // sur localhost, mais reste inactif si l'app est ouverte via l'IP locale
+  // du PC en http. Dans ce cas l'application fonctionne normalement, sans
+  // cache hors ligne — d'où l'absence de message d'erreur ici.
+  if ('serviceWorker' in navigator && window.isSecureContext) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () { /* ignoré */ });
+    });
+  }
+</script>
+
+</body>
+</html>

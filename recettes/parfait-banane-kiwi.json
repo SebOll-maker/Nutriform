@@ -1,0 +1,69 @@
+{
+  "id": "parfait-banane-kiwi",
+  "titre": "Parfait banane kiwi au fromage blanc",
+  "source": "MyFitRace — « Parfait banane kiwi (300) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 0,
+  "tags": ["petit-déjeuner", "collation", "végétarien", "sans cuisson"],
+  "ingredients": [
+    {
+      "nom": "Fromage blanc 0 % MG",
+      "ciqual_code": "19644",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de fromage blanc 0 %",
+      "echelle": "variable",
+      "notes": "Variante de la recette d'origine : du skyr ou du yaourt grec pour une version plus protéinée."
+    },
+    {
+      "nom": "Kiwi",
+      "ciqual_code": "13021",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "1 kiwi moyen",
+      "echelle": "variable",
+      "notes": "Laissé divisible : un demi-kiwi s'utilise sans gâchis, comme l'orange du canard à l'orange."
+    },
+    {
+      "nom": "Muesli",
+      "ciqual_code": "32004",
+      "quantite": 25,
+      "unite": "g",
+      "quantite_affichee": "25 g de muesli",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Banane",
+      "ciqual_code": "13005",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "1/3 de banane",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Sirop d'agave",
+      "ciqual_code": "31089",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café de sirop d'agave",
+      "echelle": "variable",
+      "notes": "Ciqual donne ses macros (78 g de glucides pour 100 g) mais PAS son énergie. L'application la calcule depuis ces macros — 317,5 kcal pour 100 g — et le mentionne sur la fiche de l'aliment."
+    },
+    {
+      "nom": "Amandes",
+      "ciqual_code": "15041",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "quelques amandes (5 g)",
+      "echelle": "variable",
+      "notes": "Entrée « émondée, sans sel ajouté », la recette d'origine ne précisant pas."
+    }
+  ],
+  "etapes": [
+    "Fruits — éplucher et couper le kiwi et la banane en morceaux.",
+    "Assemblage — dans un bol ou un verre, disposer une première couche de fromage blanc, puis une partie des fruits, puis une couche de muesli. Répéter jusqu'à épuisement des ingrédients.",
+    "Finition — napper de sirop d'agave et parsemer les amandes en dernier, pour qu'elles gardent leur croquant. Déguster immédiatement ou réserver au frais."
+  ],
+  "notes": "Variantes de la recette d'origine : placer les fruits au réfrigérateur avant de les couper ; une pincée de cannelle ou de vanille ; du skyr ou du yaourt grec à la place du fromage blanc pour plus de protéines.\n\nAucun ingrédient n'est « fixe » ici : un parfait plus gros est simplement un parfait plus gros, tout se met à l'échelle uniformément et le plancher est donc nul.\n\nCiqual ne renseigne pas l'énergie du sirop d'agave : l'application la calcule depuis ses macronutriments (317,5 kcal pour 100 g) et le signale. C'est ce qui permet au total de tomber juste — sans ce calcul, la recette afficherait 284 kcal au lieu de 316."
+}

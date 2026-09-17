@@ -1,0 +1,95 @@
+{
+  "id": "cabillaud-lait-coco",
+  "titre": "Filet de cabillaud au lait de coco",
+  "source": "MyFitRace — « Filet de cabillaud au lait de coco [400] »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "poisson", "sans gluten", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Cabillaud",
+      "ciqual_code": "26043",
+      "quantite": 140,
+      "unite": "g",
+      "quantite_affichee": "1 filet de cabillaud (140 g)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Courgette",
+      "ciqual_code": "20020",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "1 petite courgette",
+      "echelle": "variable",
+      "notes": "Variante de la recette d'origine : poivrons, épinards ou haricots verts à la place."
+    },
+    {
+      "nom": "Lait de coco",
+      "ciqual_code": "18041",
+      "quantite": 70,
+      "unite": "ml",
+      "quantite_affichee": "70 ml de lait de coco",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Riz basmati cru",
+      "ciqual_code": "9119",
+      "quantite": 25,
+      "unite": "g",
+      "quantite_affichee": "25 g de riz basmati cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Tomate cerise",
+      "ciqual_code": "20172",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "4 ou 5 tomates cerises",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive",
+      "ciqual_code": "17270",
+      "quantite": 6.8,
+      "unite": "g",
+      "quantite_affichee": "1/2 c. à soupe (7,5 ml)",
+      "echelle": "fixe",
+      "notes": "Sert à faire revenir la courgette : matière grasse de cuisson, donc « fixe ». 7,5 ml pèsent 6,8 g."
+    },
+    {
+      "nom": "Citron",
+      "ciqual_code": "13009",
+      "quantite": 29,
+      "unite": "g",
+      "quantite_affichee": "1/2 citron, pressé au service",
+      "echelle": "fixe",
+      "notes": "Classé « fixe » comme les autres acidifiants."
+    },
+    {
+      "nom": "Curry en poudre",
+      "ciqual_code": "11005",
+      "quantite": 2,
+      "unite": "g",
+      "quantite_affichee": "curry, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée, comme dans le dahl : la recette d'origine ne la chiffre pas."
+    },
+    {
+      "nom": "Paprika en poudre",
+      "ciqual_code": "11049",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "paprika, à votre convenance",
+      "echelle": "fixe",
+      "notes": "Quantité estimée."
+    }
+  ],
+  "etapes": [
+    "Riz — porter une casserole d'eau salée à ébullition, ajouter le riz et cuire 9 minutes (ou selon le paquet). Égoutter et réserver.",
+    "Courgette et sauce — dans une poêle à feu moyen, faire chauffer l'huile d'olive et y faire revenir la courgette coupée en petits morceaux 3 à 4 minutes. Ajouter le lait de coco, le paprika et le curry, mélanger et laisser mijoter 1 à 2 minutes.",
+    "Cabillaud — ajouter les filets et cuire à feu doux 8 minutes, en les arrosant régulièrement de sauce. Ajouter les tomates cerises coupées en deux 2 minutes avant la fin de cuisson.",
+    "Service — presser le jus de citron sur le poisson, saler et poivrer. Servir avec le riz."
+  ],
+  "notes": "Variantes de la recette d'origine : un zeste de citron en fin de cuisson pour intensifier les arômes et équilibrer la richesse du lait de coco ; 2 minutes de mijotage en plus pour une sauce plus nappante ; poivrons, épinards ou haricots verts à la place de la courgette.\n\nPlat peu salé : environ 0,5 g, le cabillaud et le lait de coco en apportant très peu. Le sel de l'eau de cuisson du riz et le « saler à convenance » ne sont pas comptabilisés."
+}

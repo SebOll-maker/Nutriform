@@ -1,0 +1,18 @@
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+
+# Données locales (la base se reconstruit depuis Ciqual + les recettes JSON)
+data/*.db
+data/*.db-journal
+data/ciqual/
+
+# Captures d'écran des recettes : matière première déjà transcrite en JSON,
+# 4 Mo d'images qui n'ont pas à vivre dans l'historique du dépôt.
+recettes/Photos Recette/
+
+# Divers
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,70 @@
+{
+  "id": "wrap-saumon-fume",
+  "titre": "Wrap au saumon fumé et fromage blanc",
+  "source": "MyFitRace — « Wraps au saumon fumé (400) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 0,
+  "tags": ["plat", "rapide", "sans cuisson", "poisson"],
+  "ingredients": [
+    {
+      "nom": "Tortilla de blé",
+      "ciqual_code": "7815",
+      "quantite": 41,
+      "unite": "g",
+      "quantite_affichee": "1 tortilla souple",
+      "echelle": "variable",
+      "unite_piece": 41,
+      "nom_piece": "tortilla",
+      "notes": "Cette recette confirme le poids unitaire retenu pour les wraps au jambon : 1 tortilla = 41 g, 2 tortillas = 82 g."
+    },
+    {
+      "nom": "Saumon fumé",
+      "ciqual_code": "26037",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de saumon fumé (env. 4 tranches)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Fromage blanc 0 % MG",
+      "ciqual_code": "19644",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de fromage blanc 0 %",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon",
+      "ciqual_code": "20034",
+      "quantite": 45,
+      "unite": "g",
+      "quantite_affichee": "1/3 de gros oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Roquette",
+      "ciqual_code": "20217",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "1 poignée de roquette",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Citron",
+      "ciqual_code": "13009",
+      "quantite": 29,
+      "unite": "g",
+      "quantite_affichee": "1/2 citron, à presser",
+      "echelle": "fixe",
+      "notes": "Son jus attendrit l'oignon : classé « fixe » comme les autres acidifiants. Ici, contrairement au wrap au jambon, il n'y a pas d'huile dans la marinade."
+    }
+  ],
+  "etapes": [
+    "Oignon citronné — émincer finement l'oignon. Dans un bol, presser le jus de citron et y mélanger l'oignon pour l'attendrir légèrement.",
+    "Saumon — couper les tranches en morceaux, pour une meilleure répartition dans le wrap.",
+    "Montage — étaler le fromage blanc sur la tortilla. Répartir la roquette, les morceaux de saumon et l'oignon citronné.",
+    "Finalisation — rouler fermement le wrap et le couper en deux si besoin. Déguster immédiatement ou réserver au frais."
+  ],
+  "notes": "Variantes de la recette d'origine : de l'aneth ou de la ciboulette dans le fromage blanc ; des rondelles de concombre ou des graines de sésame pour le croquant ; envelopper le wrap dans du film alimentaire et le laisser reposer 5 minutes avant de couper.\n\nVersion nettement plus légère que le wrap au jambon (384 contre 598 kcal chez MyFitRace) : le fromage blanc 0 % remplace la crème fraîche à 30 % MG, et il n'y a ni huile ni vinaigre. À noter que le mode opératoire du wrap au jambon parlait lui aussi de « fromage blanc » — c'était manifestement un copier-coller depuis cette recette-ci, et sa liste d'ingrédients (crème fraîche) faisait bien foi.\n\nPlat salé : environ 3,6 g de sel, dont 2,9 g pour le saumon fumé et 0,6 g pour la tortilla."
+}

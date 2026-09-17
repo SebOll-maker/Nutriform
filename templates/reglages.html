@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% set page = 'reglages' %}
+{% block titre %}Réglages — Nutriform{% endblock %}
+{% block entete %}Réglages{% endblock %}
+{% block contenu %}
+
+<h1>Mes objectifs</h1>
+
+<form method="post">
+  <div class="carte">
+    <h2>Objectifs journaliers</h2>
+    <div class="ligne">
+      <div>
+        <label for="objectif_kcal">Énergie (kcal)</label>
+        <input type="number" id="objectif_kcal" name="objectif_kcal" min="0"
+               step="50" value="{{ reglages.objectif_kcal }}">
+      </div>
+      <div>
+        <label for="objectif_proteines_g">Protéines (g)</label>
+        <input type="number" id="objectif_proteines_g" name="objectif_proteines_g"
+               min="0" step="5" value="{{ reglages.objectif_proteines_g }}">
+      </div>
+    </div>
+    <div class="ligne">
+      <div>
+        <label for="objectif_glucides_g">Glucides (g)</label>
+        <input type="number" id="objectif_glucides_g" name="objectif_glucides_g"
+               min="0" step="5" value="{{ reglages.objectif_glucides_g }}">
+      </div>
+      <div>
+        <label for="objectif_lipides_g">Lipides (g)</label>
+        <input type="number" id="objectif_lipides_g" name="objectif_lipides_g"
+               min="0" step="5" value="{{ reglages.objectif_lipides_g }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="carte">
+    <h2>Répartition sur la journée</h2>
+    <p class="muet">
+      En pourcentage de l'objectif calorique. Ces parts donnent les cibles
+      proposées d'un clic sur la fiche d'une recette. Le total devrait faire 100 %.
+    </p>
+    {% for creneau in creneaux %}
+      <div class="ligne" style="align-items:center">
+        <div style="flex:2">
+          <label for="part_{{ creneau }}">{{ creneau_libelle[creneau] }}</label>
+          <input type="number" id="part_{{ creneau }}" name="part_{{ creneau }}"
+                 min="0" max="100" step="5"
+                 value="{{ reglages['part_' + creneau] }}">
+        </div>
+        <div style="flex:1; padding-bottom:.6rem">
+          <span class="pastille">{{ cibles[creneau] }} kcal</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <p><button type="submit">Enregistrer</button></p>
+</form>
+
+<div class="carte">
+  <h2>À propos</h2>
+  <p class="muet">
+    Nutriform — application personnelle de suivi nutritionnel.
+    Les recettes sont des fichiers JSON du dossier <code>recettes/</code> ;
+    le reste (planning, journal, poids, référentiel Ciqual) vit dans
+    <code>data/nutriform.db</code>.
+  </p>
+</div>
+
+{% endblock %}

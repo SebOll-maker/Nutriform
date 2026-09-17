@@ -1,0 +1,24 @@
+{
+  "id": "amandes",
+  "titre": "Amandes",
+  "source": "MyFitRace — « Amandes [100] »",
+  "portions_base": 1,
+  "temps_prepa_min": 1,
+  "temps_cuisson_min": 0,
+  "tags": ["collation", "végétarien", "sans gluten", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Amandes",
+      "ciqual_code": "15041",
+      "quantite": 15,
+      "unite": "g",
+      "quantite_affichee": "une petite poignée (15 g)",
+      "echelle": "variable",
+      "notes": "Entrée « émondée, sans sel ajouté », conforme à une collation nature. La variante grillée salée (15042) apporterait 1,15 g de sel pour 100 g."
+    }
+  ],
+  "etapes": [
+    "Peser la quantité voulue et déguster."
+  ],
+  "notes": "Collation à ingrédient unique, comme les noix de cajou : tout est « variable », le calibrage se ramène à une pesée. Viser 150 kcal donne 24 g, 200 kcal donne 32 g.\n\nÀ noter qu'à quantité égale les amandes et les noix de cajou se valent presque en calories (631 contre 618 kcal pour 100 g), mais les amandes apportent nettement plus de fibres : 9,9 g contre 8,4 g pour 100 g."
+}

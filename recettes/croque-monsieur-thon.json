@@ -1,0 +1,72 @@
+{
+  "id": "croque-monsieur-thon",
+  "titre": "Croque-monsieur au thon",
+  "source": "MyFitRace — « Croque-monsieur au thon (400) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 8,
+  "tags": ["plat", "rapide", "poisson"],
+  "ingredients": [
+    {
+      "nom": "Pain de mie blanc",
+      "ciqual_code": "7200",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "2 grandes tranches de pain de mie",
+      "echelle": "variable",
+      "unite_piece": 40,
+      "nom_piece": "tranche",
+      "pas_piece": 2,
+      "notes": "Compté en tranches entières de 40 g, et par multiples de deux : un croque se monte avec deux tranches, l'arrondi ne peut donc jamais tomber sur un nombre impair."
+    },
+    {
+      "nom": "Thon albacore au naturel",
+      "ciqual_code": "26181",
+      "quantite": 70,
+      "unite": "g",
+      "quantite_affichee": "70 g de thon égoutté",
+      "echelle": "variable",
+      "notes": "Même entrée que les pâtes au thon et aux câpres : « Thon albacore », fidèle au libellé."
+    },
+    {
+      "nom": "Emmental",
+      "ciqual_code": "12115",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g d'emmental",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Beurre doux",
+      "ciqual_code": "16400",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "1 noisette de beurre (5 g)",
+      "echelle": "variable",
+      "notes": "Il beurre les tranches, il n'est pas une matière grasse de cuisson : il suit donc le nombre de tranches et la cible."
+    },
+    {
+      "nom": "Fromage blanc 0 % MG",
+      "ciqual_code": "19644",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café de fromage blanc 0 %",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Moutarde",
+      "ciqual_code": "11013",
+      "quantite": 5,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à café de moutarde de Dijon",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Mélange au thon — dans un bol, émietter le thon, ajouter la moutarde et le fromage blanc 0 %. Mélanger jusqu'à obtenir une texture homogène, puis saler et poivrer.",
+    "Montage — beurrer légèrement chaque tranche de pain de mie d'un seul côté. Répartir le mélange de thon sur le côté beurré, ajouter l'emmental, puis refermer avec la seconde tranche.",
+    "Cuisson — déposer le croque sur une plaque recouverte de papier cuisson et enfourner à 200 °C pendant 4 minutes. Retourner et poursuivre 4 minutes, jusqu'à ce qu'il soit bien doré.",
+    "Servir bien chaud."
+  ],
+  "notes": "Variantes de la recette d'origine : de la ciboulette ou de l'aneth dans le mélange au thon ; une pincée de paprika fumé ; cuisson à la poêle, 3 à 4 minutes de chaque côté. Il se conserve en boîte hermétique au réfrigérateur et se réchauffe au four ou au grille-pain.\n\nLe pain de mie est compté par paires de tranches : le calibrage arrondit toujours à un nombre pair, donc à un nombre entier de croques, et réajuste le thon, l'emmental et le beurre pour retomber sur la cible.\n\nSeule la moutarde est « fixe ». Elle est très salée (6,3 g de sel pour 100 g selon Ciqual), mais à 5 g elle n'apporte que 0,3 g : l'essentiel du sel vient du pain de mie et du thon."
+}

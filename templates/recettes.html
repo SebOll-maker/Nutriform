@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% set page = 'recettes' %}
+{% block titre %}Recettes — Nutriform{% endblock %}
+{% block entete %}Recettes{% endblock %}
+{% block contenu %}
+
+<h1>Mes recettes</h1>
+
+{% if apercus %}
+  {% for a in apercus %}
+    <a class="carte lien" href="{{ url_for('page_recette', recette_id=a.recette.id) }}">
+      <h2>{{ a.recette.titre }}</h2>
+      <p class="muet">
+        {{ a.calcul.portions_base | nombre }} portion{{ 's' if a.calcul.portions_base > 1 }}
+        · {{ a.calcul.par_portion.kcal | nombre }} kcal/portion
+        {% if a.recette.temps_prepa_min %} · {{ a.recette.temps_prepa_min }} min de préparation{% endif %}
+      </p>
+      <div class="macros">
+        <div class="macro"><span class="val">{{ a.calcul.par_portion.kcal | nombre }}</span><span class="lib">kcal</span></div>
+        <div class="macro"><span class="val">{{ a.calcul.par_portion.proteines | nombre }} g</span><span class="lib">Prot.</span></div>
+        <div class="macro"><span class="val">{{ a.calcul.par_portion.glucides | nombre }} g</span><span class="lib">Gluc.</span></div>
+        <div class="macro"><span class="val">{{ a.calcul.par_portion.lipides | nombre }} g</span><span class="lib">Lip.</span></div>
+      </div>
+      {% if a.recette._erreurs %}
+        <div class="alerte erreur">Recette à corriger : {{ a.recette._erreurs | join(' ; ') }}</div>
+      {% elif a.calcul.avertissements %}
+        <div class="alerte">{{ a.calcul.avertissements[0] }}</div>
+      {% endif %}
+    </a>
+  {% endfor %}
+{% else %}
+  <p class="vide">
+    Aucune recette pour l'instant.<br>
+    Les recettes sont des fichiers JSON déposés dans le dossier
+    <code>recettes/</code>.
+  </p>
+{% endif %}
+
+{% endblock %}

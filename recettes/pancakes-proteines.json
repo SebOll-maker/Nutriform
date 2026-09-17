@@ -1,0 +1,85 @@
+{
+  "id": "pancakes-proteines",
+  "titre": "Pancakes protéinés",
+  "source": "MyFitRace — « Pancakes protéinés (300) »",
+  "portions_base": 1,
+  "temps_prepa_min": 3,
+  "temps_cuisson_min": 5,
+  "tags": ["collation", "petit-déjeuner", "végétarien"],
+  "ingredients": [
+    {
+      "nom": "Oeuf",
+      "ciqual_code": "22000",
+      "quantite": 58,
+      "unite": "g",
+      "quantite_affichee": "1 œuf moyen",
+      "echelle": "variable",
+      "unite_piece": 58,
+      "nom_piece": "œuf",
+      "notes": "Poids de la recette d'origine. Ciqual donne ses valeurs pour la partie comestible : un œuf moyen hors coquille pèse plutôt 50 g."
+    },
+    {
+      "nom": "Boisson à l'avoine",
+      "ciqual_code": "18899",
+      "quantite": 75,
+      "unite": "ml",
+      "quantite_affichee": "75 ml de boisson d'avoine",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Flocons d'avoine",
+      "ciqual_code": "32140",
+      "quantite": 15,
+      "unite": "g",
+      "quantite_affichee": "15 g de flocons d'avoine",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Whey protéine",
+      "ciqual_code": "PERSO-0001",
+      "quantite": 12,
+      "unite": "g",
+      "quantite_affichee": "12 g de whey",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Farine de blé T80",
+      "ciqual_code": "9445",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de farine de blé T80",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Miel",
+      "ciqual_code": "31008",
+      "quantite": 8,
+      "unite": "g",
+      "quantite_affichee": "8 g de miel",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Levure chimique",
+      "ciqual_code": "11046",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "1 sachet rase (5 g)",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Huile de coco",
+      "ciqual_code": "16050",
+      "quantite": 4.6,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café (5 ml)",
+      "echelle": "fixe",
+      "notes": "Sert à graisser la poêle : la quantité ne suit pas la cible calorique. 5 ml d'huile de coco pèsent 4,6 g."
+    }
+  ],
+  "etapes": [
+    "Préparation de la pâte — dans un bol, casser l'œuf et le battre légèrement. Ajouter la boisson d'avoine, la farine, les flocons d'avoine, la whey et la levure chimique. Mélanger jusqu'à obtenir une pâte homogène.",
+    "Cuisson — faire chauffer une poêle avec l'huile de coco. Verser une petite louche de pâte et cuire 1 à 2 minutes de chaque côté, jusqu'à ce que le pancake soit bien doré. Répéter jusqu'à épuisement de la pâte.",
+    "Dressage — arroser les pancakes avec le miel et déguster."
+  ],
+  "notes": "Variantes de la recette d'origine : farine de riz ou de sarrasin à la place du blé pour une version sans gluten ; cannelle ou sirop d'érable allégé à la place du miel.\n\nLa levure et l'huile de coco sont marquées « fixe » : elles ne bougent pas quand on recalibre la recette (plancher de 47 kcal par portion). La whey est saisie d'après l'étiquette du pot réellement utilisé (concentré de lactosérum vanille, 73 % de protéines) : aliment perso PERSO-0001, Ciqual ne référençant aucun complément alimentaire."
+}

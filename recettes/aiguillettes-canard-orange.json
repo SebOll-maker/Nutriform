@@ -1,0 +1,96 @@
+{
+  "id": "aiguillettes-canard-orange",
+  "titre": "Aiguillettes de canard à l'orange, écrasé de pommes de terre",
+  "source": "MyFitRace — « Aiguillettes de canard à l'orange (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 15,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "volaille", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Aiguillettes de canard",
+      "ciqual_code": "36201",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g d'aiguillettes de canard",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Orange",
+      "ciqual_code": "13034",
+      "quantite": 196.5,
+      "unite": "g",
+      "quantite_affichee": "1 orange et demie, à presser",
+      "echelle": "variable",
+      "notes": "Une orange se coupe en deux : volontairement laissée divisible, contrairement à l'œuf."
+    },
+    {
+      "nom": "Pomme de terre",
+      "ciqual_code": "4008",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de pommes de terre",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Miel",
+      "ciqual_code": "31008",
+      "quantite": 15,
+      "unite": "g",
+      "quantite_affichee": "1 c. à soupe de miel",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive (plat)",
+      "ciqual_code": "17270",
+      "quantite": 6.8,
+      "unite": "g",
+      "quantite_affichee": "1/2 c. à soupe (7,5 ml)",
+      "echelle": "variable",
+      "notes": "Moitié pour saisir le canard, moitié dans l'écrasé. 7,5 ml d'huile pèsent 6,8 g."
+    },
+    {
+      "nom": "Sauce soja",
+      "ciqual_code": "11104",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à soupe de sauce soja",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "25604",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de salade verte",
+      "echelle": "fixe",
+      "notes": "Accompagnement : sa quantité ne suit pas la cible calorique."
+    },
+    {
+      "nom": "Huile d'olive (salade)",
+      "ciqual_code": "17270",
+      "quantite": 6.8,
+      "unite": "g",
+      "quantite_affichee": "1/2 c. à soupe (7,5 ml)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe de vinaigre balsamique",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Pommes de terre — porter à ébullition une casserole d'eau froide salée et cuire les pommes de terre 15 à 20 minutes, jusqu'à ce qu'elles soient tendres. Égoutter, puis les remettre quelques instants dans la casserole chaude pour éliminer l'excès d'humidité.",
+    "Sauce — presser les oranges dans un bol. Ajouter le miel et la sauce soja, poivrer et bien mélanger.",
+    "Canard — faire chauffer la moitié de l'huile d'olive du plat dans une poêle et griller les aiguillettes 2 minutes à feu vif.",
+    "Réduction — verser le jus d'orange dans la poêle et laisser réduire légèrement à feu moyen, en remuant régulièrement.",
+    "Écrasé — écraser les pommes de terre à la fourchette ou au presse-purée selon la texture voulue. Ajouter le reste de l'huile d'olive du plat, saler et poivrer.",
+    "Salade — laver et essorer la salade, puis la mélanger avec le vinaigre balsamique et l'huile d'olive de la salade. Saler, poivrer.",
+    "Dressage — servir immédiatement : aiguillettes nappées de sauce à l'orange, écrasé de pommes de terre et salade à côté."
+  ],
+  "notes": "Variantes de la recette d'origine : un zeste d'orange dans la sauce pour intensifier les arômes ; un peu de bouillon de volaille chaud dans l'écrasé pour une purée plus onctueuse ; si la salade est préparée à l'avance, garder sa vinaigrette à part.\n\nSont marqués « fixe » : la sauce soja et le vinaigre balsamique (assaisonnements) et la salade verte (accompagnement). Les deux huiles d'olive restent « variables » : à 600 kcal elles pèsent 120 kcal, c'est le principal levier calorique du plat.\n\nCiqual ne comptabilise ni le sel de cuisson des pommes de terre ni le « saler à convenance » du dressage : la teneur en sel affichée est donc un minimum."
+}
