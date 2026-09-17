@@ -57,7 +57,7 @@ chown -R nutriform:nutriform /opt/nutriform
 
 ```bash
 cp /opt/nutriform/deploy/nutriform.service /etc/systemd/system/
-# Renseigner NF_PASSWORD et NF_SECRET dans le fichier avant de démarrer :
+# Générer et coller NF_SECRET avant de démarrer :
 python3 -c "import secrets; print(secrets.token_hex(32))"
 nano /etc/systemd/system/nutriform.service
 systemctl daemon-reload
@@ -66,9 +66,32 @@ systemctl status nutriform
 curl -s http://127.0.0.1:5001/sante     # doit répondre {"statut":"ok"}
 ```
 
-**`NF_PASSWORD` n'est pas optionnelle sur un serveur public** : sans elle,
-l'application est accessible sans mot de passe. C'est volontaire (confort en
-développement local), mais c'est à vérifier avant d'ouvrir le port 80.
+**Ne jamais définir `NF_PERSONNE_DEFAUT` sur le serveur.** Cette variable
+court-circuite l'écran de connexion pour le confort du développement local :
+sur une machine exposée, elle donnerait le compte visé à n'importe quel
+visiteur. Le fichier d'unité livré ne la contient pas.
+
+## 4 bis. Créer les comptes
+
+Sans compte, personne ne peut se connecter — c'est voulu. Le premier est
+forcément créé en ligne de commande :
+
+```bash
+cd /opt/nutriform
+sudo -u nutriform .venv/bin/python tools/gerer_comptes.py creer sebastien Sébastien --admin
+```
+
+Si la base vient d'être migrée depuis la version mono-utilisateur, ce premier
+compte **reprend automatiquement** le planning, le journal, les pesées et les
+objectifs saisis avant : le script l'annonce avant de demander le mot de passe.
+
+Les comptes suivants se créent depuis l'écran **Comptes** de l'application, ou
+avec la même commande sans `--admin`. Chaque personne change ensuite son mot de
+passe depuis « Mon compte ».
+
+```bash
+sudo -u nutriform .venv/bin/python tools/gerer_comptes.py lister
+```
 
 ## 5. nginx + HTTPS
 
@@ -107,8 +130,26 @@ sinon les navigateurs garderont l'ancien cache.
 | Journaux | `journalctl -u nutriform -f` |
 | Redémarrer | `systemctl restart nutriform` |
 | Sauvegarder | `cp /opt/nutriform/data/nutriform.db ~/sauvegardes/nutriform-$(date +%F).db` |
+| Lister les comptes | `sudo -u nutriform .venv/bin/python tools/gerer_comptes.py lister` |
+| Réinitialiser un mot de passe | `… tools/gerer_comptes.py motdepasse <identifiant>` |
 | Nouvelle édition Ciqual | retélécharger le xlsx puis `import_ciqual.py` (les aliments perso sont préservés) |
 
-La sauvegarde utile tient en deux éléments : **`data/nutriform.db`** (planning,
-journal, poids, aliments perso) et le dossier **`recettes/`**. Le reste se
-reconstruit depuis le dépôt et les données publiques de l'ANSES.
+La sauvegarde utile tient en deux éléments : **`data/nutriform.db`** (comptes,
+planning, journal, poids, aliments perso) et le dossier **`recettes/`**. Le
+reste se reconstruit depuis le dépôt et les données publiques de l'ANSES.
+
+**Dès que plusieurs personnes utilisent l'application, cette sauvegarde n'est
+plus optionnelle** : leurs pesées et leurs journaux n'existent qu'à cet
+endroit. Une tâche `cron` quotidienne suffit :
+
+```cron
+0 3 * * * cp /opt/nutriform/data/nutriform.db /root/sauvegardes/nutriform-$(date +\%F).db
+```
+
+## Ce que les autres doivent savoir
+
+Le cloisonnement technique est vérifié par `tests/test_cloisonnement.py` :
+personne ne voit le journal, les pesées ni le planning d'un autre, pas même
+l'administrateur de l'application. En revanche, **qui administre le serveur a
+un accès matériel à la base**. Le plus simple est de le dire aux personnes
+concernées avant de leur ouvrir un compte.

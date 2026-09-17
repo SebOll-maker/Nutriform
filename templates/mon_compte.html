@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block titre %}Mon compte — Nutriform{% endblock %}
+{% block entete %}Mon compte{% endblock %}
+{% block contenu %}
+
+<h1>{{ personne.prenom }}</h1>
+
+<div class="carte">
+  <h2>Mon compte</h2>
+  <table>
+    <tr><th>Identifiant</th><td>{{ personne.identifiant }}</td></tr>
+    <tr><th>Prénom</th><td>{{ personne.prenom }}</td></tr>
+    <tr><th>Rôle</th><td>
+      {% if personne.admin %}administrateur — gère les comptes{% else %}utilisateur{% endif %}
+    </td></tr>
+  </table>
+</div>
+
+<div class="carte">
+  <h2>Changer mon mot de passe</h2>
+  <form method="post">
+    <label for="actuel">Mot de passe actuel</label>
+    <input type="password" id="actuel" name="actuel"
+           autocomplete="current-password">
+    <label for="nouveau">Nouveau mot de passe</label>
+    <input type="password" id="nouveau" name="nouveau"
+           autocomplete="new-password">
+    <label for="confirmation">Confirmer</label>
+    <input type="password" id="confirmation" name="confirmation"
+           autocomplete="new-password">
+    <p><button type="submit">Changer</button></p>
+  </form>
+  <p class="muet">Au moins 8 caractères. Il est stocké haché, jamais en clair.</p>
+</div>
+
+<div class="carte">
+  <h2>Ce qui est à moi, ce qui est commun</h2>
+  <table>
+    <tr><th>Mon planning</th><td>visible de moi seul</td></tr>
+    <tr><th>Mon journal</th><td>visible de moi seul</td></tr>
+    <tr><th>Mes pesées</th><td>visible de moi seul</td></tr>
+    <tr><th>Mes objectifs</th><td>visible de moi seul</td></tr>
+    <tr><th>Ma liste de courses</th><td>bâtie sur mon seul planning</td></tr>
+    <tr><th>Les recettes</th><td><span class="pastille">commun</span></td></tr>
+    <tr><th>La base d'aliments</th><td><span class="pastille">commun</span></td></tr>
+  </table>
+  <p class="muet">
+    L'administrateur peut créer, désactiver un compte et réinitialiser un mot
+    de passe, mais l'application ne lui donne aucun moyen de consulter le
+    journal, les pesées ou le planning de quelqu'un d'autre.
+  </p>
+</div>
+
+{% endblock %}

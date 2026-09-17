@@ -16,10 +16,10 @@ Environment=NF_DB=/opt/nutriform/data/nutriform.db
 Environment=NF_HOST=127.0.0.1
 Environment=NF_PORT=5001
 Environment=PYTHONUTF8=1
-# Mot de passe d'accès. Tant que cette variable n'est PAS définie, l'application
-# est ouverte sans authentification : ne jamais la laisser vide sur un serveur
-# exposé à Internet.
-Environment=NF_PASSWORD=A_REMPLACER_PAR_UN_MOT_DE_PASSE
+# Pas de NF_PASSWORD : l'authentification est par compte nominatif depuis la
+# V2. Les comptes se créent avec tools/gerer_comptes.py (voir DEPLOY.md).
+# NE JAMAIS définir NF_PERSONNE_DEFAUT ici : cela court-circuiterait l'écran
+# de connexion et donnerait le compte visé à n'importe quel visiteur.
 # Clé de signature des cookies de session :
 #   python3 -c "import secrets; print(secrets.token_hex(32))"
 Environment=NF_SECRET=A_REMPLACER_PAR_UNE_CLE_ALEATOIRE

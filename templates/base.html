@@ -23,8 +23,15 @@
   <span class="titre">{% block entete %}Nutriform{% endblock %}</span>
   <span class="grandir"></span>
   <a href="{{ url_for('page_aliments') }}" title="Rechercher un aliment">🔍</a>
-  <a href="{{ url_for('page_reglages') }}" title="Réglages">⚙</a>
-  {% if auth_active %}<a href="{{ url_for('logout') }}" title="Se déconnecter">⎋</a>{% endif %}
+  <a href="{{ url_for('page_reglages') }}" title="Mes objectifs">⚙</a>
+  {% if personne %}
+    {% if personne.admin %}
+      <a href="{{ url_for('page_comptes') }}" title="Gérer les comptes">👥</a>
+    {% endif %}
+    <a href="{{ url_for('page_mon_compte') }}" class="qui"
+       title="Mon compte">{{ personne.prenom }}</a>
+    <a href="{{ url_for('logout') }}" title="Se déconnecter">⎋</a>
+  {% endif %}
 </header>
 
 <nav class="tabbar">

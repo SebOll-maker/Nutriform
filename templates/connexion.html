@@ -1,12 +1,35 @@
 {% extends "base.html" %}
 {% block titre %}Connexion — Nutriform{% endblock %}
-{% block entete %}Connexion{% endblock %}
+{% block entete %}Nutriform{% endblock %}
 {% block contenu %}
-<div class="carte">
-  <form method="post">
-    <label for="mdp">Mot de passe</label>
-    <input type="password" id="mdp" name="motdepasse" autocomplete="current-password" autofocus>
-    <p><button type="submit">Entrer</button></p>
-  </form>
-</div>
+
+{% if aucun_compte %}
+  <div class="carte">
+    <h2>Aucun compte n'existe encore</h2>
+    <p class="muet">
+      Le premier compte administrateur se crée en ligne de commande, sur la
+      machine qui héberge l'application :
+    </p>
+    <pre class="muet" style="overflow-x:auto"><code>python tools/gerer_comptes.py creer &lt;identifiant&gt; &lt;prénom&gt; --admin</code></pre>
+  </div>
+{% else %}
+  <div class="carte">
+    <h2>Se connecter</h2>
+    <form method="post">
+      <label for="identifiant">Identifiant</label>
+      <input type="text" id="identifiant" name="identifiant"
+             autocomplete="username" autocapitalize="none" autofocus>
+      <label for="mdp">Mot de passe</label>
+      <input type="password" id="mdp" name="motdepasse"
+             autocomplete="current-password">
+      <p><button type="submit">Entrer</button></p>
+    </form>
+  </div>
+  <p class="muet">
+    Chaque personne a son propre compte : ton planning, ton journal et tes
+    pesées ne sont visibles que par toi. Les recettes et la base d'aliments,
+    elles, sont communes.
+  </p>
+{% endif %}
+
 {% endblock %}

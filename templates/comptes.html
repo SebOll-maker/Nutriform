@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block titre %}Comptes — Nutriform{% endblock %}
+{% block entete %}Comptes{% endblock %}
+{% block contenu %}
+
+<h1>Comptes</h1>
+
+<div class="carte">
+  <h2>{{ comptes | length }} compte{{ 's' if comptes | length > 1 }}</h2>
+  <table>
+    <thead>
+      <tr><th>Prénom</th><th>Identifiant</th><th>Rôle</th><th>État</th><th></th></tr>
+    </thead>
+    <tbody>
+    {% for c in comptes %}
+      <tr>
+        <td>{{ c.prenom }}</td>
+        <td class="muet">{{ c.identifiant }}</td>
+        <td>{% if c.admin %}<span class="pastille">admin</span>{% endif %}</td>
+        <td>{% if c.actif %}actif{% else %}<span class="pastille fixe">désactivé</span>{% endif %}</td>
+        <td style="width:7rem">
+          <form method="post" action="{{ url_for('compte_actif', personne_id=c.id) }}">
+            <input type="hidden" name="actif" value="{{ '0' if c.actif else '1' }}">
+            <button type="submit" class="secondaire"
+                    style="padding:.3rem .5rem; font-size:.8rem">
+              {{ 'Désactiver' if c.actif else 'Réactiver' }}</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <p class="muet">
+    Désactiver un compte en interdit l'accès mais <strong>conserve toutes ses
+    données</strong> : on ne supprime pas l'historique alimentaire de quelqu'un
+    sur un clic.
+  </p>
+</div>
+
+<details class="carte">
+  <summary style="cursor:pointer"><strong>Créer un compte</strong></summary>
+  <form method="post" action="{{ url_for('compte_creer') }}">
+    <div class="ligne">
+      <div>
+        <label for="identifiant">Identifiant</label>
+        <input type="text" id="identifiant" name="identifiant"
+               autocapitalize="none" placeholder="prenom">
+      </div>
+      <div>
+        <label for="prenom">Prénom affiché</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+      </div>
+    </div>
+    <label for="motdepasse">Mot de passe provisoire</label>
+    <input type="text" id="motdepasse" name="motdepasse"
+           autocomplete="off" placeholder="au moins 8 caractères">
+    <label><input type="checkbox" name="admin" value="1"> Administrateur
+      (gère les comptes, ne voit aucune donnée)</label>
+    <p><button type="submit">Créer</button></p>
+  </form>
+  <p class="muet">
+    Le mot de passe est volontairement affiché en clair ici : c'est toi qui le
+    choisis et le transmets. Invite la personne à le changer depuis
+    « Mon compte » à sa première connexion.
+  </p>
+</details>
+
+<details class="carte">
+  <summary style="cursor:pointer"><strong>Réinitialiser un mot de passe</strong></summary>
+  <p class="muet">Utile si quelqu'un a oublié le sien.</p>
+  {% for c in comptes %}
+    <form method="post" action="{{ url_for('compte_motdepasse', personne_id=c.id) }}">
+      <div class="ligne">
+        <div>
+          <label>{{ c.prenom }} <span class="muet">({{ c.identifiant }})</span></label>
+          <input type="text" name="motdepasse" autocomplete="off"
+                 placeholder="nouveau mot de passe provisoire">
+        </div>
+        <button type="submit" class="secondaire">Réinitialiser</button>
+      </div>
+    </form>
+  {% endfor %}
+</details>
+
+<div class="carte">
+  <h2>Sur la confidentialité</h2>
+  <p class="muet">
+    Chaque personne a son planning, son journal, ses pesées et ses objectifs,
+    et l'application ne propose <strong>aucun</strong> écran permettant de
+    consulter ceux d'une autre — pas même pour l'administrateur. En revanche,
+    qui administre le serveur a un accès matériel à la base : le plus simple
+    est de le dire aux personnes concernées.
+  </p>
+</div>
+
+{% endblock %}

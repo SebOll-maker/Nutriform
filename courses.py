@@ -10,6 +10,11 @@ dans l'ordre où l'on marche dans les allées.
 Les cases cochées sont persistées en base (table courses_coche) et non dans
 le navigateur : on coche sur l'iPhone dans le magasin, et la liste reste
 cohérente si on la rouvre sur le PC.
+
+CLOISONNEMENT : la liste porte sur le planning d'UNE personne. Les proches qui
+partagent l'application ne vivant pas sous le même toit, il n'y a rien à
+agréger entre eux — chacun fait ses courses. Les cases cochées sont elles
+aussi propres à chacun.
 """
 import db
 import planning
@@ -50,9 +55,10 @@ def formater_quantite(grammes: float) -> str:
     return f"{grammes:.1f}".replace(".", ",") + " g"
 
 
-def construire(debut: str, fin: str) -> dict:
-    """Liste de courses pour la période [debut, fin] incluse."""
-    entrees = planning.detailler(planning.entrees_entre(debut, fin))
+def construire(personne_id: int, debut: str, fin: str) -> dict:
+    """Liste de courses d'UNE personne pour la période [debut, fin] incluse."""
+    entrees = planning.detailler(
+        planning.entrees_entre(personne_id, debut, fin))
 
     cumul: dict[str, dict] = {}
     repas_sans_recette = []
@@ -86,7 +92,7 @@ def construire(debut: str, fin: str) -> dict:
             f"SELECT code, groupe FROM aliment WHERE code IN ({marques})", codes)}
         conn.close()
 
-    coches = etat_coches(debut, fin)
+    coches = etat_coches(personne_id, debut, fin)
 
     rayons: dict[str, list] = {}
     for ligne in cumul.values():
@@ -116,30 +122,32 @@ def construire(debut: str, fin: str) -> dict:
 
 
 # --------------------------------------------------------------- cases cochées
-def etat_coches(debut: str, fin: str) -> dict[str, bool]:
+def etat_coches(personne_id: int, debut: str, fin: str) -> dict[str, bool]:
     conn = db.get_conn()
     lignes = conn.execute(
-        "SELECT aliment_code, coche FROM courses_coche WHERE debut = ? AND fin = ?",
-        (debut, fin)).fetchall()
+        "SELECT aliment_code, coche FROM courses_coche "
+        "WHERE personne_id = ? AND debut = ? AND fin = ?",
+        (personne_id, debut, fin)).fetchall()
     conn.close()
     return {l["aliment_code"]: bool(l["coche"]) for l in lignes}
 
 
-def cocher(debut: str, fin: str, cle: str, coche: bool):
+def cocher(personne_id: int, debut: str, fin: str, cle: str, coche: bool):
     conn = db.get_conn()
     conn.execute(
-        """INSERT INTO courses_coche (debut, fin, aliment_code, coche)
-           VALUES (?,?,?,?)
-           ON CONFLICT(debut, fin, aliment_code)
+        """INSERT INTO courses_coche (personne_id, debut, fin, aliment_code, coche)
+           VALUES (?,?,?,?,?)
+           ON CONFLICT(personne_id, debut, fin, aliment_code)
            DO UPDATE SET coche = excluded.coche""",
-        (debut, fin, cle, 1 if coche else 0))
+        (personne_id, debut, fin, cle, 1 if coche else 0))
     conn.commit()
     conn.close()
 
 
-def vider_coches(debut: str, fin: str):
+def vider_coches(personne_id: int, debut: str, fin: str):
     conn = db.get_conn()
-    conn.execute("DELETE FROM courses_coche WHERE debut = ? AND fin = ?",
-                 (debut, fin))
+    conn.execute("DELETE FROM courses_coche "
+                 "WHERE personne_id = ? AND debut = ? AND fin = ?",
+                 (personne_id, debut, fin))
     conn.commit()
     conn.close()

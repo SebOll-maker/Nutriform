@@ -23,6 +23,7 @@ os.environ["NF_DB"] = str(BASE_TEMP)
 
 import courses as mod_courses  # noqa: E402
 import db  # noqa: E402
+import personnes  # noqa: E402
 import planning as mod_planning  # noqa: E402
 import recettes  # noqa: E402
 
@@ -39,6 +40,9 @@ def verifier(condition, libelle, detail=""):
 
 # ------------------------------------------------------------- jeu d'essai
 db.init_db()
+# L'application est multi-comptes : la liste de courses porte toujours sur une
+# personne. Le cloisonnement lui-même est vérifié par test_cloisonnement.py.
+MOI = personnes.creer("essai", "Essai", "mot-de-passe-essai")
 conn = db.get_conn()
 conn.executemany(
     """INSERT INTO aliment (code, nom, nom_norm, groupe, kcal, proteines,
@@ -88,10 +92,10 @@ ecrire_recette("plat-b", "Plat B", [
 ])
 
 print("=== agrégation sur 2 jours ===")
-mod_planning.ajouter("2026-03-02", "dejeuner", "plat-a", portions=2)
-mod_planning.ajouter("2026-03-03", "diner", "plat-b", portions=2)
+mod_planning.ajouter(MOI, "2026-03-02", "dejeuner", "plat-a", portions=2)
+mod_planning.ajouter(MOI, "2026-03-03", "diner", "plat-b", portions=2)
 
-liste = mod_courses.construire("2026-03-02", "2026-03-03")
+liste = mod_courses.construire(MOI, "2026-03-02", "2026-03-03")
 par_nom = {l["nom"]: l for _, lignes in liste["rayons"] for l in lignes}
 
 verifier(liste["n_repas"] == 2, "2 repas pris en compte", liste["n_repas"])
@@ -119,13 +123,13 @@ verifier(list(rayons)[0] == "Fruits et légumes",
 
 print()
 print("=== bornes de dates (incluses) ===")
-verifier(mod_courses.construire("2026-03-02", "2026-03-02")["n_repas"] == 1,
+verifier(mod_courses.construire(MOI, "2026-03-02", "2026-03-02")["n_repas"] == 1,
          "le jour de début est inclus")
-verifier(mod_courses.construire("2026-03-03", "2026-03-03")["n_repas"] == 1,
+verifier(mod_courses.construire(MOI, "2026-03-03", "2026-03-03")["n_repas"] == 1,
          "le jour de fin est inclus")
-verifier(mod_courses.construire("2026-03-04", "2026-03-10")["n_repas"] == 0,
+verifier(mod_courses.construire(MOI, "2026-03-04", "2026-03-10")["n_repas"] == 0,
          "période sans repas : liste vide")
-verifier(mod_courses.construire("2026-03-04", "2026-03-10")["rayons"] == [],
+verifier(mod_courses.construire(MOI, "2026-03-04", "2026-03-10")["rayons"] == [],
          "aucun rayon si aucun repas")
 
 print()
@@ -134,9 +138,9 @@ print("=== calibrage pris en compte ===")
 # la recette d'origine. Plat A d'origine = 2 portions de 295 kcal
 # (200 g poulet = 240 kcal + 100 g riz = 350 kcal + sel 0 kcal, / 2 portions).
 # Viser 590 kcal par portion, c'est donc doubler.
-mod_planning.ajouter("2026-03-05", "dejeuner", "plat-a", kcal_cible=590,
+mod_planning.ajouter(MOI, "2026-03-05", "dejeuner", "plat-a", kcal_cible=590,
                      portions=2)
-calibree = mod_courses.construire("2026-03-05", "2026-03-05")
+calibree = mod_courses.construire(MOI, "2026-03-05", "2026-03-05")
 poulet = {l["nom"]: l for _, lg in calibree["rayons"] for l in lg}["Poulet, blanc"]
 verifier(abs(poulet["grammes"] - 400) < 1e-6,
          "cible doublée -> poulet doublé (200 -> 400 g)", poulet["grammes"])
@@ -146,8 +150,8 @@ verifier(abs(sel["grammes"] - 2) < 1e-6,
 
 print()
 print("=== recette supprimée entre-temps ===")
-mod_planning.ajouter("2026-03-06", "diner", "plat-disparu", portions=1)
-orpheline = mod_courses.construire("2026-03-06", "2026-03-06")
+mod_planning.ajouter(MOI, "2026-03-06", "diner", "plat-disparu", portions=1)
+orpheline = mod_courses.construire(MOI, "2026-03-06", "2026-03-06")
 verifier(len(orpheline["repas_sans_recette"]) == 1,
          "le repas orphelin est signalé et non ignoré silencieusement")
 verifier(orpheline["rayons"] == [], "aucun ingrédient inventé")
@@ -155,17 +159,17 @@ verifier(orpheline["rayons"] == [], "aucun ingrédient inventé")
 print()
 print("=== cases cochées ===")
 verifier(liste["restant"] == 4, "4 articles restants au départ", liste["restant"])
-mod_courses.cocher("2026-03-02", "2026-03-03", "POULET", True)
-recharge = mod_courses.construire("2026-03-02", "2026-03-03")
+mod_courses.cocher(MOI, "2026-03-02", "2026-03-03", "POULET", True)
+recharge = mod_courses.construire(MOI, "2026-03-02", "2026-03-03")
 poulet = {l["code"]: l for _, lg in recharge["rayons"] for l in lg}["POULET"]
 verifier(poulet["coche"], "le poulet est coché")
 verifier(recharge["restant"] == 3, "3 articles restants", recharge["restant"])
-mod_courses.cocher("2026-03-02", "2026-03-03", "POULET", False)
-verifier(not mod_courses.etat_coches("2026-03-02", "2026-03-03")["POULET"],
+mod_courses.cocher(MOI, "2026-03-02", "2026-03-03", "POULET", False)
+verifier(not mod_courses.etat_coches(MOI, "2026-03-02", "2026-03-03")["POULET"],
          "décocher fonctionne")
-mod_courses.cocher("2026-03-02", "2026-03-03", "RIZ", True)
-mod_courses.vider_coches("2026-03-02", "2026-03-03")
-verifier(mod_courses.etat_coches("2026-03-02", "2026-03-03") == {},
+mod_courses.cocher(MOI, "2026-03-02", "2026-03-03", "RIZ", True)
+mod_courses.vider_coches(MOI, "2026-03-02", "2026-03-03")
+verifier(mod_courses.etat_coches(MOI, "2026-03-02", "2026-03-03") == {},
          "vider efface toutes les cases de la période")
 
 print()

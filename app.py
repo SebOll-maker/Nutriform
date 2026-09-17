@@ -1,18 +1,31 @@
 # -*- coding: utf-8 -*-
 """Nutriform — application web (Flask).
 
-Mono-utilisateur. L'authentification ne s'active que si NF_PASSWORD est définie
-(donc jamais en développement local, toujours sur le VPS).
+Multi-comptes. L'application est partagée entre proches qui ne vivent pas sous
+le même toit : chacun a son planning, son journal, ses pesées et ses objectifs,
+et personne ne voit ceux des autres. Seuls les aliments et les recettes sont
+communs.
 
-Les routes restent volontairement minces : toute la logique vit dans
-nutrition.py (calculs), recettes.py (fichiers), planning.py, courses.py et
-journal.py (base). Une route lit la requête, appelle un module, rend un gabarit.
+                        --- LE CLOISONNEMENT ---
+
+La règle est simple et ne doit jamais être contournée : **l'identifiant de la
+personne vient de la session, jamais de la requête**. Aucune route ne lit un
+`personne_id` dans un formulaire ou une URL pour accéder à des données
+personnelles ; on passe systématiquement par `pid()`. C'est ce qui empêche
+qu'une URL bricolée donne accès au journal de quelqu'un d'autre.
+
+L'administrateur gère les comptes (créer, désactiver, réinitialiser un mot de
+passe) mais n'a **aucun accès** aux données personnelles des autres : il n'y a
+pas de route qui le permette, et c'est volontaire.
+
+Les routes restent minces : toute la logique vit dans nutrition.py (calculs),
+recettes.py (fichiers), planning.py, courses.py, journal.py et personnes.py.
 """
 import os
 from datetime import date, timedelta
 from functools import wraps
 
-from flask import (Flask, render_template, request, redirect, url_for,
+from flask import (Flask, g, render_template, request, redirect, url_for,
                    session, flash, jsonify)
 
 import aliments
@@ -20,6 +33,7 @@ import courses as mod_courses
 import db
 import journal as mod_journal
 import nutrition
+import personnes
 import planning as mod_planning
 import recettes
 
@@ -27,15 +41,51 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("NF_SECRET", "dev-nutriform-cle-locale")
 app.permanent_session_lifetime = timedelta(days=90)
 
-MOT_DE_PASSE = os.environ.get("NF_PASSWORD")  # None en local -> pas d'auth
+# Confort de développement : court-circuite l'écran de connexion en se faisant
+# passer pour cette personne. À NE JAMAIS définir sur le serveur.
+PERSONNE_DEFAUT = os.environ.get("NF_PERSONNE_DEFAUT")
+
+
+# ------------------------------------------------------------------- session
+def personne_courante() -> dict | None:
+    """La personne connectée, ou None. Un compte désactivé entre-temps est
+    traité comme une absence de connexion."""
+    personne_id = session.get("personne_id")
+    if personne_id is None and PERSONNE_DEFAUT:
+        personne_id = int(PERSONNE_DEFAUT)
+    if personne_id is None:
+        return None
+    personne = personnes.get(personne_id)
+    if personne is None or not personne["actif"]:
+        return None
+    return personne
+
+
+def pid() -> int:
+    """Identifiant de la personne connectée. La seule source autorisée."""
+    return g.personne["id"]
 
 
 def login_required(vue):
-    """Protège une vue. Inactif tant que NF_PASSWORD n'est pas définie."""
     @wraps(vue)
     def wrapper(*args, **kwargs):
-        if MOT_DE_PASSE and not session.get("connecte"):
+        personne = personne_courante()
+        if personne is None:
+            session.pop("personne_id", None)
             return redirect(url_for("login", suivant=request.path))
+        g.personne = personne
+        return vue(*args, **kwargs)
+    return wrapper
+
+
+def admin_required(vue):
+    """Réservé à la gestion des comptes — jamais à la lecture de données."""
+    @wraps(vue)
+    @login_required
+    def wrapper(*args, **kwargs):
+        if not g.personne["admin"]:
+            flash("Cette page est réservée à l'administrateur.", "erreur")
+            return redirect(url_for("accueil"))
         return vue(*args, **kwargs)
     return wrapper
 
@@ -76,7 +126,7 @@ def filtre_jour_fr(valeur, court: bool = False):
 @app.context_processor
 def injecter_commun():
     return {
-        "auth_active": bool(MOT_DE_PASSE),
+        "personne": g.get("personne"),
         "creneaux": db.CRENEAUX,
         "creneau_libelle": db.CRENEAU_LIBELLE,
         "aujourdhui": date.today().isoformat(),
@@ -99,29 +149,30 @@ def _nombre_positif(valeur):
     return nombre if nombre and nombre > 0 else None
 
 
-def cibles_par_creneau(reglages: dict | None = None) -> dict[str, int]:
+def cibles_par_creneau(reglages: dict) -> dict[str, int]:
     """Répartit l'objectif calorique du jour sur les créneaux."""
-    reglages = reglages if reglages is not None else db.get_reglages()
     objectif = _nombre(reglages.get("objectif_kcal"), 0) or 0
-    cibles = {}
-    for creneau in db.CRENEAUX:
-        part = _nombre(reglages.get(f"part_{creneau}"), 0) or 0
-        cibles[creneau] = round(objectif * part / 100)
-    return cibles
+    return {creneau: round(objectif * (_nombre(reglages.get(f"part_{creneau}"), 0) or 0) / 100)
+            for creneau in db.CRENEAUX}
 
 
 # ------------------------------------------------------------------ connexion
 @app.route("/connexion", methods=["GET", "POST"])
 def login():
-    if not MOT_DE_PASSE:
+    if personne_courante() is not None:
         return redirect(url_for("accueil"))
-    if request.method == "POST":
-        if request.form.get("motdepasse") == MOT_DE_PASSE:
-            session["connecte"] = True
+
+    aucun_compte = personnes.compter() == 0
+    if request.method == "POST" and not aucun_compte:
+        personne = personnes.authentifier(request.form.get("identifiant"),
+                                          request.form.get("motdepasse"))
+        if personne:
+            session["personne_id"] = personne["id"]
             session.permanent = True
             return redirect(request.args.get("suivant") or url_for("accueil"))
-        flash("Mot de passe incorrect.", "erreur")
-    return render_template("connexion.html")
+        # Message unique : ne pas révéler si l'identifiant existe.
+        flash("Identifiant ou mot de passe incorrect.", "erreur")
+    return render_template("connexion.html", aucun_compte=aucun_compte)
 
 
 @app.route("/deconnexion")
@@ -135,9 +186,10 @@ def logout():
 @login_required
 def accueil():
     jour = mod_planning.parse_date(request.args.get("date")).isoformat()
-    reglages = db.get_reglages()
-    jour_journal = mod_journal.du_jour(jour)
-    prevu = mod_planning.detailler(mod_planning.entrees_entre(jour, jour))
+    reglages = db.get_reglages(pid())
+    jour_journal = mod_journal.du_jour(pid(), jour)
+    prevu = mod_planning.detailler(
+        mod_planning.entrees_entre(pid(), jour, jour))
 
     objectifs = {
         "kcal": _nombre(reglages.get("objectif_kcal"), 0) or 0,
@@ -153,8 +205,8 @@ def accueil():
         "accueil.html", jour=jour, reglages=reglages, objectifs=objectifs,
         journal=jour_journal, prevu=prevu, n_aliments=n_aliments,
         n_recettes=len(recettes.charger_toutes()),
-        dernier_poids=mod_journal.dernier_poids(),
-        tendance=mod_journal.tendance_poids(30),
+        dernier_poids=mod_journal.dernier_poids(pid()),
+        tendance=mod_journal.tendance_poids(pid(), 30),
         cibles=cibles_par_creneau(reglages))
 
 
@@ -185,7 +237,7 @@ def page_recette(recette_id):
                                 portions=portions)
     return render_template("recette.html", recette=recette, calcul=calcul,
                            erreurs=recettes.valider(recette),
-                           cibles=cibles_par_creneau(),
+                           cibles=cibles_par_creneau(db.get_reglages(pid())),
                            jour=date.today().isoformat())
 
 
@@ -193,15 +245,16 @@ def page_recette(recette_id):
 @app.route("/planning")
 @login_required
 def page_planning():
-    lundi = mod_planning.lundi_de(mod_planning.parse_date(request.args.get("semaine")))
-    semaine = mod_planning.semaine(lundi)
+    lundi = mod_planning.lundi_de(
+        mod_planning.parse_date(request.args.get("semaine")))
+    reglages = db.get_reglages(pid())
     return render_template(
-        "planning.html", semaine=semaine,
+        "planning.html", semaine=mod_planning.semaine(pid(), lundi),
         precedente=(lundi - timedelta(days=7)).isoformat(),
         suivante=(lundi + timedelta(days=7)).isoformat(),
         recettes_dispo=recettes.charger_toutes(),
-        cibles=cibles_par_creneau(),
-        objectif_kcal=_nombre(db.get_reglages().get("objectif_kcal"), 0) or 0)
+        cibles=cibles_par_creneau(reglages),
+        objectif_kcal=_nombre(reglages.get("objectif_kcal"), 0) or 0)
 
 
 @app.route("/planning/ajouter", methods=["POST"])
@@ -216,7 +269,7 @@ def planning_ajouter():
         flash("Recette introuvable.", "erreur")
     else:
         mod_planning.ajouter(
-            jour, creneau, recette_id,
+            pid(), jour, creneau, recette_id,
             kcal_cible=_nombre_positif(request.form.get("kcal_cible")),
             portions=_nombre_positif(request.form.get("portions")) or 1)
     return redirect(request.form.get("retour")
@@ -226,16 +279,17 @@ def planning_ajouter():
 @app.route("/planning/supprimer/<int:entree_id>", methods=["POST"])
 @login_required
 def planning_supprimer(entree_id):
-    mod_planning.supprimer(entree_id)
+    mod_planning.supprimer(pid(), entree_id)
     return redirect(request.form.get("retour") or url_for("page_planning"))
 
 
 @app.route("/planning/dupliquer", methods=["POST"])
 @login_required
 def planning_dupliquer():
-    source = mod_planning.lundi_de(mod_planning.parse_date(request.form.get("semaine")))
+    source = mod_planning.lundi_de(
+        mod_planning.parse_date(request.form.get("semaine")))
     cible = source + timedelta(days=7)
-    n = mod_planning.dupliquer_semaine(source, cible)
+    n = mod_planning.dupliquer_semaine(pid(), source, cible)
     flash(f"{n} repas recopiés sur la semaine du {cible.isoformat()}."
           if n else "Rien à recopier : cette semaine est vide.")
     return redirect(url_for("page_planning", semaine=cible.isoformat()))
@@ -251,7 +305,7 @@ def page_courses():
                                   aujourdhui + timedelta(days=6))
     if fin < debut:
         debut, fin = fin, debut
-    liste = mod_courses.construire(debut.isoformat(), fin.isoformat())
+    liste = mod_courses.construire(pid(), debut.isoformat(), fin.isoformat())
     return render_template("courses.html", liste=liste,
                            debut=debut.isoformat(), fin=fin.isoformat())
 
@@ -264,7 +318,7 @@ def courses_cocher():
     cle = request.form.get("cle")
     coche = request.form.get("coche") == "1"
     if debut and fin and cle:
-        mod_courses.cocher(debut, fin, cle, coche)
+        mod_courses.cocher(pid(), debut, fin, cle, coche)
     if request.headers.get("X-Requested-With") == "fetch":
         return jsonify(ok=True)
     return redirect(url_for("page_courses", debut=debut, fin=fin))
@@ -275,7 +329,7 @@ def courses_cocher():
 def courses_vider():
     debut, fin = request.form.get("debut"), request.form.get("fin")
     if debut and fin:
-        mod_courses.vider_coches(debut, fin)
+        mod_courses.vider_coches(pid(), debut, fin)
     return redirect(url_for("page_courses", debut=debut, fin=fin))
 
 
@@ -286,14 +340,18 @@ def page_journal():
     jour = mod_planning.parse_date(request.args.get("date")).isoformat()
     recherche = (request.args.get("q") or "").strip()
     trouves = aliments.rechercher(recherche, limite=12) if recherche else []
+    reglages = db.get_reglages(pid())
     return render_template(
-        "journal.html", jour=jour, journal=mod_journal.du_jour(jour),
-        prevu=mod_planning.detailler(mod_planning.entrees_entre(jour, jour)),
+        "journal.html", jour=jour,
+        journal=mod_journal.du_jour(pid(), jour),
+        prevu=mod_planning.detailler(
+            mod_planning.entrees_entre(pid(), jour, jour)),
         recettes_dispo=recettes.charger_toutes(),
         recherche=recherche, trouves=trouves,
-        cibles=cibles_par_creneau(),
-        objectif_kcal=_nombre(db.get_reglages().get("objectif_kcal"), 0) or 0,
-        poids=mod_journal.poids(60), dernier_poids=mod_journal.dernier_poids(),
+        cibles=cibles_par_creneau(reglages),
+        objectif_kcal=_nombre(reglages.get("objectif_kcal"), 0) or 0,
+        poids=mod_journal.poids(pid(), 60),
+        dernier_poids=mod_journal.dernier_poids(pid()),
         veille=(date.fromisoformat(jour) - timedelta(days=1)).isoformat(),
         lendemain=(date.fromisoformat(jour) + timedelta(days=1)).isoformat())
 
@@ -304,7 +362,7 @@ def journal_recette():
     jour = request.form.get("date") or date.today().isoformat()
     try:
         mod_journal.ajouter_recette(
-            jour, request.form.get("creneau") or db.CRENEAUX[0],
+            pid(), jour, request.form.get("creneau") or db.CRENEAUX[0],
             request.form.get("recette_id"),
             portions=_nombre_positif(request.form.get("portions")) or 1,
             kcal_cible=_nombre_positif(request.form.get("kcal_cible")))
@@ -323,7 +381,7 @@ def journal_aliment():
     else:
         try:
             mod_journal.ajouter_aliment(
-                jour, request.form.get("creneau") or db.CRENEAUX[0],
+                pid(), jour, request.form.get("creneau") or db.CRENEAUX[0],
                 request.form.get("aliment_code"), grammes)
         except ValueError as erreur:
             flash(str(erreur), "erreur")
@@ -334,7 +392,7 @@ def journal_aliment():
 @login_required
 def journal_depuis_planning():
     jour = request.form.get("date") or date.today().isoformat()
-    n = mod_journal.copier_planning(jour)
+    n = mod_journal.copier_planning(pid(), jour)
     flash(f"{n} repas repris du planning." if n
           else "Rien à reprendre : le planning du jour est vide "
                "ou déjà reporté.")
@@ -345,7 +403,7 @@ def journal_depuis_planning():
 @login_required
 def journal_supprimer(entree_id):
     jour = request.form.get("date") or date.today().isoformat()
-    mod_journal.supprimer(entree_id)
+    mod_journal.supprimer(pid(), entree_id)
     return redirect(url_for("page_journal", date=jour))
 
 
@@ -357,7 +415,7 @@ def journal_poids():
     if not valeur:
         flash("Poids invalide.", "erreur")
     else:
-        mod_journal.enregistrer_poids(jour, valeur,
+        mod_journal.enregistrer_poids(pid(), jour, valeur,
                                       request.form.get("commentaire"))
     return redirect(url_for("page_journal", date=jour))
 
@@ -388,7 +446,8 @@ def aliment_nouveau():
         _nombre(request.form.get("proteines"), 0) or 0,
         _nombre(request.form.get("glucides"), 0) or 0,
         _nombre(request.form.get("lipides"), 0) or 0)
-    flash(f"Aliment « {nom} » créé (code {code}).")
+    flash(f"Aliment « {nom} » créé (code {code}). Il est visible par toutes "
+          f"les personnes qui partagent l'application.")
     return redirect(url_for("page_aliment", code=code))
 
 
@@ -441,7 +500,7 @@ def page_reglages():
                     "objectif_glucides_g", "objectif_lipides_g"):
             valeur = _nombre(request.form.get(cle))
             if valeur is not None and valeur >= 0:
-                db.set_reglage(cle, round(valeur))
+                db.set_reglage(pid(), cle, round(valeur))
         parts = {c: _nombre(request.form.get(f"part_{c}"), 0) or 0
                  for c in db.CRENEAUX}
         somme = sum(parts.values())
@@ -450,13 +509,84 @@ def page_reglages():
                   f"100 % : elle est enregistrée telle quelle, mais les cibles "
                   f"par repas ne couvriront pas l'objectif du jour.", "erreur")
         for creneau, part in parts.items():
-            db.set_reglage(f"part_{creneau}", round(part))
+            db.set_reglage(pid(), f"part_{creneau}", round(part))
         flash("Réglages enregistrés.")
         return redirect(url_for("page_reglages"))
 
-    reglages = db.get_reglages()
+    reglages = db.get_reglages(pid())
     return render_template("reglages.html", reglages=reglages,
                            cibles=cibles_par_creneau(reglages))
+
+
+# --------------------------------------------------------------- mon compte
+@app.route("/mon-compte", methods=["GET", "POST"])
+@login_required
+def page_mon_compte():
+    if request.method == "POST":
+        actuel = request.form.get("actuel") or ""
+        nouveau = request.form.get("nouveau") or ""
+        if not personnes.authentifier(g.personne["identifiant"], actuel):
+            flash("Mot de passe actuel incorrect.", "erreur")
+        elif nouveau != (request.form.get("confirmation") or ""):
+            flash("Les deux saisies du nouveau mot de passe diffèrent.",
+                  "erreur")
+        else:
+            try:
+                personnes.changer_mot_de_passe(pid(), nouveau)
+                flash("Mot de passe changé.")
+            except ValueError as erreur:
+                flash(str(erreur), "erreur")
+        return redirect(url_for("page_mon_compte"))
+    return render_template("mon_compte.html")
+
+
+# ------------------------------------------------- comptes (administrateur)
+@app.route("/comptes")
+@admin_required
+def page_comptes():
+    return render_template("comptes.html", comptes=personnes.lister())
+
+
+@app.route("/comptes/creer", methods=["POST"])
+@admin_required
+def compte_creer():
+    try:
+        personnes.creer(request.form.get("identifiant"),
+                        request.form.get("prenom"),
+                        request.form.get("motdepasse") or "",
+                        admin=request.form.get("admin") == "1")
+        flash(f"Compte créé. Communique-lui son identifiant et son mot de "
+              f"passe, et invite-le à le changer depuis « Mon compte ».")
+    except ValueError as erreur:
+        flash(str(erreur), "erreur")
+    return redirect(url_for("page_comptes"))
+
+
+@app.route("/comptes/<int:personne_id>/actif", methods=["POST"])
+@admin_required
+def compte_actif(personne_id):
+    try:
+        personnes.definir_actif(personne_id,
+                                request.form.get("actif") == "1")
+    except ValueError as erreur:
+        flash(str(erreur), "erreur")
+    return redirect(url_for("page_comptes"))
+
+
+@app.route("/comptes/<int:personne_id>/motdepasse", methods=["POST"])
+@admin_required
+def compte_motdepasse(personne_id):
+    cible = personnes.get(personne_id)
+    if not cible:
+        flash("Compte introuvable.", "erreur")
+    else:
+        try:
+            personnes.changer_mot_de_passe(
+                personne_id, request.form.get("motdepasse") or "")
+            flash(f"Mot de passe de {cible['prenom']} réinitialisé.")
+        except ValueError as erreur:
+            flash(str(erreur), "erreur")
+    return redirect(url_for("page_comptes"))
 
 
 # ------------------------------------------------------------------------ PWA

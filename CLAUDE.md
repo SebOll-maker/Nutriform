@@ -4,9 +4,14 @@ Guide pour Claude Code sur ce dépôt.
 
 ## Projet
 
-**Nutriform** — application web personnelle de suivi nutritionnel, mono-utilisateur.
-Phase 1 : tourne en local sur le PC Windows. Phase 2 : déploiement sur le VPS
-Hostinger (`deploy/` est prêt, non exécuté).
+**Nutriform** — application web de suivi nutritionnel, **partagée entre
+proches qui ne vivent pas sous le même toit**. Chacun a son compte, son
+planning, son journal, ses pesées et ses objectifs ; seules les recettes et la
+base d'aliments sont communes.
+
+Phase 1 (livrée) : mono-utilisateur en local. Phase 2 (en cours) : comptes
+séparés et déploiement sur le VPS Hostinger — le multi-compte n'ayant aucun
+sens sur localhost.
 
 Le besoin central n'est pas de compter des calories (toutes les apps le font)
 mais de **cuisiner ses propres recettes à une cible calorique variable** : la
@@ -32,10 +37,21 @@ PYTHONUTF8=1 $py app.py            # Flask debug avec rechargement auto
 PYTHONUTF8=1 $py import_ciqual.py  # (ré)importe la table Ciqual de data/ciqual/
 PYTHONUTF8=1 $py db.py             # crée/migre la base
 
+# Comptes (le premier est indispensable : sans lui, on ne peut pas se connecter)
+PYTHONUTF8=1 $py tools/gerer_comptes.py lister
+PYTHONUTF8=1 $py tools/gerer_comptes.py creer <identifiant> <prénom> --admin
+PYTHONUTF8=1 $py tools/gerer_comptes.py motdepasse <identifiant>
+
+# Développement sans passer par l'écran de connexion (JAMAIS sur le serveur)
+NF_PERSONNE_DEFAUT=1 PYTHONUTF8=1 $py serve.py
+
 PYTHONUTF8=1 $py tests/test_nutrition.py     # calibrage calorique
 PYTHONUTF8=1 $py tests/test_recettes.py      # format JSON des recettes
 PYTHONUTF8=1 $py tests/test_courses.py       # agrégation liste de courses
 PYTHONUTF8=1 $py tests/test_import_ciqual.py # lecture Ciqual + énergie calculée
+PYTHONUTF8=1 $py tests/test_personnes.py     # comptes, mots de passe
+PYTHONUTF8=1 $py tests/test_migration.py     # migration V1 -> V2 sans perte
+PYTHONUTF8=1 $py tests/test_cloisonnement.py # AUCUNE donnée ne traverse
 ```
 
 Les tests sont des **scripts autonomes** qui impriment `[OK]` / `[KO]` et
@@ -59,6 +75,30 @@ s'active normalement. Pour tester la PWA, utiliser Chrome, pas le panneau.
 
 ## Architecture
 
+### Le cloisonnement entre comptes — la règle la plus importante
+
+**L'identifiant de la personne vient de la session, jamais de la requête.**
+Aucune route ne lit un `personne_id` dans un formulaire ou une URL pour
+accéder à des données personnelles : on passe par `app.pid()`. C'est ce qui
+empêche qu'une URL bricolée donne accès au journal de quelqu'un d'autre.
+
+Corollaires à respecter en ajoutant du code :
+
+1. Toute fonction touchant `planning`, `journal`, `poids`, `reglage` ou
+   `courses_coche` prend **`personne_id` en premier argument, sans valeur par
+   défaut** : un oubli lève une `TypeError` immédiate au lieu de laisser filtrer
+   les données de la personne 1.
+2. Les `DELETE` et `UPDATE` filtrent **aussi** sur `personne_id` : un
+   identifiant deviné ne doit pas permettre d'effacer chez le voisin.
+3. L'administrateur gère les comptes, il ne lit **aucune** donnée personnelle.
+   Il n'existe pas de route qui le permette, et c'est volontaire.
+4. `tests/test_cloisonnement.py` vérifie tout cela, y compris en trichant sur
+   les identifiants d'URL. Le faire tourner après toute modification de route.
+
+Ce qui est **partagé** : la table `aliment` (Ciqual + aliments perso), les
+équivalences d'unités, et les recettes de `recettes/`. C'est le patrimoine
+commun, et c'est l'intérêt même du partage.
+
 ### Deux mondes de stockage — c'est structurant
 
 - **Recettes = fichiers JSON** dans `recettes/`, un par recette, versionnés dans
@@ -73,7 +113,8 @@ s'active normalement. Pour tester la PWA, utiliser Chrome, pas le panneau.
 | Fichier | Rôle |
 |---|---|
 | `app.py` | routes Flask uniquement — lire la requête, appeler un module, rendre un gabarit |
-| `db.py` | `SCHEMA` + `MIGRATIONS` + `init_db()`, chemin via `NF_DB`, `CRENEAUX` |
+| `personnes.py` | comptes : création, authentification (scrypt), activation |
+| `db.py` | `SCHEMA` + migration versionnée + `init_db()`, chemin via `NF_DB`, `CRENEAUX` |
 | `nutrition.py` | **cœur de l'app** : macros et calibrage calorique. **Pur** : ni Flask ni base, les aliments arrivent en argument |
 | `recettes.py` | lecture / validation / écriture des JSON |
 | `aliments.py` | recherche dans le référentiel, aliments perso, unités → grammes |
@@ -82,6 +123,7 @@ s'active normalement. Pour tester la PWA, utiliser Chrome, pas le panneau.
 | `journal.py` | repas réellement mangés (macros **figées**) et poids |
 | `import_ciqual.py` | xlsx ANSES → table `aliment` |
 | `tools/generer_icones.py` | régénère les icônes PNG de la PWA (encodeur PNG maison, pas de Pillow) |
+| `tools/gerer_comptes.py` | comptes en ligne de commande — indispensable à l'amorçage |
 
 ### Le calibrage calorique (`nutrition.py`)
 
@@ -209,9 +251,28 @@ PWA : `/manifest.webmanifest` et `/sw.js` sont servis **depuis la racine** par
 
 ## Authentification
 
-Décorateur `@login_required` actif **uniquement si `NF_PASSWORD` est définie**.
-Non définie en local (confort), obligatoire sur le VPS. Toute nouvelle route qui
-affiche ou modifie des données doit porter ce décorateur.
+`@login_required` est **obligatoire** sur toute route qui affiche ou modifie
+des données : il faut savoir *qui* entre, pas seulement qu'on a le droit
+d'entrer. `@admin_required` s'y ajoute pour la seule gestion des comptes.
+
+Mots de passe hachés avec `werkzeug.security` (scrypt), déjà une dépendance de
+Flask. Le condensat ne sort jamais de `personnes.py`.
+
+`NF_PERSONNE_DEFAUT=1` court-circuite l'écran de connexion en développement
+local. **À ne jamais définir sur le serveur.**
+
+### Migration de schéma
+
+`PRAGMA user_version` porte la version (`db.VERSION_SCHEMA`). `_migrer_v2()`
+ajoute `personne_id` aux cinq tables personnelles ; trois d'entre elles
+(`poids`, `reglage`, `courses_coche`) changeaient de clé primaire et ont dû
+être **reconstruites**, SQLite ne sachant pas modifier une PK par `ALTER`. La
+migration est idempotente et attribue tout l'existant à `db.PERSONNE_ORIGINE`.
+
+Le **premier compte créé** sur une base migrée reprend automatiquement cet
+identifiant (`personnes.creer` s'en charge, via `donnees_orphelines()`) : sans
+cela il recevrait l'id 1 par simple AUTOINCREMENT et écraserait la dernière
+pesée par un `ON CONFLICT`.
 
 ## Hors périmètre actuel
 

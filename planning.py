@@ -11,6 +11,12 @@ recalculer la même chose de deux façons différentes.
 Les recettes restant dans des fichiers, une entrée ne stocke que l'identifiant
 de la recette. Si un fichier est supprimé, l'entrée est signalée comme
 orpheline plutôt que de faire disparaître silencieusement le repas du planning.
+
+CLOISONNEMENT : chaque fonction exige `personne_id` en premier argument, sans
+valeur par défaut. Un oubli lève une TypeError à l'appel — c'est voulu : mieux
+vaut une erreur franche qu'un planning qui laisserait filtrer celui d'un autre.
+Les suppressions portent aussi sur personne_id, pour qu'un identifiant deviné
+ne permette pas d'effacer le repas de quelqu'un d'autre.
 """
 from datetime import date, datetime, timedelta
 
@@ -37,51 +43,58 @@ def parse_date(texte: str | None, defaut: date | None = None) -> date:
 
 
 # ------------------------------------------------------------------- écritures
-def ajouter(jour: str, creneau: str, recette_id: str,
+def ajouter(personne_id: int, jour: str, creneau: str, recette_id: str,
             kcal_cible: float | None = None, portions: float = 1,
             notes: str | None = None) -> int:
     conn = db.get_conn()
     curseur = conn.execute(
-        """INSERT INTO planning (date, creneau, recette_id, kcal_cible,
-                                 portions, notes, cree_le)
-           VALUES (?,?,?,?,?,?,?)""",
-        (jour, creneau, recette_id, kcal_cible, portions or 1, notes,
-         datetime.now().isoformat(timespec="seconds")))
+        """INSERT INTO planning (personne_id, date, creneau, recette_id,
+                                 kcal_cible, portions, notes, cree_le)
+           VALUES (?,?,?,?,?,?,?,?)""",
+        (personne_id, jour, creneau, recette_id, kcal_cible, portions or 1,
+         notes, datetime.now().isoformat(timespec="seconds")))
     conn.commit()
     identifiant = curseur.lastrowid
     conn.close()
     return identifiant
 
 
-def supprimer(entree_id: int) -> bool:
+def supprimer(personne_id: int, entree_id: int) -> bool:
+    """Le filtre sur personne_id n'est pas décoratif : sans lui, un identifiant
+    deviné suffirait à supprimer le repas d'une autre personne."""
     conn = db.get_conn()
-    curseur = conn.execute("DELETE FROM planning WHERE id = ?", (entree_id,))
+    curseur = conn.execute(
+        "DELETE FROM planning WHERE id = ? AND personne_id = ?",
+        (entree_id, personne_id))
     conn.commit()
     supprime = curseur.rowcount > 0
     conn.close()
     return supprime
 
 
-def dupliquer_semaine(lundi_source: date, lundi_cible: date) -> int:
+def dupliquer_semaine(personne_id: int, lundi_source: date,
+                      lundi_cible: date) -> int:
     """Recopie une semaine entière vers une autre. Renvoie le nombre d'entrées."""
     decalage = (lundi_cible - lundi_source).days
-    entrees = entrees_entre(lundi_source.isoformat(),
+    entrees = entrees_entre(personne_id, lundi_source.isoformat(),
                             (lundi_source + timedelta(days=6)).isoformat())
     for entree in entrees:
         nouvelle_date = (date.fromisoformat(entree["date"])
                          + timedelta(days=decalage)).isoformat()
-        ajouter(nouvelle_date, entree["creneau"], entree["recette_id"],
-                entree["kcal_cible"], entree["portions"], entree["notes"])
+        ajouter(personne_id, nouvelle_date, entree["creneau"],
+                entree["recette_id"], entree["kcal_cible"], entree["portions"],
+                entree["notes"])
     return len(entrees)
 
 
 # -------------------------------------------------------------------- lectures
-def entrees_entre(debut: str, fin: str) -> list[dict]:
-    """Entrées de planning entre deux dates INCLUSES."""
+def entrees_entre(personne_id: int, debut: str, fin: str) -> list[dict]:
+    """Entrées de planning d'UNE personne entre deux dates INCLUSES."""
     conn = db.get_conn()
     lignes = conn.execute(
-        """SELECT * FROM planning WHERE date BETWEEN ? AND ?
-           ORDER BY date, creneau""", (debut, fin)).fetchall()
+        """SELECT * FROM planning
+           WHERE personne_id = ? AND date BETWEEN ? AND ?
+           ORDER BY date, creneau""", (personne_id, debut, fin)).fetchall()
     conn.close()
     return [dict(l) for l in lignes]
 
@@ -121,10 +134,11 @@ def detailler(entrees: list[dict]) -> list[dict]:
     return detaillees
 
 
-def semaine(lundi: date) -> dict:
+def semaine(personne_id: int, lundi: date) -> dict:
     """Tout ce qu'il faut pour afficher une semaine de planning."""
     jours = jours_semaine(lundi)
-    entrees = detailler(entrees_entre(jours[0].isoformat(), jours[-1].isoformat()))
+    entrees = detailler(entrees_entre(personne_id, jours[0].isoformat(),
+                                      jours[-1].isoformat()))
 
     grille: dict[str, dict[str, list]] = {
         jour.isoformat(): {creneau: [] for creneau in db.CRENEAUX}

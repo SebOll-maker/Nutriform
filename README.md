@@ -1,9 +1,13 @@
 # Nutriform
 
-Application web personnelle de suivi nutritionnel : recettes **calibrées sur une
-cible calorique**, planning hebdomadaire, liste de courses agrégée et journal
-alimentaire. Utilisable au navigateur sur le PC et installable sur l'écran
-d'accueil d'un iPhone (PWA).
+Application web de suivi nutritionnel : recettes **calibrées sur une cible
+calorique**, planning hebdomadaire, liste de courses et journal alimentaire.
+Utilisable au navigateur sur le PC et installable sur l'écran d'accueil d'un
+iPhone (PWA).
+
+**Partagée entre plusieurs personnes**, avec un compte chacune : planning,
+journal, pesées et objectifs sont strictement personnels ; les recettes et la
+base d'aliments sont communes.
 
 Python + Flask, SQLite, aucune dépendance front.
 
@@ -38,6 +42,9 @@ curl -L -o "data/ciqual/Table Ciqual 2025_FR.xlsx" \
   "https://entrepot.recherche.data.gouv.fr/api/access/datafile/666260"
 PYTHONUTF8=1 .venv/Scripts/python.exe import_ciqual.py
 
+# Premier compte (sans lui, impossible de se connecter)
+PYTHONUTF8=1 .venv/Scripts/python.exe tools/gerer_comptes.py creer moi Moi --admin
+
 PYTHONUTF8=1 .venv/Scripts/python.exe serve.py
 ```
 
@@ -65,21 +72,44 @@ les quantités converties en grammes et les assaisonnements marqués « fixes »
 | `NF_DB` | `data/nutriform.db` | chemin de la base |
 | `NF_HOST` | `127.0.0.1` | `0.0.0.0` pour exposer sur le réseau local |
 | `NF_PORT` | `5001` | port d'écoute |
-| `NF_PASSWORD` | *(non définie)* | si définie, active l'écran de connexion |
+| `NF_PERSONNE_DEFAUT` | *(non définie)* | en développement, court-circuite la connexion pour cette personne — **jamais sur un serveur** |
 | `NF_SECRET` | clé de développement | signature des cookies de session |
 
 ## Tests
 
 ```bash
-PYTHONUTF8=1 .venv/Scripts/python.exe tests/test_nutrition.py
-PYTHONUTF8=1 .venv/Scripts/python.exe tests/test_recettes.py
-PYTHONUTF8=1 .venv/Scripts/python.exe tests/test_courses.py
+for t in tests/*.py; do PYTHONUTF8=1 .venv/Scripts/python.exe "$t"; done
 ```
+
+Sept suites autonomes, dont `test_cloisonnement.py` qui vérifie qu'aucune
+donnée ne passe d'un compte à l'autre, et `test_migration.py` qui garantit
+qu'un passage en multi-comptes ne perd rien.
+
+## Comptes
+
+Chaque personne a son identifiant et son mot de passe (haché en scrypt). La
+gestion se fait depuis l'écran **Comptes** pour un administrateur, ou en ligne
+de commande :
+
+```bash
+python tools/gerer_comptes.py lister
+python tools/gerer_comptes.py creer <identifiant> <prénom> [--admin]
+python tools/gerer_comptes.py motdepasse <identifiant>
+python tools/gerer_comptes.py desactiver <identifiant>
+```
+
+Un administrateur crée, désactive et réinitialise des comptes, mais
+l'application ne lui donne **aucun** moyen de consulter le journal, les pesées
+ou le planning de quelqu'un d'autre. Désactiver un compte conserve toutes ses
+données.
 
 ## Sauvegarde
 
-Deux choses seulement : `data/nutriform.db` (planning, journal, poids, aliments
-perso) et le dossier `recettes/`. Le référentiel Ciqual se retélécharge.
+Deux choses seulement : `data/nutriform.db` (comptes, planning, journal, poids,
+aliments perso) et le dossier `recettes/`. Le référentiel Ciqual se
+retélécharge. Dès que plusieurs personnes utilisent l'application, cette
+sauvegarde n'est plus optionnelle : leurs données n'existent qu'à cet
+endroit.
 
 ## Crédits
 

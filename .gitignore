@@ -7,6 +7,7 @@ __pycache__/
 data/*.db
 data/*.db-journal
 data/ciqual/
+data/sauvegardes/
 
 # Captures d'écran des recettes : matière première déjà transcrite en JSON,
 # 4 Mo d'images qui n'ont pas à vivre dans l'historique du dépôt.

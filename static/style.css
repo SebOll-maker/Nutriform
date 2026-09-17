@@ -54,6 +54,11 @@ header.appbar {
 header.appbar .titre { font-weight: 650; font-size: 1.05rem; letter-spacing: .2px; }
 header.appbar .grandir { flex: 1; }
 header.appbar a { color: #fff; text-decoration: none; opacity: .92; font-size: 1.15rem; }
+/* Le prénom de la personne connectée : utile pour savoir tout de suite sur
+   quel compte on est, ce qui compte quand l'app est partagée. */
+header.appbar a.qui { font-size: .82rem; font-weight: 600; opacity: 1;
+                      background: rgba(255,255,255,.18); border-radius: 99px;
+                      padding: .2rem .6rem; }
 header.appbar a:hover { opacity: 1; }
 
 main { padding: 1rem; max-width: 900px; margin: 0 auto; }
