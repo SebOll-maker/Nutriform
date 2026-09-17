@@ -1,2 +1,8 @@
-deploy/installer-vps.sh text eol=lf
-*.sh text eol=lf
+# Git convertit en CRLF à la sortie sous Windows. Pour ces fichiers-là c'est
+# nuisible : bash refuse « set -o pipefail\r » dès la première ligne, et un
+# fichier d'exclusion lu ligne à ligne garde le \r dans chaque motif.
+*.sh            text eol=lf
+*.yml           text eol=lf
+*.yaml          text eol=lf
+.semgrepignore  text eol=lf
+.gitignore      text eol=lf
