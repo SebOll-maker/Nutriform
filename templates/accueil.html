@@ -58,6 +58,7 @@
       {% endfor %}
     {% endfor %}
     <p><form method="post" action="{{ url_for('journal_depuis_planning') }}">
+      {{ champ_csrf() }}
       <input type="hidden" name="date" value="{{ jour }}">
       <button class="secondaire" type="submit">J'ai mangé ce qui était prévu</button>
     </form></p>

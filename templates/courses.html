@@ -33,6 +33,7 @@
         {% for l in lignes %}
           <li class="{{ 'coche' if l.coche }}">
             <form method="post" action="{{ url_for('courses_cocher') }}">
+              {{ champ_csrf() }}
               <input type="hidden" name="debut" value="{{ liste.debut }}">
               <input type="hidden" name="fin" value="{{ liste.fin }}">
               <input type="hidden" name="cle" value="{{ l.cle }}">
@@ -52,6 +53,7 @@
   {% endfor %}
 
   <form method="post" action="{{ url_for('courses_vider') }}">
+    {{ champ_csrf() }}
     <input type="hidden" name="debut" value="{{ liste.debut }}">
     <input type="hidden" name="fin" value="{{ liste.fin }}">
     <button type="submit" class="secondaire">Décocher tout</button>

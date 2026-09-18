@@ -21,13 +21,16 @@ pas de route qui le permette, et c'est volontaire.
 Les routes restent minces : toute la logique vit dans nutrition.py (calculs),
 recettes.py (fichiers), planning.py, courses.py, journal.py et personnes.py.
 """
+import hmac
 import os
+import secrets
 from datetime import date, timedelta
 from functools import wraps
 from urllib.parse import urlsplit
 
-from flask import (Flask, g, render_template, request, redirect, url_for,
-                   session, flash, jsonify)
+from flask import (Flask, abort, g, render_template, request, redirect,
+                   url_for, session, flash, jsonify)
+from markupsafe import Markup
 
 import aliments
 import courses as mod_courses
@@ -42,9 +45,55 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("NF_SECRET", "dev-nutriform-cle-locale")
 app.permanent_session_lifetime = timedelta(days=90)
 
+# Le cookie de session n'est émis qu'en HTTPS, et n'accompagne aucune requête
+# venue d'un autre site. Le défaut est le réglage sûr : en développement local
+# sur http://127.0.0.1 il faut donc poser NF_COOKIE_HTTP=1, sans quoi le
+# navigateur jette le cookie et la connexion tourne en boucle. Un oubli rend
+# le développement pénible — mais visible ; l'oubli inverse affaiblirait la
+# production en silence.
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Strict",
+    SESSION_COOKIE_SECURE=os.environ.get("NF_COOKIE_HTTP") != "1",
+)
+
 # Confort de développement : court-circuite l'écran de connexion en se faisant
 # passer pour cette personne. À NE JAMAIS définir sur le serveur.
 PERSONNE_DEFAUT = os.environ.get("NF_PERSONNE_DEFAUT")
+
+# ---------------------------------------------------------------------- CSRF
+# Un formulaire hébergé par un site tiers peut viser nos routes POST, et le
+# navigateur d'une personne connectée y joindrait son cookie de session. Sans
+# jeton, une page piégée suffirait à changer un mot de passe par /mon-compte,
+# créer un compte par /comptes/creer ou vider un journal. SameSite=Strict
+# bloque déjà l'essentiel dans les navigateurs récents : le jeton est la
+# seconde barrière, celle qui ne dépend pas du navigateur.
+CLE_CSRF = "_csrf"
+
+
+def jeton_csrf() -> str:
+    """Jeton propre à la session, créé à la première demande."""
+    if CLE_CSRF not in session:
+        session[CLE_CSRF] = secrets.token_urlsafe(32)
+    return session[CLE_CSRF]
+
+
+def champ_csrf() -> Markup:
+    """Le champ caché à poser dans chaque formulaire POST."""
+    return Markup(
+        f'<input type="hidden" name="{CLE_CSRF}" value="{jeton_csrf()}">')
+
+
+@app.before_request
+def _verifier_csrf():
+    if request.method in ("GET", "HEAD", "OPTIONS"):
+        return None
+    attendu = session.get(CLE_CSRF)
+    # compare_digest : une comparaison qui ne renseigne pas par sa durée.
+    if not attendu or not hmac.compare_digest(attendu,
+                                              request.form.get(CLE_CSRF, "")):
+        abort(400, "Jeton de formulaire absent ou périmé. Recharge la page.")
+    return None
 
 
 # ------------------------------------------------------------------- session
@@ -151,6 +200,7 @@ def filtre_jour_fr(valeur, court: bool = False):
 def injecter_commun():
     return {
         "personne": g.get("personne"),
+        "champ_csrf": champ_csrf,
         "creneaux": db.CRENEAUX,
         "creneau_libelle": db.CRENEAU_LIBELLE,
         "aujourdhui": date.today().isoformat(),

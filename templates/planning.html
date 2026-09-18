@@ -40,6 +40,7 @@
           <span class="repas-kcal">
             {{ e.calcul.total.kcal | nombre if e.calcul else '—' }} kcal</span>
           <form method="post" action="{{ url_for('planning_supprimer', entree_id=e.id) }}">
+            {{ champ_csrf() }}
             <input type="hidden" name="retour"
                    value="{{ url_for('page_planning', semaine=semaine.lundi.isoformat()) }}">
             <button type="submit" class="retirer" title="Retirer ce repas">✕</button>
@@ -53,6 +54,7 @@
         Ajouter un repas</summary>
       <form method="post" action="{{ url_for('planning_ajouter') }}"
             style="margin-top:.5rem">
+        {{ champ_csrf() }}
         <input type="hidden" name="date" value="{{ cle }}">
         <input type="hidden" name="retour"
                value="{{ url_for('page_planning', semaine=semaine.lundi.isoformat()) }}">
@@ -92,6 +94,7 @@
 <div class="carte">
   <h2>Outils</h2>
   <form method="post" action="{{ url_for('planning_dupliquer') }}">
+    {{ champ_csrf() }}
     <input type="hidden" name="semaine" value="{{ semaine.lundi.isoformat() }}">
     <button type="submit" class="secondaire">
       Recopier cette semaine sur la suivante</button>

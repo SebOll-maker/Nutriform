@@ -45,6 +45,7 @@
             </div>
             <span class="repas-kcal">{{ l.kcal | nombre }} kcal</span>
             <form method="post" action="{{ url_for('journal_supprimer', entree_id=l.id) }}">
+              {{ champ_csrf() }}
               <input type="hidden" name="date" value="{{ jour }}">
               <button type="submit" class="retirer" title="Retirer">✕</button>
             </form>
@@ -59,6 +60,7 @@
   {% if prevu %}
     <form method="post" action="{{ url_for('journal_depuis_planning') }}"
           style="margin-top:.8rem">
+      {{ champ_csrf() }}
       <input type="hidden" name="date" value="{{ jour }}">
       <button type="submit" class="secondaire">
         Reprendre le planning du jour ({{ prevu | length }} repas)</button>
@@ -70,6 +72,7 @@
 <div class="carte">
   <h2>Ajouter une recette</h2>
   <form method="post" action="{{ url_for('journal_recette') }}">
+    {{ champ_csrf() }}
     <input type="hidden" name="date" value="{{ jour }}">
     <label>Recette</label>
     <select name="recette_id" required>
@@ -120,6 +123,7 @@
           <td>{{ a.nom }}<br><span class="muet">{{ a.kcal | nombre }} kcal / 100 g</span></td>
           <td style="width:9.5rem">
             <form method="post" action="{{ url_for('journal_aliment') }}">
+              {{ champ_csrf() }}
               <input type="hidden" name="date" value="{{ jour }}">
               <input type="hidden" name="aliment_code" value="{{ a.code }}">
               <div class="ligne" style="gap:.3rem">
@@ -144,6 +148,7 @@
 <div class="carte" id="poids">
   <h2>Poids</h2>
   <form method="post" action="{{ url_for('journal_poids') }}">
+    {{ champ_csrf() }}
     <input type="hidden" name="date" value="{{ jour }}">
     <div class="ligne">
       <div>

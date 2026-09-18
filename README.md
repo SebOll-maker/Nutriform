@@ -45,10 +45,13 @@ PYTHONUTF8=1 .venv/Scripts/python.exe import_ciqual.py
 # Premier compte (sans lui, impossible de se connecter)
 PYTHONUTF8=1 .venv/Scripts/python.exe tools/gerer_comptes.py creer moi Moi --admin
 
-PYTHONUTF8=1 .venv/Scripts/python.exe serve.py
+NF_COOKIE_HTTP=1 PYTHONUTF8=1 .venv/Scripts/python.exe serve.py
 ```
 
 L'application écoute sur <http://127.0.0.1:5001>.
+
+`NF_COOKIE_HTTP=1` n'est nécessaire qu'en local : le cookie de session est
+sinon réservé à HTTPS, et la connexion tournerait en boucle sur `http://`.
 
 Pour y accéder depuis l'iPhone sur le réseau local :
 `NF_HOST=0.0.0.0` puis ouvrir `http://<ip-du-pc>:5001`. L'application est
@@ -73,6 +76,7 @@ les quantités converties en grammes et les assaisonnements marqués « fixes »
 | `NF_HOST` | `127.0.0.1` | `0.0.0.0` pour exposer sur le réseau local |
 | `NF_PORT` | `5001` | port d'écoute |
 | `NF_PERSONNE_DEFAUT` | *(non définie)* | en développement, court-circuite la connexion pour cette personne — **jamais sur un serveur** |
+| `NF_COOKIE_HTTP` | *(non définie)* | `1` autorise le cookie de session sur `http://` — indispensable en local, **jamais sur un serveur** |
 | `NF_SECRET` | clé de développement | signature des cookies de session |
 
 ## Tests
@@ -102,6 +106,18 @@ Un administrateur crée, désactive et réinitialise des comptes, mais
 l'application ne lui donne **aucun** moyen de consulter le journal, les pesées
 ou le planning de quelqu'un d'autre. Désactiver un compte conserve toutes ses
 données.
+
+## Sécurité
+
+Le dépôt est analysé par **Semgrep** (managed scans). Ce qui en est ressorti
+et a été corrigé : une redirection ouverte sur le paramètre `suivant` de
+l'écran de connexion, et l'absence de protection CSRF. Chaque formulaire porte
+désormais un jeton de session vérifié sur tout POST, et le cookie est
+`HttpOnly`, `Secure` et `SameSite=Strict`.
+
+Les alertes d'injection SQL sont des faux positifs : les valeurs passent par
+des paramètres liés, et les rares identifiants interpolés viennent de
+constantes internes ou d'un allow-list explicite.
 
 ## Sauvegarde
 

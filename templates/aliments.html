@@ -66,6 +66,7 @@
     perso n'est jamais écrasé par un ré-import de la table Ciqual.
   </p>
   <form method="post" action="{{ url_for('aliment_nouveau') }}">
+    {{ champ_csrf() }}
     <label for="nom">Nom</label>
     <input type="text" id="nom" name="nom" required
            placeholder="Pain de campagne du boulanger">

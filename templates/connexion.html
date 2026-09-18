@@ -16,6 +16,7 @@
   <div class="carte">
     <h2>Se connecter</h2>
     <form method="post">
+      {{ champ_csrf() }}
       <label for="identifiant">Identifiant</label>
       <input type="text" id="identifiant" name="identifiant"
              autocomplete="username" autocapitalize="none" autofocus>

@@ -19,6 +19,7 @@
 <div class="carte">
   <h2>Changer mon mot de passe</h2>
   <form method="post">
+    {{ champ_csrf() }}
     <label for="actuel">Mot de passe actuel</label>
     <input type="password" id="actuel" name="actuel"
            autocomplete="current-password">

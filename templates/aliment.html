@@ -51,6 +51,7 @@
     conserver sa valeur actuelle.
   </p>
   <form method="post" action="{{ url_for('aliment_modifier', code=aliment.code) }}">
+    {{ champ_csrf() }}
     <label for="nom">Nom</label>
     <input type="text" id="nom" name="nom" value="{{ aliment.nom }}">
     <div class="ligne">
@@ -109,6 +110,7 @@
   <p class="muet">Utilisées pour la saisie rapide au journal. Les recettes, elles,
      stockent directement des grammes.</p>
   <form method="post" action="{{ url_for('aliment_unite', code=aliment.code) }}">
+    {{ champ_csrf() }}
     <div class="ligne">
       <div>
         <label for="unite">Unité</label>

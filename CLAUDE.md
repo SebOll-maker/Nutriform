@@ -42,8 +42,12 @@ PYTHONUTF8=1 $py tools/gerer_comptes.py lister
 PYTHONUTF8=1 $py tools/gerer_comptes.py creer <identifiant> <prénom> --admin
 PYTHONUTF8=1 $py tools/gerer_comptes.py motdepasse <identifiant>
 
-# Développement sans passer par l'écran de connexion (JAMAIS sur le serveur)
-NF_PERSONNE_DEFAUT=1 PYTHONUTF8=1 $py serve.py
+# Développement local : le cookie de session est réservé à HTTPS, il faut
+# donc l'autoriser explicitement sur http://127.0.0.1
+NF_COOKIE_HTTP=1 PYTHONUTF8=1 $py serve.py
+
+# Sans passer par l'écran de connexion (les deux : JAMAIS sur le serveur)
+NF_PERSONNE_DEFAUT=1 NF_COOKIE_HTTP=1 PYTHONUTF8=1 $py serve.py
 
 PYTHONUTF8=1 $py tests/test_nutrition.py     # calibrage calorique
 PYTHONUTF8=1 $py tests/test_recettes.py      # format JSON des recettes
@@ -260,6 +264,22 @@ Flask. Le condensat ne sort jamais de `personnes.py`.
 
 `NF_PERSONNE_DEFAUT=1` court-circuite l'écran de connexion en développement
 local. **À ne jamais définir sur le serveur.**
+
+### CSRF : un jeton dans chaque formulaire
+
+`_verifier_csrf()` est un `before_request` : **toute** requête autre que GET,
+HEAD ou OPTIONS doit porter le jeton de la session, sinon 400. Il n'y a pas
+d'exception, pas de liste blanche — c'est ce qui rend la règle tenable.
+
+Conséquence pour tout nouveau formulaire : `{{ champ_csrf() }}` juste après la
+balise `<form method="post">`. L'oubli se voit immédiatement (400 au premier
+essai), ce qui est le bon moment pour s'en apercevoir. Pour un futur appel
+`fetch()`, il faudra joindre le champ `_csrf` dans le corps.
+
+Le cookie de session est `HttpOnly`, `SameSite=Strict` et `Secure`. Ce dernier
+réglage est **actif par défaut** : `NF_COOKIE_HTTP=1` le désactive pour le
+développement en clair. Le défaut protège la production ; l'oubli ne casse que
+le confort local, et bruyamment.
 
 ### Migration de schéma
 

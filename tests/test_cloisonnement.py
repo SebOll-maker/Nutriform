@@ -30,6 +30,7 @@ sys.path.insert(0, str(RACINE))
 BASE = Path(tempfile.mkdtemp(prefix="nf-cloison-")) / "t.db"
 os.environ["NF_DB"] = str(BASE)
 os.environ.pop("NF_PERSONNE_DEFAUT", None)   # on veut la vraie connexion
+os.environ["NF_COOKIE_HTTP"] = "1"           # le client de test parle en http
 
 import courses as mod_courses  # noqa: E402
 import db  # noqa: E402
@@ -203,10 +204,30 @@ mod_app.PERSONNE_DEFAUT = None
 mod_app.app.config["TESTING"] = True
 
 
+def jeton(client):
+    """Le jeton CSRF de ce client, posé dans la session comme le ferait
+    l'affichage d'une page contenant un formulaire.
+
+    Un jeton DISTINCT par client : avec une valeur commune, le test « le
+    jeton de Bob ne vaut rien chez Alice » passerait pour de mauvaises
+    raisons, les deux jetons étant égaux.
+    """
+    with client.session_transaction() as s:
+        if mod_app.CLE_CSRF not in s:
+            s[mod_app.CLE_CSRF] = f"jeton-de-test-{id(client):x}"
+        return s[mod_app.CLE_CSRF]
+
+
+def poste(client, url, **donnees):
+    """POST avec son jeton, comme un vrai formulaire de l'application."""
+    donnees[mod_app.CLE_CSRF] = jeton(client)
+    return client.post(url, data=donnees)
+
+
 def connecte(identifiant, mot_de_passe):
     client = mod_app.app.test_client()
-    r = client.post("/connexion", data={"identifiant": identifiant,
-                                        "motdepasse": mot_de_passe})
+    r = poste(client, "/connexion", identifiant=identifiant,
+              motdepasse=mot_de_passe)
     assert r.status_code == 302, f"connexion refusée pour {identifiant}"
     return client
 
@@ -219,8 +240,8 @@ verifier("/connexion" in anonyme.get("/journal").headers.get("Location", ""),
          "et c'est bien vers /connexion")
 
 mauvais = mod_app.app.test_client()
-r = mauvais.post("/connexion", data={"identifiant": "alice",
-                                     "motdepasse": "pas-le-bon"})
+r = poste(mauvais, "/connexion", identifiant="alice",
+          motdepasse="pas-le-bon")
 verifier(r.status_code == 200 and "/" not in r.headers.get("Location", ""),
          "un mauvais mot de passe ne connecte pas")
 
@@ -253,12 +274,12 @@ verifier("2600" in bob.get("/reglages").get_data(as_text=True),
 
 # Trichage : Bob tente de supprimer une entrée d'Alice par son id d'URL.
 id_alice = mod_planning.entrees_entre(ALICE, "2026-01-01", "2026-12-31")[0]["id"]
-bob.post(f"/planning/supprimer/{id_alice}")
+poste(bob, f"/planning/supprimer/{id_alice}")
 verifier(len(mod_planning.entrees_entre(ALICE, "2026-01-01", "2026-12-31")) == 2,
          "Bob ne supprime rien en devinant l'identifiant d'un repas d'Alice")
 
 id_journal_alice = mod_journal.du_jour(ALICE, "2026-04-06")["entrees"][0]["id"]
-bob.post(f"/journal/supprimer/{id_journal_alice}", data={"date": "2026-04-06"})
+poste(bob, f"/journal/supprimer/{id_journal_alice}", date="2026-04-06")
 verifier(len(mod_journal.du_jour(ALICE, "2026-04-06")["entrees"]) == 1,
          "ni une ligne du journal d'Alice")
 
@@ -354,13 +375,57 @@ for cible, attendu, libelle in (
 
 # Et par la porte d'entrée : le paramètre « suivant » de /connexion.
 c = mod_app.app.test_client()
-reponse = c.post("/connexion?suivant=https://exemple-malveillant.test/",
-                 data={"identifiant": "alice",
-                       "motdepasse": "mot-de-passe-alice"})
+reponse = poste(c, "/connexion?suivant=https://exemple-malveillant.test/",
+                identifiant="alice", motdepasse="mot-de-passe-alice")
 destination = reponse.headers.get("Location", "")
 verifier("exemple-malveillant" not in destination,
          "/connexion?suivant=<site tiers> ne renvoie pas chez le tiers",
          destination)
+
+print()
+print("=== un site tiers ne peut pas agir en notre nom (CSRF) ===")
+# Sans jeton, une page piégée visitée par une personne connectée suffirait à
+# changer son mot de passe ou à vider son journal : son navigateur joindrait
+# son cookie de session au formulaire de l'attaquant. Signalé par Semgrep.
+sensibles = [
+    ("/mon-compte", {"actuel": "mot-de-passe-alice",
+                     "nouveau": "mot-de-passe-vole",
+                     "confirmation": "mot-de-passe-vole"}),
+    ("/comptes/creer", {"identifiant": "intrus", "prenom": "Intrus",
+                        "motdepasse": "mot-de-passe-intrus"}),
+    ("/journal/poids", {"date": "2026-04-06", "poids": "99"}),
+    ("/reglages", {"objectif_kcal": "9999"}),
+]
+for url, donnees in sensibles:
+    verifier(alice.post(url, data=donnees).status_code == 400,
+             f"POST {url} sans jeton -> refusé")
+
+# Le refus doit être un refus, pas un effet de bord silencieux.
+verifier(personnes.authentifier("alice", "mot-de-passe-alice") is not None,
+         "le mot de passe d'Alice n'a pas changé")
+verifier(personnes.compter() == 2, "aucun compte n'a été créé au passage")
+verifier(db.get_reglages(ALICE)["objectif_kcal"] == "1800",
+         "l'objectif d'Alice est intact")
+
+# Un jeton emprunté à quelqu'un d'autre ne vaut rien non plus.
+verifier(alice.post("/reglages", data={"objectif_kcal": "9999",
+                                       mod_app.CLE_CSRF: jeton(bob)}
+                    ).status_code == 400,
+         "le jeton de Bob ne sert à rien chez Alice")
+
+# Et avec son propre jeton, tout fonctionne : la protection ne doit pas
+# transformer l'application en musée.
+verifier(poste(alice, "/reglages", objectif_kcal="1750").status_code == 302,
+         "avec son jeton, Alice modifie bien ses réglages")
+verifier(db.get_reglages(ALICE)["objectif_kcal"] == "1750",
+         "et la valeur est enregistrée")
+
+print()
+print("=== le cookie de session ===")
+verifier(mod_app.app.config["SESSION_COOKIE_HTTPONLY"] is True,
+         "HttpOnly : inaccessible au JavaScript")
+verifier(mod_app.app.config["SESSION_COOKIE_SAMESITE"] == "Strict",
+         "SameSite=Strict : jamais envoyé depuis un autre site")
 
 print()
 shutil.rmtree(DOSSIER, ignore_errors=True)

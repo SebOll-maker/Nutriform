@@ -20,6 +20,7 @@
         <td>{% if c.actif %}actif{% else %}<span class="pastille fixe">désactivé</span>{% endif %}</td>
         <td style="width:7rem">
           <form method="post" action="{{ url_for('compte_actif', personne_id=c.id) }}">
+            {{ champ_csrf() }}
             <input type="hidden" name="actif" value="{{ '0' if c.actif else '1' }}">
             <button type="submit" class="secondaire"
                     style="padding:.3rem .5rem; font-size:.8rem">
@@ -40,6 +41,7 @@
 <details class="carte">
   <summary style="cursor:pointer"><strong>Créer un compte</strong></summary>
   <form method="post" action="{{ url_for('compte_creer') }}">
+    {{ champ_csrf() }}
     <div class="ligne">
       <div>
         <label for="identifiant">Identifiant</label>
@@ -70,6 +72,7 @@
   <p class="muet">Utile si quelqu'un a oublié le sien.</p>
   {% for c in comptes %}
     <form method="post" action="{{ url_for('compte_motdepasse', personne_id=c.id) }}">
+      {{ champ_csrf() }}
       <div class="ligne">
         <div>
           <label>{{ c.prenom }} <span class="muet">({{ c.identifiant }})</span></label>

@@ -93,6 +93,11 @@ if grep -qE '^[[:space:]]*Environment=NF_PERSONNE_DEFAUT' "$UNITE"; then
     echo "Cela donnerait ce compte à n'importe quel visiteur. Retirer la ligne."
     exit 1
 fi
+if grep -qE '^[[:space:]]*Environment=NF_COOKIE_HTTP' "$UNITE"; then
+    echo "ERREUR : NF_COOKIE_HTTP est défini dans l'unité systemd."
+    echo "Le cookie de session circulerait en clair. Retirer la ligne."
+    exit 1
+fi
 
 # Toujours recharger : l unite a pu changer sur disque sans passer par les
 # branches ci-dessus, et systemd garderait alors l ancienne version.
