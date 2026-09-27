@@ -1,0 +1,91 @@
+{
+  "id": "croque-monsieur-dinde",
+  "titre": "Croque-monsieur à la dinde",
+  "source": "MyFitRace — « Croque-monsieur (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "rapide"],
+  "ingredients": [
+    {
+      "nom": "Pain de mie blanc",
+      "ciqual_code": "7200",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "2 grandes tranches de pain de mie",
+      "echelle": "variable",
+      "unite_piece": 40,
+      "nom_piece": "tranche",
+      "pas_piece": 2,
+      "notes": "Par multiples de deux tranches, comme le croque-monsieur au thon : un croque se monte avec deux tranches, l'arrondi ne peut pas tomber sur un nombre impair."
+    },
+    {
+      "nom": "Blanc de dinde en tranche",
+      "ciqual_code": "28964",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de blanc de dinde",
+      "echelle": "variable",
+      "notes": "La liste d'ingrédients dit « blanc de dinde », le mode opératoire parle de « tranches de jambon ». J'ai suivi la liste, comme pour la collation fruit et volaille."
+    },
+    {
+      "nom": "Emmental",
+      "ciqual_code": "12115",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "40 g d'emmental",
+      "echelle": "variable",
+      "notes": "Réparti en deux couches, une de chaque côté du jambon."
+    },
+    {
+      "nom": "Beurre doux",
+      "ciqual_code": "16400",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de beurre",
+      "echelle": "variable",
+      "notes": "Il beurre les tranches, il ne graisse pas la poêle : il suit le nombre de tranches, donc la cible."
+    },
+    {
+      "nom": "Noix de muscade en poudre",
+      "ciqual_code": "11048",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "20031",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de salade verte au choix",
+      "echelle": "fixe",
+      "notes": "Accompagnement."
+    },
+    {
+      "nom": "Huile d'olive de la salade",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Le pain — beurrer légèrement les deux tranches de pain de mie, sur un seul côté.",
+    "Assemblage — déposer une des deux tranches sur un plan de travail, côté beurré vers le haut. Recouvrir d'une fine couche d'emmental, ajouter une pointe de noix de muscade râpée et un peu de poivre. Déposer les tranches de dinde par-dessus, puis une seconde couche d'emmental. Saupoudrer à nouveau d'une pointe de muscade et refermer avec la seconde tranche.",
+    "Cuisson à la poêle — cuire le croque à feu moyen 3 à 4 minutes de chaque côté, en appuyant légèrement avec une spatule pour obtenir un extérieur croustillant. Au four : préchauffer à 210 °C et cuire environ 10 minutes, jusqu'à ce qu'il soit bien doré.",
+    "Saler et poivrer.",
+    "Salade — laver et essorer la salade, la mélanger avec le vinaigre balsamique et l'huile d'olive. Saler, poivrer et servir immédiatement."
+  ],
+  "notes": "Annoncée à 624 kcal par MyFitRace pour 43,85 g de glucides, 35,25 g de protéines et 33,07 g de lipides.\n\nAstuce de la recette d'origine : laisser reposer le croque 1 à 2 minutes après cuisson avant de le couper, pour que le fromage ne s'échappe pas.\n\nC'est le grand frère du croque-monsieur au thon déjà enregistré : même structure à deux tranches, même arrondi par paires, mais garni de dinde et d'emmental, et accompagné d'une salade fixe. Comparer les deux est instructif — celui-ci pèse 200 kcal de plus, essentiellement par ses 40 g d'emmental et ses 10 g de beurre."
+}
