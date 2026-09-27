@@ -1,0 +1,59 @@
+{
+  "id": "avocado-toast",
+  "titre": "Avocado toast à l'oeuf",
+  "source": "MyFitRace — « Avocado toast (400) »",
+  "portions_base": 1,
+  "temps_prepa_min": 1,
+  "temps_cuisson_min": 5,
+  "tags": [
+    "petit-déjeuner",
+    "rapide",
+    "végétarien"
+  ],
+  "ingredients": [
+    {
+      "nom": "Pain de mie complet",
+      "ciqual_code": "7111",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "1 grande tranche (40 g)",
+      "echelle": "variable",
+      "unite_piece": 40,
+      "nom_piece": "tranche"
+    },
+    {
+      "nom": "Avocat",
+      "ciqual_code": "13004",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "1/2 avocat (100 g)",
+      "echelle": "variable",
+      "notes": "Pas d'unite_piece : un demi-avocat s'écrase très bien, et la recette en utilise déjà une moitié."
+    },
+    {
+      "nom": "Oeuf",
+      "ciqual_code": "22000",
+      "quantite": 58,
+      "unite": "g",
+      "quantite_affichee": "1 oeuf moyen (53 à 63 g)",
+      "echelle": "variable",
+      "unite_piece": 58,
+      "nom_piece": "oeuf"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle sert uniquement à cuire l'oeuf au plat. Le pain, lui, est grillé sans matière grasse."
+    }
+  ],
+  "etapes": [
+    "Le pain — faire dorer la tranche au grille-pain ou à la poêle, sans matière grasse, jusqu'à ce qu'elle soit bien croustillante.",
+    "L'avocat et l'oeuf — couper l'avocat en deux, retirer le noyau et l'écraser à la fourchette. Ajouter une pincée de sel, de poivre et, si on veut, un peu de jus de citron. Dans une poêle, cuire l'oeuf au plat avec un filet d'huile d'olive, saler et poivrer.",
+    "Assemblage — répartir l'avocat écrasé sur la tranche de pain grillée, déposer délicatement l'oeuf par-dessus et déguster immédiatement."
+  ],
+  "notes": "Annoncée à 409 kcal par MyFitRace pour 19,43 g de glucides, 12,75 g de protéines et 29,27 g de lipides. Le calcul Ciqual donne 454 kcal, soit 11 % de plus, et l'écart tient entièrement à l'avocat.\n\nCiqual retient 203 kcal et 20,6 g de lipides pour 100 g de chair d'avocat, là où MyFitRace en compte visiblement autour de 160 kcal et 14 g — l'écart de 6 g de lipides entre les deux fiches, c'est exactement l'écart de 45 kcal. Ni l'un ni l'autre n'a tort : la teneur en gras d'un avocat varie beaucoup selon la variété et la maturité. Ciqual est la référence ici, donc c'est 454 kcal qui fera foi dans l'application.\n\nAstuce de la recette d'origine : des graines de sésame pour une touche croquante.\n\nDeux ingrédients comptés à la pièce, la tranche de pain et l'oeuf. Le calibrage les arrondit et fait porter l'ajustement sur l'avocat, seul ingrédient qui se dose librement."
+}
