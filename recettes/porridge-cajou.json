@@ -1,0 +1,61 @@
+{
+  "id": "porridge-cajou",
+  "titre": "Porridge au lait de coco et noix de cajou",
+  "source": "MyFitRace — « Porridge cajou (300) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 2,
+  "tags": ["petit-déjeuner", "rapide", "végétarien", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Flocons d'avoine",
+      "ciqual_code": "32140",
+      "quantite": 35,
+      "unite": "g",
+      "quantite_affichee": "35 g de flocons d'avoine",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Lait de coco",
+      "ciqual_code": "18041",
+      "quantite": 60,
+      "unite": "ml",
+      "quantite_affichee": "60 ml de lait de coco",
+      "echelle": "variable",
+      "notes": "C'est le liquide de cuisson du porridge : il doit suivre les flocons, sans quoi une portion calibrée plus haut serait sèche."
+    },
+    {
+      "nom": "Noix de cajou grillées",
+      "ciqual_code": "15054",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de noix de cajou",
+      "echelle": "variable",
+      "notes": "Entrée « grillée, sans sel ajouté », la même que la collation de noix de cajou déjà enregistrée. La version salée (15019) apporterait du sel sans raison dans un petit-déjeuner."
+    },
+    {
+      "nom": "Raisins secs",
+      "ciqual_code": "13046",
+      "quantite": 9,
+      "unite": "g",
+      "quantite_affichee": "9 g de raisins secs",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Miel",
+      "ciqual_code": "31008",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café (10 g)",
+      "echelle": "fixe",
+      "notes": "Fixe, comme dans le bowl d'avoine et le fromage blanc au miel : un porridge calibré plus haut doit gagner en flocons, pas en sucre."
+    }
+  ],
+  "etapes": [
+    "Cuisson des flocons, au micro-ondes — dans un bol, mélanger les flocons d'avoine et le lait de coco, puis chauffer 2 minutes à puissance moyenne. À la casserole — verser le lait de coco, ajouter les flocons et chauffer à feu moyen en remuant jusqu'à épaississement, environ 3 à 4 minutes.",
+    "Bien remuer pour obtenir une texture crémeuse. Ajouter un peu d'eau si besoin pour ajuster la consistance.",
+    "Incorporer les raisins secs, les noix de cajou et le miel. Mélanger légèrement pour bien répartir.",
+    "Laisser tiédir quelques instants avant de déguster."
+  ],
+  "notes": "Annoncée à 350 kcal par MyFitRace pour 37,25 g de glucides, 8,41 g de protéines et 17,32 g de lipides.\n\nC'est le petit-déjeuner le plus gras du lot — 17 g de lipides pour 350 kcal — et cela vient presque entièrement du lait de coco, riche en acides gras saturés. À comparer au bowl d'avoine au fromage blanc, qui apporte 22 g de protéines pour 12 g de lipides à calories comparables.\n\nLe lait de coco est « variable » car il est le liquide de cuisson : une portion calibrée plus haut avec la même quantité de liquide donnerait un porridge sec."
+}
