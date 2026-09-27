@@ -1,0 +1,69 @@
+{
+  "id": "tagliatelles-saumon",
+  "titre": "Tagliatelles au saumon",
+  "source": "MyFitRace — « Tagliatelles au saumon (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 10,
+  "tags": ["plat", "poisson", "pâtes"],
+  "ingredients": [
+    {
+      "nom": "Tagliatelles crues",
+      "ciqual_code": "9810",
+      "quantite": 60,
+      "unite": "g",
+      "quantite_affichee": "60 g de tagliatelles crues",
+      "echelle": "variable",
+      "notes": "Même entrée « Pâtes sèches, crues » que les pâtes bolognaise et les pâtes au thon, par cohérence entre les recettes."
+    },
+    {
+      "nom": "Saumon d'élevage cru",
+      "ciqual_code": "26036",
+      "quantite": 120,
+      "unite": "g",
+      "quantite_affichee": "1 filet de saumon (120 g)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Crème fraîche 30 % MG",
+      "ciqual_code": "19410",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "30 g de crème fraîche 30 %",
+      "echelle": "variable",
+      "notes": "Elle fait la sauce, elle suit donc la cible — comme dans le poulet crémeux."
+    },
+    {
+      "nom": "Parmesan",
+      "ciqual_code": "12120",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "5 g de parmesan",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle chauffe la poêle pour cuire le saumon côté peau."
+    },
+    {
+      "nom": "Noix de muscade en poudre",
+      "ciqual_code": "11048",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Cuisson des pâtes — porter à ébullition une grande casserole d'eau salée, ajouter les tagliatelles et cuire selon le temps indiqué sur le paquet, environ 9 minutes. Égoutter et réserver.",
+    "Cuisson du saumon — dans une poêle à feu doux, faire chauffer l'huile d'olive. Déposer le saumon côté peau et cuire 5 minutes, puis retourner le filet et cuire encore 3 minutes pour une cuisson rosée. Retirer le saumon et l'émietter en morceaux. Garder la poêle telle quelle, sans la nettoyer.",
+    "La sauce — à feu doux, ajouter la crème fraîche dans la même poêle et remuer doucement en récupérant les sucs du saumon. Une fois chaude, environ 2 minutes, incorporer le saumon émietté, le parmesan et la noix de muscade. Saler, poivrer, mélanger et laisser mijoter 2 minutes.",
+    "Assemblage — verser les tagliatelles dans la poêle et mélanger pour bien les enrober de sauce. Servir aussitôt."
+  ],
+  "notes": "Annoncée à 628 kcal par MyFitRace pour 43,66 g de glucides, 34,59 g de protéines et 34,5 g de lipides.\n\nLe geste qui fait la recette : ne pas nettoyer la poêle entre le saumon et la sauce. Les sucs de cuisson passent dans la crème, et c'est là que le plat gagne son goût.\n\nLa dernière étape est reconstituée : la capture s'arrête sur son titre, « Assemblage et service ». Le reste de la recette ne laisse guère de place au doute."
+}
