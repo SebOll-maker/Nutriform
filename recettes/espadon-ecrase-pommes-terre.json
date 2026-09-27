@@ -1,0 +1,107 @@
+{
+  "id": "espadon-ecrase-pommes-terre",
+  "titre": "Espadon grillé et écrasé de pommes de terre",
+  "source": "MyFitRace — « Espadon grillé et écrasé de pommes de terre (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 15,
+  "tags": [
+    "plat",
+    "poisson"
+  ],
+  "ingredients": [
+    {
+      "nom": "Espadon cru",
+      "ciqual_code": "26082",
+      "quantite": 160,
+      "unite": "g",
+      "quantite_affichee": "1 tranche d'espadon (160 g)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Pomme de terre sans peau crue",
+      "ciqual_code": "4008",
+      "quantite": 180,
+      "unite": "g",
+      "quantite_affichee": "180 g de pommes de terre",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Beurre doux",
+      "ciqual_code": "16400",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "5 g de beurre",
+      "echelle": "variable",
+      "notes": "Il est écrasé dans la purée avec le jus de citron : il en fait la texture et suit donc la quantité de pommes de terre."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle chauffe la poêle pour dorer l'espadon."
+    },
+    {
+      "nom": "Jus de citron",
+      "ciqual_code": "2028",
+      "quantite": 12,
+      "unite": "ml",
+      "quantite_affichee": "le jus d'un demi-petit citron",
+      "echelle": "fixe",
+      "notes": "MyFitRace compte le demi-fruit (25 g) ; seul son jus entre dans la purée."
+    },
+    {
+      "nom": "Ail séché en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Persil frais",
+      "ciqual_code": "11014",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "5 g de persil frais",
+      "echelle": "fixe",
+      "notes": "Parsemé au dressage."
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "20031",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de salade verte au choix",
+      "echelle": "fixe",
+      "notes": "Accompagnement."
+    },
+    {
+      "nom": "Huile d'olive de la salade",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Cuisson des pommes de terre — porter à ébullition une casserole d'eau salée, ajouter les pommes de terre et cuire 15 à 20 minutes jusqu'à ce qu'elles soient tendres. Égoutter et réserver.",
+    "Cuisson de l'espadon — faire chauffer une poêle avec l'huile d'olive à feu moyen. Ajouter l'espadon entier et le faire dorer 3 minutes de chaque côté. Saupoudrer d'ail en poudre en fin de cuisson et laisser revenir 1 minute de plus.",
+    "L'écrasé — écraser les pommes de terre à la fourchette ou au presse-purée. Ajouter le beurre et le jus de citron, saler, poivrer et bien mélanger jusqu'à obtenir une texture homogène.",
+    "Dressage — déposer l'écrasé dans une assiette, ajouter la tranche d'espadon par-dessus et saupoudrer de persil frais. Saler et poivrer.",
+    "Salade — laver et essorer la salade, la mélanger avec le vinaigre balsamique et l'huile d'olive. Saler, poivrer et servir immédiatement."
+  ],
+  "notes": "Annoncée à 627 kcal par MyFitRace pour 33,64 g de glucides, 36,23 g de protéines et 36,82 g de lipides. Le calcul Ciqual donne 554 kcal, 12 % de moins.\n\nProtéines et glucides concordent à 3 % près ; tout l'écart est sur les LIPIDES, 29 g contre 37. La cause la plus probable est l'espadon : Ciqual le donne à 5,97 g de gras aux 100 g, soit 9,6 g pour la tranche. MyFitRace implique une valeur autour de 10,8 g aux 100 g, presque le double. La teneur en gras de l'espadon varie effectivement beaucoup selon la saison et le morceau — le ventre est bien plus gras que le dos — et aucune des deux valeurs n'est absurde.\n\nAstuce de la recette d'origine : une pincée de piment doux pour relever l'assaisonnement.\n\nLe beurre est « variable » et non « fixe » : il n'assaisonne pas, il est écrasé dans la purée et en fait la texture. Une purée deux fois plus grande en demande deux fois plus. Même raisonnement que la crème fraîche du poulet crémeux."
+}
