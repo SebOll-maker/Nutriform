@@ -1,0 +1,72 @@
+{
+  "id": "lasagnes-ricotta-poireaux",
+  "titre": "Lasagnes ricotta et poireaux",
+  "source": "MyFitRace — « Lasagnes ricotta poireaux (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 35,
+  "tags": ["plat", "végétarien", "pâtes"],
+  "ingredients": [
+    {
+      "nom": "Feuilles de lasagne crues",
+      "ciqual_code": "9810",
+      "quantite": 72,
+      "unite": "g",
+      "quantite_affichee": "4 feuilles de lasagne (72 g)",
+      "echelle": "variable",
+      "unite_piece": 18,
+      "nom_piece": "feuille",
+      "notes": "Ciqual n'a pas d'entrée « feuille de lasagne » : les pâtes sèches crues en tiennent lieu, comme pour les autres recettes de pâtes. Comptées à la feuille entière de 18 g — une demi-feuille ne se monte pas."
+    },
+    {
+      "nom": "Ricotta",
+      "ciqual_code": "19585",
+      "quantite": 120,
+      "unite": "g",
+      "quantite_affichee": "120 g de ricotta",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Poireau cru",
+      "ciqual_code": "20039",
+      "quantite": 130,
+      "unite": "g",
+      "quantite_affichee": "130 g de poireaux",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Parmesan",
+      "ciqual_code": "12120",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g de parmesan",
+      "echelle": "variable",
+      "notes": "Il gratine le dessus du plat : il suit la taille des lasagnes."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait fondre les poireaux dans la poêle."
+    },
+    {
+      "nom": "Ail séché en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Les poireaux — les émincer finement. Dans une poêle chaude avec un filet d'huile d'olive, les faire revenir à feu moyen 5 minutes jusqu'à ce qu'ils deviennent fondants. Ajouter l'ail en poudre et mélanger.",
+    "La ricotta — dans un bol, la mélanger avec une pincée de sel et de poivre, puis incorporer les poireaux cuits.",
+    "Montage — préchauffer le four à 180 °C. Dans un plat à gratin, commencer par une fine couche de ricotta-poireaux pour éviter que les feuilles collent au fond, ajouter une feuille de lasagne (ou deux côte à côte si elles sont petites), étaler une couche de mélange, et répéter en alternant jusqu'à épuisement des ingrédients. Terminer par une couche de ricotta aux poireaux, puis saupoudrer de parmesan.",
+    "Cuisson — couvrir de papier aluminium et enfourner 25 minutes. Retirer l'aluminium et laisser gratiner 5 minutes de plus.",
+    "Sortir du four et laisser reposer 5 minutes avant de servir. Saler et poivrer."
+  ],
+  "notes": "Annoncée à 648 kcal par MyFitRace pour 63,07 g de glucides, 28,28 g de protéines et 30,1 g de lipides.\n\nAstuces de la recette d'origine : une feuille trop grande pour le plat peut être cassée en morceaux et répartie pour combler les trous ; pour une texture plus moelleuse, tremper les feuilles dans de l'eau chaude avant le montage.\n\nLes feuilles de lasagne sont comptées à la pièce entière de 18 g : on ne monte pas un plat avec 3,4 feuilles. Le calibrage arrondit donc au nombre de feuilles et réajuste la ricotta, les poireaux et le parmesan autour."
+}
