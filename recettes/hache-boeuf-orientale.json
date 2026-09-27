@@ -1,0 +1,92 @@
+{
+  "id": "hache-boeuf-orientale",
+  "titre": "Haché de bœuf à l'orientale",
+  "source": "MyFitRace — « Haché de bœuf à l'orientale [600] »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "boeuf"],
+  "ingredients": [
+    {
+      "nom": "Steak haché de boeuf 15 % MG",
+      "ciqual_code": "6254",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de steak haché 15 % MG",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Quinoa cru",
+      "ciqual_code": "9340",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de quinoa cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Courgette crue",
+      "ciqual_code": "20020",
+      "quantite": 110,
+      "unite": "g",
+      "quantite_affichee": "110 g de courgette",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Champignons de Paris crus",
+      "ciqual_code": "20056",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de champignons de Paris",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon cru",
+      "ciqual_code": "20034",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "40 g d'oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait revenir l'oignon puis les légumes dans la poêle."
+    },
+    {
+      "nom": "Curry en poudre",
+      "ciqual_code": "11005",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Curcuma en poudre",
+      "ciqual_code": "11089",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Herbes de Provence séchées",
+      "ciqual_code": "11060",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Cuisson du quinoa — porter une casserole d'eau salée à ébullition, ajouter le quinoa et cuire 10 minutes. Égoutter et réserver.",
+    "Préparation des légumes — émincer l'oignon, couper les courgettes et les champignons en morceaux.",
+    "Épices et légumes — faire chauffer l'huile d'olive dans une poêle à feu moyen. Ajouter l'oignon et le faire revenir 2 minutes. Incorporer les courgettes et cuire 3 minutes, puis ajouter les champignons et poursuivre 3 minutes de plus.",
+    "Cuisson du bœuf — pousser les légumes sur le côté de la poêle et ajouter le bœuf haché. Cuire 5 minutes en remuant régulièrement. Saler, poivrer, ajouter le curry, le curcuma et les herbes de Provence. Bien mélanger et laisser mijoter 2 minutes.",
+    "Dressage — disposer le quinoa dans une assiette, ajouter la préparation de bœuf et légumes par-dessus. Saler et poivrer."
+  ],
+  "notes": "Annoncée à 612 kcal par MyFitRace pour 35,6 g de glucides, 40,75 g de protéines et 32,66 g de lipides.\n\nAstuce de la recette d'origine : cuire le quinoa dans un bouillon plutôt que dans l'eau pour le parfumer.\n\nTrois épices « à votre convenance », retenues à 1 g chacune et toutes fixes. Seul le bœuf, le quinoa et les légumes suivent la cible calorique."
+}
