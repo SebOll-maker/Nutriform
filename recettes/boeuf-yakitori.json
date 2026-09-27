@@ -45,12 +45,12 @@
     },
     {
       "nom": "Sauce yakitori",
-      "ciqual_code": "11301",
+      "ciqual_code": "PERSO-0003",
       "quantite": 60,
       "unite": "ml",
       "quantite_affichee": "60 ml de sauce yakitori",
       "echelle": "fixe",
-      "notes": "Ciqual n'a pas d'entrée « yakitori » pour la sauce — l'entrée de ce nom désigne les brochettes finies. La sauce teriyaki est le même produit à peu de chose près : soja, mirin, sucre. Fixe comme la sauce soja : 60 ml, c'est déjà beaucoup de sel, et il n'y a aucune raison d'en ajouter avec la cible."
+      "notes": "Aliment perso PERSO-0003, saisi d'après l'étiquette de TON flacon : 292 kcal, 67 g de glucides dont 64 de sucres, et 14,7 g de sel pour 100 ml. Ciqual n'a pas d'entrée « sauce yakitori » — l'entrée de ce nom désigne les brochettes finies — et la sauce teriyaki qui en tenait lieu était trois fois moins calorique. Fixe : 60 ml, c'est déjà énorme en sel."
     },
     {
       "nom": "Huile d'olive vierge extra",
@@ -78,5 +78,5 @@
     "La sauce — verser la sauce yakitori sur le bœuf et les poivrons, laisser mijoter 3 minutes à feu doux en remuant régulièrement.",
     "Dressage — servir sur le riz avec les brocolis, et parsemer de graines de sésame."
   ],
-  "notes": "Annoncée à 628 kcal par MyFitRace pour 63,16 g de glucides, 45,07 g de protéines et 19,88 g de lipides. Le calcul Ciqual donne 560 kcal, soit 11 % de moins — le plus gros écart des recettes transcrites jusqu'ici, et il est traçable.\n\nIl tient entièrement aux GLUCIDES : 50 g calculés contre 63 annoncés. Protéines et lipides, eux, tombent à 2 % près. Ciqual ne connaît pas la sauce yakitori — l'entrée de ce nom désigne les brochettes finies, pas la sauce — et la sauce teriyaki qui en tient lieu est nettement moins sucrée que celle utilisée par MyFitRace : 13 g de glucides d'écart sur 60 ml, soit les 52 kcal manquantes. Si tu veux la valeur juste, l'étiquette de ta bouteille de sauce ferait un bon aliment perso.\n\nSEL : près de 6 g par portion selon Ciqual, l'essentiel venant de la sauce. C'est plus que le pad thaï et au-delà de l'apport quotidien recommandé pour un adulte.\n\nLa fiche MyFitRace annonce « Sel 0,19 g » — c'est faux, et sa propre page le démontre : elle affiche en même temps 1 444 mg de sodium, soit 3,6 g de sel. Un facteur 19 entre deux lignes voisines du même tableau. Le champ « sel » de leurs fiches n'est pas fiable ; leur sodium, lui, corrobore l'ordre de grandeur du calcul Ciqual.\n\nLa recette d'origine sale en plus l'eau du riz et celle du brocoli : il y a là de quoi s'en passer sans rien perdre au goût."
+  "notes": "Annoncée à 628 kcal par MyFitRace pour 63,16 g de glucides, 45,07 g de protéines et 19,88 g de lipides. Avec l'étiquette réelle du flacon de sauce, le calcul donne 683 kcal.\n\nPROTÉINES ET LIPIDES CONCORDENT à 3 % près — 43,6 g contre 45,1 et 19,5 contre 19,9 — ce qui confirme que tout le reste de la recette est juste. L'écart porte uniquement sur les GLUCIDES : 80,7 g contre 63,2. Ta sauce yakitori titre 67 g de glucides dont 64 de sucres aux 100 ml ; celle de MyFitRace est nettement moins sucrée. La première transcription, faute d'étiquette, utilisait la sauce teriyaki de Ciqual (88 kcal aux 100 ml) et sous-estimait de 11 % ; on sait maintenant que la vraie valeur est 292.\n\nSEL : 9 g PAR PORTION, dont 8,8 viennent de la seule sauce, qui titre 14,7 g aux 100 ml. C'est près du double de l'apport quotidien recommandé pour un adulte (5 g), dans une seule assiette. Pour mémoire, la fiche MyFitRace annonce « Sel 0,19 g » tout en affichant 1 444 mg de sodium — soit 3,6 g — deux lignes plus bas : leur champ « sel » n'est pas fiable, et même leur sodium reste très en deçà de la réalité de TON flacon.\n\nQuelques repères si tu veux ajuster : les 60 ml de sauce apportent à eux seuls 175 kcal, 38 g de sucres et 8,8 g de sel. Les ramener à 30 ml donnerait environ 595 kcal et 4,6 g de sel — sous le seuil quotidien, et le plat reste sauceux. La recette d'origine demande en plus de saler l'eau du riz et celle du brocoli : il y a là de quoi s'abstenir sans rien perdre.\n\nAstuce de la recette d'origine : parsemer de graines de sésame au dressage."
 }
