@@ -1,0 +1,26 @@
+{
+  "id": "pain-au-chocolat",
+  "titre": "Pain au chocolat",
+  "source": "MyFitRace — « Pain au chocolat »",
+  "portions_base": 1,
+  "temps_prepa_min": 0,
+  "temps_cuisson_min": 0,
+  "tags": ["petit-déjeuner", "collation", "végétarien"],
+  "ingredients": [
+    {
+      "nom": "Pain au chocolat",
+      "ciqual_code": "7733",
+      "quantite": 75,
+      "unite": "g",
+      "quantite_affichee": "1 pain au chocolat (75 g)",
+      "echelle": "variable",
+      "unite_piece": 75,
+      "nom_piece": "pain au chocolat",
+      "notes": "Entrée « préemballé » et non « artisanal » : la comparaison des valeurs ne laisse aucun doute, voir les notes de la recette. La version artisanale (code 7730) est légèrement plus grasse et moins sucrée."
+    }
+  ],
+  "etapes": [
+    "Aucune préparation."
+  ],
+  "notes": "Ce n'est pas une recette mais un aliment simple, enregistré comme tel pour pouvoir le poser dans un planning ou un journal.\n\nCas remarquable : les valeurs de la fiche MyFitRace, ramenées aux 100 g, reproduisent EXACTEMENT l'entrée Ciqual « Pain au chocolat, préemballé » — 421,3 kcal contre 421, 48,6 g de glucides contre 48,6, 6,3 g de protéines contre 6,3, 21,4 g de lipides contre 21,4, 13,0 g de sucres contre 13,0 et 0,99 g de sel contre 0,98. Leur fiche porte d'ailleurs la mention « Valeurs nutritives vérifiées ».\n\nAutrement dit, MyFitRace s'appuie sur Ciqual pour ses aliments simples. Les écarts constatés sur les recettes composées viennent donc de leurs choix d'entrées ou de leurs additions, pas d'une table différente.\n\nCompté à la pièce : viser 600 kcal donne 2 pains au chocolat, pas 1,9."
+}
