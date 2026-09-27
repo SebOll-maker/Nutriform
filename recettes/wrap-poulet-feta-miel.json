@@ -1,0 +1,106 @@
+{
+  "id": "wrap-poulet-feta-miel",
+  "titre": "Wrap poulet, feta et miel",
+  "source": "MyFitRace — « Wrap poulet feta miel (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 8,
+  "tags": ["plat", "volaille", "rapide"],
+  "ingredients": [
+    {
+      "nom": "Tortilla de blé",
+      "ciqual_code": "7815",
+      "quantite": 41,
+      "unite": "g",
+      "quantite_affichee": "1 tortilla souple (41 g)",
+      "echelle": "variable",
+      "unite_piece": 41,
+      "nom_piece": "tortilla",
+      "notes": "Comptée à la pièce entière : on ne garnit pas 1,4 tortilla."
+    },
+    {
+      "nom": "Escalope de poulet crue",
+      "ciqual_code": "36003",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g d'escalope de poulet",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Quinoa cru",
+      "ciqual_code": "9340",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g de quinoa cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Feta au lait de brebis",
+      "ciqual_code": "12061",
+      "quantite": 25,
+      "unite": "g",
+      "quantite_affichee": "25 g de feta",
+      "echelle": "variable",
+      "notes": "Entrée « au lait de brebis 100 % », conforme à la fiche. Le mélange brebis-chèvre (12066) serait un peu plus gras."
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "20031",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "30 g de salade verte",
+      "echelle": "variable",
+      "notes": "Variable : elle garnit le wrap, comme dans le burrito, elle ne l'accompagne pas."
+    },
+    {
+      "nom": "Oignon rouge cru",
+      "ciqual_code": "20238",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g d'oignon rouge",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Une demi-cuillère cuit le poulet, l'autre entre dans la vinaigrette. Les deux usages se compensent mal : je l'ai gardée entièrement fixe, la moitié « cuisson » l'emportant, et parce que la vinaigrette est déjà liée par la moutarde et le miel."
+    },
+    {
+      "nom": "Miel",
+      "ciqual_code": "31008",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "1 c. à café (10 g)",
+      "echelle": "fixe",
+      "notes": "Il compose la vinaigrette avec la moutarde : assaisonnement, donc fixe — cohérent avec le bowl et le porridge."
+    },
+    {
+      "nom": "Moutarde de Dijon",
+      "ciqual_code": "11013",
+      "quantite": 5,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à café",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Le quinoa — porter à ébullition une casserole d'eau salée, ajouter le quinoa et cuire 10 minutes, ou selon les indications du paquet. Égoutter et réserver.",
+    "Le poulet — pendant la cuisson du quinoa, faire chauffer une poêle à feu moyen avec un filet d'huile d'olive (1/2 c. à soupe). Ajouter le poulet coupé en morceaux et cuire 6 minutes en remuant régulièrement, jusqu'à ce qu'il soit bien doré.",
+    "La garniture — émincer l'oignon rouge en petits dés. Dans un grand bol, mélanger l'oignon, la salade et la feta émiettée. Ajouter le quinoa égoutté et le poulet cuit.",
+    "La vinaigrette — dans un petit bol, mélanger la moutarde, le vinaigre balsamique, le miel et le reste de l'huile d'olive (1/2 c. à soupe). Saler et poivrer. Mélanger vigoureusement la moutarde avec le miel AVANT d'ajouter l'huile et le vinaigre : la sauce se lie bien mieux.",
+    "Assemblage — répartir la garniture au centre de la tortilla, verser la vinaigrette par-dessus, replier les bords et rouler fermement. Servir immédiatement, ou faire chauffer légèrement à la poêle pour une texture plus croustillante."
+  ],
+  "notes": "Annoncée à 617 kcal par MyFitRace pour 45,94 g de glucides, 46,82 g de protéines et 26,29 g de lipides — la recette la plus protéinée du lot.\n\nAstuce de la recette d'origine : réchauffer la tortilla à sec quelques secondes avant de la rouler, pour qu'elle ne casse pas.\n\nLa cuillère d'huile d'olive sert à deux choses, moitié cuisson moitié vinaigrette. Je l'ai laissée entièrement fixe plutôt que de la scinder en deux ingrédients : la vinaigrette tient déjà par la moutarde et le miel, eux-mêmes fixes."
+}
