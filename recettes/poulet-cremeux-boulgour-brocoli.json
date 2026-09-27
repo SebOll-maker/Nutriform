@@ -1,0 +1,94 @@
+{
+  "id": "poulet-cremeux-boulgour-brocoli",
+  "titre": "Poulet crémeux, boulgour et brocolis",
+  "source": "MyFitRace — « Poulet crémeux (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 10,
+  "tags": ["plat", "volaille"],
+  "ingredients": [
+    {
+      "nom": "Escalope de poulet crue",
+      "ciqual_code": "36003",
+      "quantite": 140,
+      "unite": "g",
+      "quantite_affichee": "140 g d'escalope de poulet",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Boulgour de blé cru",
+      "ciqual_code": "9690",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de boulgour cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Brocoli cru",
+      "ciqual_code": "20057",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de brocolis",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Crème fraîche 30 % MG",
+      "ciqual_code": "19410",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de crème fraîche 30 %",
+      "echelle": "variable",
+      "notes": "Entrée « épaisse, rayon frais » : c'est la crème fraîche du pot, pas la brique UHT. Elle fait la sauce, donc elle suit la cible."
+    },
+    {
+      "nom": "Tomates séchées",
+      "ciqual_code": "20189",
+      "quantite": 4,
+      "unite": "g",
+      "quantite_affichee": "4 g de tomates séchées",
+      "echelle": "variable",
+      "notes": "Entrée « séchée » nature et non « à l'huile » : la recette ne précise pas, et la version nature est le choix prudent — l'autre apporterait deux fois plus de lipides."
+    },
+    {
+      "nom": "Parmesan",
+      "ciqual_code": "12120",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "5 g de parmesan",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait dorer le poulet dans la poêle : matière grasse de cuisson."
+    },
+    {
+      "nom": "Ail séché en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Herbes de Provence séchées",
+      "ciqual_code": "11060",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Cuire le boulgour — porter une casserole d'eau salée à ébullition, ajouter le boulgour et cuire 10 minutes, ou selon les indications du paquet. Égoutter et réserver.",
+    "Cuire les brocolis — dans une autre casserole d'eau bouillante salée, cuire les brocolis 5 minutes. Égoutter et réserver. On peut aussi les ajouter directement dans la casserole du boulgour en fin de cuisson : moins de vaisselle, et davantage de nutriments conservés.",
+    "Poulet et sauce — tailler le poulet en morceaux. Dans une poêle à feu moyen, verser l'huile d'olive et faire dorer le poulet 4 à 5 minutes. Saler et poivrer. Ajouter l'ail en poudre, le parmesan, les tomates séchées et les herbes de Provence. Mélanger et laisser cuire encore 1 minute.",
+    "La crème — baisser le feu et incorporer la crème fraîche. Laisser mijoter 5 minutes en remuant de temps en temps, jusqu'à obtenir une sauce crémeuse.",
+    "Dressage — répartir le boulgour et les brocolis dans une assiette, ajouter le poulet crémeux et sa sauce. Saler et poivrer."
+  ],
+  "notes": "Annoncée à 616 kcal par MyFitRace pour 39,21 g de glucides, 47,25 g de protéines et 27,46 g de lipides.\n\nAstuces de la recette d'origine : une crème allégée à 15-20 % MG ou du yaourt à la grecque rendent le plat plus léger ; un filet de jus de citron en fin de cuisson apporte de la fraîcheur ; ne pas prolonger la cuisson du poulet après l'ajout de la crème, sous peine de l'assécher.\n\nLa crème fraîche est « variable » : elle fait la sauce, elle n'assaisonne pas. C'est elle qui porte l'essentiel des lipides du plat — calibrer à 800 kcal en met logiquement davantage."
+}
