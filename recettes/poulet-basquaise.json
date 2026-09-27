@@ -1,0 +1,112 @@
+{
+  "id": "poulet-basquaise",
+  "titre": "Poulet basquaise",
+  "source": "MyFitRace — « Poulet basquaise [400] »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 12,
+  "tags": ["plat", "volaille"],
+  "ingredients": [
+    {
+      "nom": "Escalope de poulet crue",
+      "ciqual_code": "36003",
+      "quantite": 120,
+      "unite": "g",
+      "quantite_affichee": "120 g d'escalope de poulet",
+      "echelle": "variable",
+      "notes": "Entrée « Poulet, viande crue », sans la peau : c'est ce qu'est une escalope. « Poulet, viande et peau crues » monterait à 173 kcal pour 100 g."
+    },
+    {
+      "nom": "Purée de tomate",
+      "ciqual_code": "20170",
+      "quantite": 70,
+      "unite": "g",
+      "quantite_affichee": "70 g de purée de tomate",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Riz basmati cru",
+      "ciqual_code": "9119",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "30 g de riz basmati cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Poivron rouge cru",
+      "ciqual_code": "20087",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de poivron rouge",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon cru",
+      "ciqual_code": "20034",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "1 demi-oignon (50 g)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait revenir le poulet et les légumes dans la poêle : matière grasse de cuisson, donc fixe."
+    },
+    {
+      "nom": "Ail séché en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Basilic séché",
+      "ciqual_code": "11032",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "20031",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de salade verte au choix",
+      "echelle": "fixe",
+      "notes": "Accompagnement : 50 g de salade restent 50 g, que le plat vise 400 ou 800 kcal."
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Assaisonnement de la salade d'accompagnement : il suit la salade, donc fixe."
+    },
+    {
+      "nom": "Huile d'olive de la salade",
+      "ciqual_code": "17270",
+      "quantite": 3.75,
+      "unite": "ml",
+      "quantite_affichee": "1/4 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Deuxième huile de la recette, celle de la vinaigrette. Elle est « fixe » non pas comme matière grasse de cuisson, mais parce qu'elle assaisonne un accompagnement lui-même fixe."
+    }
+  ],
+  "etapes": [
+    "Le riz — porter une casserole d'eau salée à ébullition, ajouter le riz et cuire selon le temps indiqué sur le sachet. Égoutter et réserver.",
+    "Le poulet, les poivrons et l'oignon — découper le poulet en morceaux, couper le poivron en lamelles et émincer l'oignon. Dans une poêle à feu moyen, verser l'huile d'olive puis faire revenir le poulet avec les poivrons et l'oignon 5 minutes, en remuant régulièrement.",
+    "La sauce — ajouter la purée de tomate dans la poêle, l'ail en poudre et le basilic. Baisser le feu et laisser mijoter 5 minutes en remuant régulièrement.",
+    "Dressage — déposer le riz dans une assiette, ajouter le poulet et sa sauce. Saler, poivrer, et éventuellement parsemer de persil frais ciselé.",
+    "Salade — laver et essorer la salade, la mélanger dans un bol avec le vinaigre balsamique et l'huile d'olive. Saler, poivrer et servir immédiatement."
+  ],
+  "notes": "Annoncée à 431 kcal par MyFitRace pour 38,16 g de glucides, 34,73 g de protéines et 13,91 g de lipides.\n\nAstuce de la recette d'origine : un mélange de poivrons rouges, jaunes et verts donne une assiette plus colorée et une saveur plus équilibrée.\n\nRecette à deux sections : le plat et sa salade. Toute la salade — feuilles, vinaigre et huile de vinaigrette — est « fixe » : c'est un accompagnement, il ne grossit pas avec la cible. Seul le plat se calibre. La recette contient donc deux huiles d'olive distinctes, fixes toutes les deux mais pour des raisons différentes."
+}

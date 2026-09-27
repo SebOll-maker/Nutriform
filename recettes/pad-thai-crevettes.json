@@ -1,0 +1,97 @@
+{
+  "id": "pad-thai-crevettes",
+  "titre": "Pad thaï aux crevettes",
+  "source": "MyFitRace — « Pad thaï aux crevettes [600] »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 20,
+  "tags": ["plat", "poisson", "asiatique"],
+  "ingredients": [
+    {
+      "nom": "Vermicelles de riz secs",
+      "ciqual_code": "9900",
+      "quantite": 75,
+      "unite": "g",
+      "quantite_affichee": "75 g de nouilles de riz",
+      "echelle": "variable",
+      "notes": "Ciqual n'a pas d'entrée « nouilles de riz » : « Vermicelles de riz sèches, crues » est le même produit sous un autre nom, et c'est bien le poids sec qui est pesé."
+    },
+    {
+      "nom": "Crevettes crues décortiquées",
+      "ciqual_code": "10021",
+      "quantite": 110,
+      "unite": "g",
+      "quantite_affichee": "110 g de crevettes décortiquées",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oeuf",
+      "ciqual_code": "22000",
+      "quantite": 58,
+      "unite": "g",
+      "quantite_affichee": "1 oeuf moyen (53 à 63 g)",
+      "echelle": "variable",
+      "unite_piece": 58,
+      "nom_piece": "oeuf"
+    },
+    {
+      "nom": "Pousses de soja",
+      "ciqual_code": "20183",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g de pousses de soja",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Sauce soja",
+      "ciqual_code": "11104",
+      "quantite": 30,
+      "unite": "ml",
+      "quantite_affichee": "2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Assaisonnement, donc fixe — et heureusement : à 13,1 g de sel pour 100 g, ces 2 cuillères apportent à elles seules environ 4 g de sel. Si elles suivaient la cible calorique, une portion à 900 kcal en contiendrait 6."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle chauffe la poêle pour saisir l'ail et les crevettes à feu vif : matière grasse de cuisson."
+    },
+    {
+      "nom": "Ail cru",
+      "ciqual_code": "11000",
+      "quantite": 3,
+      "unite": "g",
+      "quantite_affichee": "1 gousse (3 g)",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Ciboulette fraîche",
+      "ciqual_code": "11003",
+      "quantite": 3,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Jus de citron vert",
+      "ciqual_code": "2030",
+      "quantite": 10,
+      "unite": "ml",
+      "quantite_affichee": "le jus d'un demi-citron vert",
+      "echelle": "fixe",
+      "notes": "MyFitRace compte le demi-fruit (25 g) ; seul son jus est pressé sur le plat, soit une dizaine de millilitres."
+    }
+  ],
+  "etapes": [
+    "Cuire les nouilles selon les indications du paquet, les égoutter et les laisser refroidir complètement. Réserver.",
+    "Faire chauffer une poêle à feu vif. Ajouter l'huile, l'ail émincé, les crevettes et du poivre. Faire revenir 30 secondes à feu vif, puis réduire à feu moyen-vif et cuire encore 2 à 3 minutes en remuant. Réserver les crevettes dans un bol.",
+    "Dans la même poêle, casser l'oeuf et le brouiller à la spatule. Cuire 1 minute, jusqu'à ce qu'il soit pris mais encore moelleux, puis le pousser sur le côté de la poêle.",
+    "Ajouter les nouilles et les crevettes, verser la sauce soja et mélanger le tout à feu vif pendant 2 minutes pour bien enrober les nouilles.",
+    "Ajouter les pousses de soja, mélanger une dernière fois et presser le jus du demi-citron vert sur le plat. Parsemer de ciboulette et servir immédiatement."
+  ],
+  "notes": "Annoncée à 632 kcal par MyFitRace pour 64,98 g de glucides, 38,39 g de protéines et 23,03 g de lipides.\n\nAstuce de la recette d'origine : rincer les nouilles à l'eau froide après cuisson et les huiler légèrement avant de les incorporer, pour qu'elles ne collent pas.\n\nATTENTION AU SEL. Les 2 cuillères à soupe de sauce soja apportent à elles seules environ 4 g de sel, soit près de l'apport quotidien recommandé pour un adulte. C'est le même piège que le cube de bouillon et la sauce soja des recettes précédentes, où les fiches MyFitRace sous-estimaient largement le sel. Ne pas saler davantage au service, malgré l'étape 6 de la recette d'origine."
+}

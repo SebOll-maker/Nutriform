@@ -1,0 +1,87 @@
+{
+  "id": "salade-quinoa-pois-chiche",
+  "titre": "Salade de quinoa et pois chiches",
+  "source": "MyFitRace — « Salade de quinoa et pois chiche [600] »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "végétarien", "salade"],
+  "ingredients": [
+    {
+      "nom": "Quinoa cru",
+      "ciqual_code": "9340",
+      "quantite": 70,
+      "unite": "g",
+      "quantite_affichee": "70 g de quinoa cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Pois chiches en conserve",
+      "ciqual_code": "20532",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de pois chiches égouttés",
+      "echelle": "variable",
+      "notes": "Entrée « appertisé, égoutté » : c'est bien le poids égoutté qui finit dans la salade."
+    },
+    {
+      "nom": "Edamame (fèves de soja)",
+      "ciqual_code": "20500",
+      "quantite": 35,
+      "unite": "g",
+      "quantite_affichee": "35 g d'edamame",
+      "echelle": "variable",
+      "notes": "Ciqual ne référence PAS l'edamame. Faute de mieux, entrée « Fève, bouillie » — c'est d'ailleurs celle que MyFitRace utilise. L'approximation sous-estime : un edamame apporte environ 120 kcal et 11 g de protéines aux 100 g, contre 83 kcal et 8 g pour la fève."
+    },
+    {
+      "nom": "Concombre pelé",
+      "ciqual_code": "20210",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de concombre pelé",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Tomates cerises",
+      "ciqual_code": "20172",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de tomates cerises",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Avocat",
+      "ciqual_code": "13004",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g d'avocat",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à soupe",
+      "echelle": "variable",
+      "notes": "Elle compose la vinaigrette : elle assaisonne la salade et pèse lourd dans ses calories. Variable, comme les huiles du canard à l'orange."
+    },
+    {
+      "nom": "Jus de citron",
+      "ciqual_code": "2028",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "le jus d'un demi-citron",
+      "echelle": "fixe",
+      "notes": "MyFitRace compte le demi-citron entier (29 g) ; seul son jus entre dans la vinaigrette, soit environ 15 ml. L'écart est négligeable : 4 kcal contre 9."
+    }
+  ],
+  "etapes": [
+    "Cuisson du quinoa — cuire le quinoa dans une casserole d'eau bouillante selon les instructions de l'emballage. Égoutter et laisser refroidir.",
+    "Légumineuses — égoutter les pois chiches et les edamame, les rincer à l'eau froide et les ajouter au quinoa refroidi.",
+    "Découpe des légumes — couper les tomates cerises en deux, éplucher le concombre et le couper en petits dés, détailler l'avocat en morceaux. Ajouter le tout au quinoa.",
+    "Vinaigrette — dans un petit bol, mélanger le jus de citron et l'huile d'olive. Verser sur la salade et bien mélanger.",
+    "Saler, poivrer, mélanger une dernière fois et servir frais."
+  ],
+  "notes": "Annoncée à 625 kcal par MyFitRace pour 62,78 g de glucides, 19,73 g de protéines et 29,19 g de lipides.\n\nAstuces de la recette d'origine : des herbes fraîches ciselées (coriandre, persil, menthe) rehaussent les saveurs sans calories ; ajuster la vinaigrette avec un peu plus de citron ou un filet d'eau ; si la salade est préparée à l'avance, n'ajouter la vinaigrette qu'au dernier moment.\n\nSeul le jus de citron est « fixe ». L'huile d'olive suit la cible : c'est une vinaigrette, pas une matière grasse de cuisson."
+}
