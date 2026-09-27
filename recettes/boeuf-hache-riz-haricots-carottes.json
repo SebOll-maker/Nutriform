@@ -1,0 +1,80 @@
+{
+  "id": "boeuf-hache-riz-haricots-carottes",
+  "titre": "Boeuf haché, riz & haricots verts carottes",
+  "source": "MyFitRace — « Boeuf haché, riz & haricots verts carottes [600] »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 20,
+  "tags": ["plat", "boeuf"],
+  "ingredients": [
+    {
+      "nom": "Steak haché de boeuf 15 % MG",
+      "ciqual_code": "6254",
+      "quantite": 130,
+      "unite": "g",
+      "quantite_affichee": "130 g de steak haché 15 % MG",
+      "echelle": "variable",
+      "notes": "Entrée « Boeuf » et non « Veau » : les deux existent en 15 % MG dans Ciqual."
+    },
+    {
+      "nom": "Riz basmati cru",
+      "ciqual_code": "9119",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "40 g de riz basmati cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oeuf",
+      "ciqual_code": "22000",
+      "quantite": 58,
+      "unite": "g",
+      "quantite_affichee": "1 oeuf moyen (53 à 63 g)",
+      "echelle": "variable",
+      "unite_piece": 58,
+      "nom_piece": "oeuf"
+    },
+    {
+      "nom": "Haricot vert cru",
+      "ciqual_code": "20061",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de haricots verts",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Carotte crue",
+      "ciqual_code": "20009",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de carottes",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle sert à faire revenir le boeuf dans la poêle : matière grasse de cuisson, donc fixe."
+    },
+    {
+      "nom": "Herbes de Provence séchées",
+      "ciqual_code": "11060",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe",
+      "notes": "La recette ne chiffre pas : 1 g retenu, ordre de grandeur d'une pincée. Fixe de toute façon."
+    }
+  ],
+  "etapes": [
+    "Cuisson du riz — porter une casserole d'eau salée à ébullition, ajouter le riz et cuire selon les indications du sachet. Égoutter et réserver.",
+    "Cuisson des légumes — laver et éplucher les carottes, les couper en rondelles. Plonger les haricots verts et les carottes dans une casserole d'eau bouillante salée, cuire 10 minutes, égoutter et réserver.",
+    "Cuisson du boeuf haché — faire chauffer une poêle avec l'huile d'olive à feu moyen. Ajouter le boeuf haché et le faire revenir 5 minutes en remuant régulièrement. Assaisonner avec les herbes de Provence, du sel et du poivre.",
+    "Cuisson de l'oeuf — dans une petite poêle, cuire l'oeuf au plat selon la cuisson désirée, jaune coulant ou bien cuit.",
+    "Dressage — disposer le riz dans une assiette, ajouter les légumes et le boeuf haché par-dessus, poser l'oeuf au plat sur le côté. Saler et poivrer."
+  ],
+  "notes": "Annoncée à 639 kcal par MyFitRace pour 42,6 g de glucides, 39,53 g de protéines et 32,98 g de lipides.\n\nAstuces de la recette d'origine : une pincée de paprika fumé ou de piment doux relève le boeuf haché ; pour un jaune coulant, couvrir la poêle 30 secondes avant la fin de la cuisson de l'oeuf.\n\nHaricots verts et carottes sont classés « variable » : ils composent le plat, ils ne l'accompagnent pas — une portion plus copieuse en comporte davantage."
+}

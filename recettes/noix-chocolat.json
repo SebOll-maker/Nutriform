@@ -1,0 +1,32 @@
+{
+  "id": "noix-chocolat",
+  "titre": "Noix et chocolat",
+  "source": "MyFitRace — « Noix et chocolat [100] »",
+  "portions_base": 1,
+  "temps_prepa_min": 1,
+  "temps_cuisson_min": 0,
+  "tags": ["collation", "végétarien", "sans gluten", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Noix (cerneaux)",
+      "ciqual_code": "15005",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de cerneaux de noix",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Chocolat noir 70 % de cacao",
+      "ciqual_code": "31074",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "5 g de chocolat noir à 70 %",
+      "echelle": "variable",
+      "notes": "La recette d'origine accepte un chocolat noir vegan à la place."
+    }
+  ],
+  "etapes": [
+    "Peser les deux quantités et déguster."
+  ],
+  "notes": "Annoncée à 98 kcal par MyFitRace ; le calcul Ciqual donne 100,5 kcal et 8,66 g de lipides contre 8,61 annoncés — les deux tables concordent presque parfaitement ici.\n\nCollation à deux ingrédients, tout en « variable » : le calibrage se ramène à une pesée, et conserve le rapport deux tiers de noix pour un tiers de chocolat. Viser 200 kcal donne 20 g de noix et 10 g de chocolat."
+}

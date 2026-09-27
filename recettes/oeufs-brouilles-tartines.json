@@ -1,0 +1,47 @@
+{
+  "id": "oeufs-brouilles-tartines",
+  "titre": "Oeufs brouillés et tartines",
+  "source": "MyFitRace — « Oeufs brouillés et tartines [300] »",
+  "portions_base": 1,
+  "temps_prepa_min": 2,
+  "temps_cuisson_min": 3,
+  "tags": ["petit-déjeuner", "rapide", "végétarien"],
+  "ingredients": [
+    {
+      "nom": "Oeuf",
+      "ciqual_code": "22000",
+      "quantite": 116,
+      "unite": "g",
+      "quantite_affichee": "2 oeufs moyens (53 à 63 g)",
+      "echelle": "variable",
+      "unite_piece": 58,
+      "nom_piece": "oeuf"
+    },
+    {
+      "nom": "Pain de mie complet",
+      "ciqual_code": "7111",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "1 tranche de pain de mie complet",
+      "echelle": "variable",
+      "unite_piece": 40,
+      "nom_piece": "tranche",
+      "notes": "La recette d'origine accepte le pain de mie complet sans gluten."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 5,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à café",
+      "echelle": "fixe",
+      "notes": "Un filet dans la poêle : elle graisse la cuisson, elle n'enrichit pas le plat. Fixe, donc."
+    }
+  ],
+  "etapes": [
+    "Préparation des oeufs — casser les oeufs dans un bol et les battre à la fourchette jusqu'à obtenir un mélange homogène. Saler et poivrer selon le goût.",
+    "Cuisson — faire chauffer une poêle à feu moyen avec un filet d'huile d'olive. Verser les oeufs battus et laisser cuire doucement en remuant constamment à la spatule en bois, jusqu'à une texture crémeuse et légèrement baveuse — ou plus ferme selon la préférence.",
+    "Service — servir immédiatement avec la tranche de pain grillée."
+  ],
+  "notes": "Annoncée à 329 kcal par MyFitRace pour 18,48 g de glucides, 18,11 g de protéines et 19,13 g de lipides ; le calcul Ciqual donne environ 306 kcal, l'écart venant surtout de l'huile et du pain.\n\nSans lactose et végétarienne. Sans gluten à condition de prendre le pain de mie complet sans gluten."
+}

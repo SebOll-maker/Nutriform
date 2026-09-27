@@ -1,0 +1,86 @@
+{
+  "id": "saumon-tropical",
+  "titre": "Saumon tropical",
+  "source": "MyFitRace — « Saumon Tropical [400] »",
+  "portions_base": 1,
+  "temps_prepa_min": 15,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "poisson"],
+  "ingredients": [
+    {
+      "nom": "Saumon d'élevage cru",
+      "ciqual_code": "26036",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "1 filet de saumon (100 g)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Patate douce crue",
+      "ciqual_code": "4101",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de patate douce",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Mangue",
+      "ciqual_code": "13025",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de mangue",
+      "echelle": "variable",
+      "notes": "Entrée générique « chair sans peau, sans noyau » : les variantes martiniquaises et réunionnaises de Ciqual ne correspondent pas à une mangue de supermarché."
+    },
+    {
+      "nom": "Avocat",
+      "ciqual_code": "13004",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "30 g d'avocat",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Tomate",
+      "ciqual_code": "20276",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de tomate",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "variable",
+      "notes": "Ici elle badigeonne le saumon avant cuisson : elle enrichit le plat, elle ne graisse pas la poêle. Variable, donc — à la différence de la même huile dans le boeuf haché."
+    },
+    {
+      "nom": "Jus de citron",
+      "ciqual_code": "2028",
+      "quantite": 10,
+      "unite": "ml",
+      "quantite_affichee": "10 ml de jus de citron",
+      "echelle": "fixe",
+      "notes": "Assaisonnement de la salsa."
+    },
+    {
+      "nom": "Coriandre fraîche",
+      "ciqual_code": "11094",
+      "quantite": 3,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe",
+      "notes": "Non chiffrée par la recette : 3 g retenus, l'ordre de grandeur de quelques brins ciselés."
+    }
+  ],
+  "etapes": [
+    "Purée de patate douce — éplucher et couper la patate douce en cubes, les cuire à l'eau bouillante salée jusqu'à ce qu'ils soient tendres. Égoutter, écraser à la fourchette, saler et poivrer.",
+    "Salsa tropicale — couper l'avocat, la mangue et la tomate en petits dés. Dans un bol, mélanger avec la coriandre ciselée et le jus de citron. Saler, poivrer et réserver.",
+    "Saumon — badigeonner le filet d'huile d'olive, saler et poivrer. Faire chauffer une poêle à feu moyen-élevé et cuire le saumon 4 à 5 minutes de chaque côté, en ajustant selon l'épaisseur du filet.",
+    "Dressage — déposer la purée de patate douce dans l'assiette, poser le saumon par-dessus et napper de sauce tropicale."
+  ],
+  "notes": "Annoncée à 434 kcal par MyFitRace pour 27,28 g de glucides, 23,35 g de protéines, 24,31 g de lipides et 6 g de fibres.\n\nAstuces de la recette d'origine : retirer le saumon du feu lorsqu'il est encore légèrement rosé au centre, il finit de cuire par la chaleur résiduelle ; une pincée de piment d'Espelette ou de gingembre râpé relève la sauce tropicale.\n\nL'huile d'olive est ici « variable » alors qu'elle est « fixe » dans le boeuf haché aux haricots : c'est l'usage qui tranche, pas l'aliment — elle badigeonne le poisson au lieu de graisser la poêle."
+}
