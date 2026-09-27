@@ -1,0 +1,98 @@
+{
+  "id": "lentilles-allumettes-volaille",
+  "titre": "Lentilles aux allumettes de volaille",
+  "source": "MyFitRace — « Lentilles aux lardons [600] »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 30,
+  "tags": ["plat", "volaille"],
+  "ingredients": [
+    {
+      "nom": "Lentilles sèches",
+      "ciqual_code": "20359",
+      "quantite": 70,
+      "unite": "g",
+      "quantite_affichee": "70 g de lentilles sèches",
+      "echelle": "variable",
+      "notes": "Entrée « aliment moyen », la recette ne précisant pas la variété. Verte, corail ou blonde se tiennent à 12 kcal près aux 100 g."
+    },
+    {
+      "nom": "Allumettes de jambon de volaille",
+      "ciqual_code": "28929",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g d'allumettes de volaille",
+      "echelle": "variable",
+      "notes": "Ce ne sont PAS des lardons malgré le titre : 132 kcal aux 100 g contre 272 pour du lardon de porc fumé. Cette seule substitution vaut 140 kcal sur la portion."
+    },
+    {
+      "nom": "Carotte crue",
+      "ciqual_code": "20009",
+      "quantite": 120,
+      "unite": "g",
+      "quantite_affichee": "120 g de carottes",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon cru",
+      "ciqual_code": "20034",
+      "quantite": 75,
+      "unite": "g",
+      "quantite_affichee": "1/2 gros oignon (75 g)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Moutarde",
+      "ciqual_code": "11013",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de moutarde",
+      "echelle": "fixe",
+      "notes": "Assaisonnement, comme dans le croque-monsieur au thon."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait revenir l'oignon dans la casserole."
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "20031",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de salade verte au choix",
+      "echelle": "fixe",
+      "notes": "Accompagnement."
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Huile d'olive de la salade",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Rincer les lentilles, puis les cuire dans une casserole d'eau NON SALÉE comme indiqué sur le paquet. Égoutter et réserver. Pendant ce temps, éplucher et émincer l'oignon.",
+    "Faire chauffer l'huile d'olive dans une casserole, puis faire revenir l'oignon jusqu'à ce qu'il soit translucide.",
+    "Ajouter les allumettes de volaille et les faire revenir 1 à 2 minutes avec l'oignon, juste pour qu'elles se colorent légèrement.",
+    "Peler et découper les carottes en petits dés. Les ajouter aux oignons et à la volaille, puis incorporer la moutarde. Laisser cuire 2 à 3 minutes à feu moyen en remuant régulièrement.",
+    "Ajouter un petit fond d'eau (50 ml) et les lentilles égouttées, mélanger et laisser mijoter encore 7 minutes à feu moyen en remuant.",
+    "Saler et poivrer.",
+    "Salade — laver et essorer la salade, la mélanger avec le vinaigre balsamique et l'huile d'olive. Saler, poivrer et servir immédiatement."
+  ],
+  "notes": "Annoncée à 601 kcal par MyFitRace pour 51,8 g de glucides, 38,91 g de protéines et 23,82 g de lipides.\n\nATTENTION AU TITRE. La recette s'appelle « Lentilles aux lardons », la liste d'ingrédients dit « allumettes de volaille », et le mode opératoire parle de « dés de dinde » : trois noms pour le même ingrédient. Ce sont bien des allumettes de VOLAILLE, à 132 kcal aux 100 g. Les remplacer par de vrais lardons de porc fumés (272 kcal) ajouterait 140 kcal à la portion, soit un quart du plat.\n\nL'eau de cuisson des lentilles ne doit pas être salée : le sel durcit leur peau et allonge la cuisson. La recette d'origine y insiste, et c'est justifié.\n\nAstuces de la recette d'origine : une feuille de laurier ou du thym pendant la cuisson des lentilles ; une cuillère de crème légère en fin de cuisson pour l'onctuosité ; si la salade est préparée à l'avance, garder la sauce à part."
+}
