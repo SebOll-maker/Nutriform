@@ -1,0 +1,60 @@
+{
+  "id": "pates-poulet-pesto",
+  "titre": "Pâtes au poulet et au pesto",
+  "source": "MyFitRace — « Pâtes au poulet et au pesto (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 10,
+  "tags": ["plat", "volaille", "pâtes"],
+  "ingredients": [
+    {
+      "nom": "Pâtes crues",
+      "ciqual_code": "9810",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de pâtes crues",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Escalope de poulet crue",
+      "ciqual_code": "36003",
+      "quantite": 120,
+      "unite": "g",
+      "quantite_affichee": "120 g d'escalope de poulet",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Sauce pesto",
+      "ciqual_code": "11179",
+      "quantite": 35,
+      "unite": "g",
+      "quantite_affichee": "35 g de sauce pesto",
+      "echelle": "variable",
+      "notes": "Entrée « Sauce pesto, préemballée » (pesto vert). Le pesto rosso, code 11210, est moins calorique à 305 kcal. Le pesto est ici la sauce du plat, pas un assaisonnement : il enrobe les pâtes et suit donc la cible."
+    },
+    {
+      "nom": "Parmesan",
+      "ciqual_code": "12120",
+      "quantite": 5,
+      "unite": "g",
+      "quantite_affichee": "5 g de parmesan",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait dorer le poulet dans la poêle."
+    }
+  ],
+  "etapes": [
+    "Cuisson des pâtes — porter une casserole d'eau salée à ébullition, ajouter les pâtes et cuire selon les indications du paquet. Égoutter en conservant une petite louche d'eau de cuisson, puis réserver.",
+    "Cuisson du poulet — couper les blancs en dés. Faire chauffer l'huile d'olive dans une poêle à feu moyen, ajouter le poulet et le faire dorer environ 5 minutes en remuant régulièrement.",
+    "Pesto et parmesan — baisser le feu, ajouter la sauce pesto au poulet et mélanger pour bien enrober. Incorporer le parmesan râpé et remuer. Si besoin, ajouter une cuillère d'eau de cuisson des pâtes pour assouplir la sauce.",
+    "Assemblage — ajouter les pâtes cuites dans la poêle et mélanger avec la sauce. Laisser chauffer encore 1 minute à feu doux pour bien imprégner les saveurs."
+  ],
+  "notes": "Annoncée à 647 kcal par MyFitRace pour 59,66 g de glucides, 41,98 g de protéines et 25,71 g de lipides.\n\nL'eau de cuisson des pâtes gardée de côté n'est pas un détail : son amidon lie la sauce au pesto, qui sinon reste grasse et se sépare.\n\nLe pesto est classé « variable » — c'est la sauce du plat, pas un assaisonnement. À 370 kcal aux 100 g, il pèse lourd : 35 g apportent 130 kcal, soit un cinquième du plat."
+}
