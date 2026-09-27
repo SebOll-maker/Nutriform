@@ -1,0 +1,70 @@
+{
+  "id": "crevettes-curry-coco",
+  "titre": "Crevettes au curry et lait de coco",
+  "source": "MyFitRace — « Crevettes curry coco [600] »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "poisson", "asiatique"],
+  "ingredients": [
+    {
+      "nom": "Crevettes crues décortiquées",
+      "ciqual_code": "10021",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de crevettes décortiquées",
+      "echelle": "variable",
+      "notes": "La recette autorise des crevettes surgelées : l'entrée Ciqual correspondante (10038) donne 105 kcal contre 99, l'écart est négligeable."
+    },
+    {
+      "nom": "Riz basmati cru",
+      "ciqual_code": "9119",
+      "quantite": 45,
+      "unite": "g",
+      "quantite_affichee": "45 g de riz basmati cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Lait de coco",
+      "ciqual_code": "18041",
+      "quantite": 80,
+      "unite": "ml",
+      "quantite_affichee": "80 ml de lait de coco",
+      "echelle": "variable",
+      "notes": "Il fait la sauce du curry : il suit la cible, comme la crème fraîche du poulet crémeux."
+    },
+    {
+      "nom": "Brocoli cru",
+      "ciqual_code": "20057",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de brocolis",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle chauffe la poêle pour saisir les crevettes."
+    },
+    {
+      "nom": "Curry en poudre",
+      "ciqual_code": "11005",
+      "quantite": 2,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe",
+      "notes": "2 g plutôt que 1 : c'est le curry qui donne son nom au plat, la main est plus généreuse qu'avec une herbe d'appoint."
+    }
+  ],
+  "etapes": [
+    "Cuisson du riz — dans une casserole, faire bouillir de l'eau, ajouter le riz à l'ébullition et cuire le temps indiqué sur le sachet.",
+    "Cuisson des brocolis — dans une casserole d'eau bouillante, ajouter les brocolis et cuire 7 à 8 minutes.",
+    "Cuisson des crevettes — dans une poêle à feu moyen, verser l'huile d'olive puis les crevettes (des crevettes surgelées conviennent aussi). Les laisser cuire 4 minutes en les retournant. Ajouter le lait de coco et le curry, puis cuire de nouveau 4 à 5 minutes en remuant de temps en temps.",
+    "Assemblage — mettre dans une assiette le riz, le curry de crevettes et les brocolis. Saler et poivrer. On peut ajouter les épices et les herbes aromatiques de son choix."
+  ],
+  "notes": "Annoncée à 608 kcal par MyFitRace pour 38,03 g de glucides, 41,48 g de protéines et 30,96 g de lipides.\n\nUne de tes recettes favorites d'après la fiche d'origine.\n\nÀ rapprocher du poulet curry coco déjà enregistré : même trio curry–coco–riz, mais les crevettes apportent davantage de protéines pour moins de lipides que le poulet et sa crème. Et contrairement au pad thaï, il n'y a ici aucune sauce salée : le plat reste très sobre en sel."
+}
