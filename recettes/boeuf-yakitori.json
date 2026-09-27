@@ -1,0 +1,82 @@
+{
+  "id": "boeuf-yakitori",
+  "titre": "Bœuf yakitori, riz et légumes",
+  "source": "MyFitRace — « Bœuf yakitori (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 10,
+  "tags": [
+    "plat",
+    "boeuf",
+    "asiatique"
+  ],
+  "ingredients": [
+    {
+      "nom": "Faux-filet de bœuf cru",
+      "ciqual_code": "6111",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de faux-filet",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Riz basmati cru",
+      "ciqual_code": "9119",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "40 g de riz basmati cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Brocoli cru",
+      "ciqual_code": "20057",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de brocolis",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Poivron rouge cru",
+      "ciqual_code": "20087",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de poivron rouge",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Sauce yakitori",
+      "ciqual_code": "11301",
+      "quantite": 60,
+      "unite": "ml",
+      "quantite_affichee": "60 ml de sauce yakitori",
+      "echelle": "fixe",
+      "notes": "Ciqual n'a pas d'entrée « yakitori » pour la sauce — l'entrée de ce nom désigne les brochettes finies. La sauce teriyaki est le même produit à peu de chose près : soja, mirin, sucre. Fixe comme la sauce soja : 60 ml, c'est déjà beaucoup de sel, et il n'y a aucune raison d'en ajouter avec la cible."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle chauffe la poêle pour saisir le bœuf et les poivrons."
+    },
+    {
+      "nom": "Graines de sésame",
+      "ciqual_code": "15010",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "1 g de graines de sésame",
+      "echelle": "fixe",
+      "notes": "Décor du dressage : 1 g reste 1 g."
+    }
+  ],
+  "etapes": [
+    "Cuisson du riz — porter une casserole d'eau salée à ébullition, ajouter le riz et cuire 9 minutes, ou selon les indications du paquet. Égoutter et réserver.",
+    "Cuisson du brocoli — pendant la cuisson du riz, couper le brocoli en morceaux et le cuire 5 minutes dans une casserole d'eau bouillante salée. Égoutter et réserver.",
+    "Bœuf et légumes — tailler le bœuf en morceaux et couper le poivron en lamelles. Faire chauffer une poêle à feu moyen avec l'huile d'olive, ajouter le bœuf et les poivrons et cuire 5 minutes, en retournant le bœuf à mi-cuisson.",
+    "La sauce — verser la sauce yakitori sur le bœuf et les poivrons, laisser mijoter 3 minutes à feu doux en remuant régulièrement.",
+    "Dressage — servir sur le riz avec les brocolis, et parsemer de graines de sésame."
+  ],
+  "notes": "Annoncée à 628 kcal par MyFitRace pour 63,16 g de glucides, 45,07 g de protéines et 19,88 g de lipides. Le calcul Ciqual donne 560 kcal, soit 11 % de moins — le plus gros écart des recettes transcrites jusqu'ici, et il est traçable.\n\nIl tient entièrement aux GLUCIDES : 50 g calculés contre 63 annoncés. Protéines et lipides, eux, tombent à 2 % près. Ciqual ne connaît pas la sauce yakitori — l'entrée de ce nom désigne les brochettes finies, pas la sauce — et la sauce teriyaki qui en tient lieu est nettement moins sucrée que celle utilisée par MyFitRace : 13 g de glucides d'écart sur 60 ml, soit les 52 kcal manquantes. Si tu veux la valeur juste, l'étiquette de ta bouteille de sauce ferait un bon aliment perso.\n\nSEL : près de 6 g par portion, l'essentiel venant de la sauce. C'est plus que le pad thaï, et au-delà de l'apport quotidien recommandé pour un adulte. La recette d'origine sale en plus l'eau du riz et celle du brocoli : il y a là de quoi s'en passer sans rien perdre au goût."
+}
