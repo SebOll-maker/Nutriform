@@ -1,0 +1,30 @@
+{
+  "id": "shake-whey",
+  "titre": "Shake de whey",
+  "source": "MyFitRace — « Protéine Whey [100] »",
+  "portions_base": 1,
+  "temps_prepa_min": 1,
+  "temps_cuisson_min": 0,
+  "tags": [
+    "collation",
+    "rapide",
+    "sans gluten"
+  ],
+  "ingredients": [
+    {
+      "nom": "Whey protéine",
+      "ciqual_code": "PERSO-0001",
+      "quantite": 30,
+      "unite": "g",
+      "quantite_affichee": "1 dosette (30 g)",
+      "echelle": "variable",
+      "unite_piece": 30,
+      "nom_piece": "dosette",
+      "notes": "TA whey, saisie d'après l'étiquette de ton pot (concentré de lactosérum à 73 %), et non celle de MyFitRace. Comptée à la dosette entière : on ne dose pas 1,4 dosette."
+    }
+  ],
+  "etapes": [
+    "Mélanger la whey avec 200 ml d'eau dans un shaker."
+  ],
+  "notes": "MyFitRace annonce 122 kcal et 27,3 g de protéines pour 30 g, soit une poudre à 407 kcal et 91 g de protéines aux 100 g — un isolat quasi pur.\n\nTON pot est un concentré à 73 % : 374 kcal et 73 g de protéines aux 100 g. La même dosette de 30 g te donne donc 112 kcal et 21,9 g de protéines, soit CINQ GRAMMES DE PROTÉINES DE MOINS que ce qu'affiche leur fiche. Sur trois shakes par semaine, l'écart n'est pas anecdotique.\n\nC'est la raison d'être de l'aliment perso PERSO-0001, créé en transcrivant les pancakes protéinés : Ciqual ne référence aucun complément alimentaire, et les fiches des applications supposent un produit qui n'est pas forcément le tien. Si tu changes de pot, corrige l'aliment perso depuis l'écran Aliments — toutes les recettes qui l'utilisent suivront.\n\nAstuce de la recette d'origine : du lait d'amande ou de coco à la place de l'eau, pour un goût plus gourmand — mais il faudrait alors l'ajouter comme ingrédient, car il apporte des calories que les 200 ml d'eau n'apportent pas."
+}
