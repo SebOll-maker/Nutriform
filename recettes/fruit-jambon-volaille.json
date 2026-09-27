@@ -1,0 +1,33 @@
+{
+  "id": "fruit-jambon-volaille",
+  "titre": "Fruit et jambon de volaille",
+  "source": "MyFitRace — « Fruit & jambon de dinde [200] »",
+  "portions_base": 1,
+  "temps_prepa_min": 1,
+  "temps_cuisson_min": 0,
+  "tags": ["collation", "rapide", "sans gluten", "sans lactose"],
+  "ingredients": [
+    {
+      "nom": "Blanc de poulet en tranche",
+      "ciqual_code": "28963",
+      "quantite": 120,
+      "unite": "g",
+      "quantite_affichee": "120 g de blanc de poulet en tranches",
+      "echelle": "variable",
+      "notes": "La fiche d'origine s'intitule « jambon de dinde » mais liste « blanc de poulet en tranche ». J'ai suivi la liste d'ingrédients, qui est ce qu'on achète. La dinde (code 28964) donnerait 99 kcal aux 100 g au lieu de 105 : six calories d'écart, autant dire rien."
+    },
+    {
+      "nom": "Pomme",
+      "ciqual_code": "13039",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "1 pomme (150 g)",
+      "echelle": "variable",
+      "notes": "Entrée « chair et peau », la pomme mangée telle quelle. La recette laisse le choix du fruit : clémentine, raisins, poire."
+    }
+  ],
+  "etapes": [
+    "Prendre le fruit de son choix et les tranches de volaille."
+  ],
+  "notes": "Annoncée à 195 kcal par MyFitRace pour 17,72 g de glucides, 25,25 g de protéines et 2,34 g de lipides.\n\nCollation à deux ingrédients, la plus protéinée du lot : 25 g de protéines pour 200 kcal, soit la moitié des calories. À comparer aux amandes ou aux noix, qui n'en apportent presque pas.\n\nLa fiche d'origine se contredit dans son propre titre : « jambon de dinde » d'un côté, « blanc de poulet en tranche » dans les ingrédients. L'écart entre les deux est de six calories aux 100 g."
+}
