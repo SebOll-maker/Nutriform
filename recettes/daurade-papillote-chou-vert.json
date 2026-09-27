@@ -1,0 +1,82 @@
+{
+  "id": "daurade-papillote-chou-vert",
+  "titre": "Filet de daurade en papillote au chou vert",
+  "source": "MyFitRace — « Filet de daurade en papillote au chou vert (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 35,
+  "temps_cuisson_min": 13,
+  "tags": [
+    "plat",
+    "poisson"
+  ],
+  "ingredients": [
+    {
+      "nom": "Filet de daurade avec peau",
+      "ciqual_code": "26088",
+      "quantite": 200,
+      "unite": "g",
+      "quantite_affichee": "200 g de filet de daurade (pesé cru)",
+      "echelle": "variable",
+      "notes": "Entrée « Dorade royale, élevage, crue » (129 kcal), la daurade du commerce. La sauvage (26080) n'en fait que 96 : l'écart de 66 kcal sur 200 g n'est pas anodin si tu achètes de la pêche."
+    },
+    {
+      "nom": "Pomme de terre sans peau crue",
+      "ciqual_code": "4008",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de pommes de terre",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Chou vert cru",
+      "ciqual_code": "20069",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de chou vert",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Beurre doux",
+      "ciqual_code": "16400",
+      "quantite": 15,
+      "unite": "g",
+      "quantite_affichee": "15 g de beurre",
+      "echelle": "variable",
+      "notes": "Écrasé dans les pommes de terre : il fait la texture de l'écrasé, comme dans l'espadon. Variable."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à soupe",
+      "echelle": "variable",
+      "notes": "Elle se partage en deux : une demi-cuillère en trait sur le poisson dans la papillote, l'autre écrasée dans les pommes de terre. Aucun des deux usages n'est une cuisson à la poêle — les deux enrichissent le plat. Variable, donc, contrairement à la plupart des autres recettes."
+    },
+    {
+      "nom": "Jus de citron vert",
+      "ciqual_code": "2030",
+      "quantite": 25,
+      "unite": "ml",
+      "quantite_affichee": "1 citron vert (rondelles + jus)",
+      "echelle": "fixe",
+      "notes": "MyFitRace compte le fruit entier (58 g) ; trois rondelles cuisent dans la papillote et le reste est pressé au service, soit environ 25 ml de jus."
+    },
+    {
+      "nom": "Graines de fenouil",
+      "ciqual_code": "11066",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Préchauffer le four à 210 °C.",
+    "Porter à ébullition une grande casserole d'eau salée. Y plonger les pommes de terre 15 à 20 minutes et le chou 5 minutes. Égoutter le chou, le rafraîchir sous l'eau froide, puis l'émincer en fines lamelles.",
+    "La papillote — sur une feuille de papier sulfurisé, disposer un lit de chou, ajouter le filet de daurade, saler et poivrer. Parsemer de graines de fenouil, ajouter 3 rondelles de citron vert et un trait d'huile d'olive (1/2 c. à soupe). Refermer hermétiquement et enfourner 8 minutes.",
+    "L'écrasé — égoutter les pommes de terre et les écraser à la fourchette avec le reste de l'huile d'olive (1/2 c. à soupe), le beurre, du sel et du poivre.",
+    "Dressage — déposer l'écrasé de pommes de terre dans l'assiette, ajouter la papillote et arroser du jus de citron restant. Saler et poivrer."
+  ],
+  "notes": "Annoncée à 627 kcal par MyFitRace pour 29,04 g de glucides, 43,89 g de protéines et 34,23 g de lipides.\n\nLa cuisson en papillote est ce qui fait la recette : le chou sert de lit et empêche le poisson de coller, la vapeur enfermée le cuit sans le dessécher en huit minutes seulement. Ouvrir la papillote à table.\n\nSeule recette du lot où TOUTE l'huile d'olive est « variable » : ses deux usages — un trait dans la papillote, le reste écrasé dans les pommes de terre — enrichissent le plat, aucun ne graisse une poêle.\n\nAttention au choix de la daurade : Ciqual distingue l'élevage (129 kcal aux 100 g) et le sauvage (96). Sur 200 g, cela fait 66 kcal d'écart. J'ai retenu l'élevage, qui est ce qu'on trouve le plus souvent en filet.\n\nAstuces de la recette d'origine : le papier sulfurisé donne une cuisson vapeur plus douce que l'aluminium, qui retient mieux la chaleur mais ne doit pas toucher les aliments — surtout le citron ; l'écrasé garde ou non la peau des pommes de terre, plus rustique avec, plus lisse sans ; si le goût anisé du fenouil déplaît, du thym ou du persil frais le remplacent."
+}
