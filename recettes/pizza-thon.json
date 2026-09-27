@@ -1,0 +1,93 @@
+{
+  "id": "pizza-thon",
+  "titre": "Pizza au thon",
+  "source": "MyFitRace — « Pizza au thon (400) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "poisson"],
+  "ingredients": [
+    {
+      "nom": "Pâte à pizza crue",
+      "ciqual_code": "37001",
+      "quantite": 70,
+      "unite": "g",
+      "quantite_affichee": "70 g de pâte à pizza",
+      "echelle": "variable",
+      "notes": "Entrée « préemballée, crue », celle du rayon frais. La pâte fine (23402) est plus calorique au poids, à 285 kcal pour 100 g."
+    },
+    {
+      "nom": "Thon albacore au naturel",
+      "ciqual_code": "26181",
+      "quantite": 90,
+      "unite": "g",
+      "quantite_affichee": "90 g de thon égoutté",
+      "echelle": "variable",
+      "notes": "Même entrée que le croque-monsieur et les pâtes au thon, par cohérence."
+    },
+    {
+      "nom": "Concentré de tomate",
+      "ciqual_code": "20068",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de concentré de tomate",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Tomates cerises",
+      "ciqual_code": "20172",
+      "quantite": 85,
+      "unite": "g",
+      "quantite_affichee": "5 tomates cerises (85 g)",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Olives noires",
+      "ciqual_code": "13186",
+      "quantite": 6,
+      "unite": "g",
+      "quantite_affichee": "6 g d'olives noires",
+      "echelle": "variable",
+      "notes": "Entrée « aliment moyen », exactement celle nommée par la recette d'origine."
+    },
+    {
+      "nom": "Parmesan",
+      "ciqual_code": "12120",
+      "quantite": 4,
+      "unite": "g",
+      "quantite_affichee": "4 g de parmesan",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "variable",
+      "notes": "Moitié sur la garniture avant cuisson, moitié en filet à la sortie du four : elle habille la pizza, elle ne graisse aucune poêle. Variable."
+    },
+    {
+      "nom": "Ail cru",
+      "ciqual_code": "11000",
+      "quantite": 3,
+      "unite": "g",
+      "quantite_affichee": "1 gousse (3 g)",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Basilic frais",
+      "ciqual_code": "11033",
+      "quantite": 2,
+      "unite": "g",
+      "quantite_affichee": "2 feuilles",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Préchauffer le four à 230 °C (thermostat 7-8). Éplucher et émincer l'ail, couper les tomates cerises en deux. Étaler la pâte à pizza, répartir le concentré de tomate dessus, puis ajouter l'ail émincé, les tomates cerises, les olives et la moitié de l'huile d'olive.",
+    "Enfourner environ 10 minutes, jusqu'à ce que la pâte gonfle légèrement et que les tomates commencent à dorer. Prolonger de 2 à 3 minutes si nécessaire.",
+    "Sortir la pizza du four et l'arroser du reste d'huile d'olive. Égoutter le thon, l'émietter et le répartir sur la pizza avec le parmesan. Ajouter quelques feuilles de basilic et servir immédiatement."
+  ],
+  "notes": "Annoncée à 450 kcal par MyFitRace pour 43,17 g de glucides, 33,41 g de protéines, 14,81 g de lipides et 1,96 g de sel.\n\nLe thon n'est ajouté qu'APRÈS cuisson, sur la pizza brûlante : il ne cuit pas, il réchauffe. C'est ce qui garde sa texture.\n\nLes deux tiers du sel viennent du thon appertisé, du concentré de tomate et des olives : inutile d'en rajouter."
+}

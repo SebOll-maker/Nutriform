@@ -1,0 +1,60 @@
+{
+  "id": "bowl-avoine-fruits-rouges",
+  "titre": "Bowl avoine, fruits rouges et fromage blanc",
+  "source": "MyFitRace — « Bowl (400) »",
+  "portions_base": 1,
+  "temps_prepa_min": 2,
+  "temps_cuisson_min": 0,
+  "tags": ["petit-déjeuner", "rapide", "végétarien"],
+  "ingredients": [
+    {
+      "nom": "Fromage blanc nature 0 % MG",
+      "ciqual_code": "19644",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de fromage blanc 0 %",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Flocons d'avoine",
+      "ciqual_code": "32140",
+      "quantite": 45,
+      "unite": "g",
+      "quantite_affichee": "45 g de flocons d'avoine",
+      "echelle": "variable",
+      "notes": "Flocons secs : ils ne sont pas cuits ici, ils ramollissent dans le fromage blanc."
+    },
+    {
+      "nom": "Fruits rouges",
+      "ciqual_code": "13997",
+      "quantite": 90,
+      "unite": "g",
+      "quantite_affichee": "90 g de fruits rouges",
+      "echelle": "variable",
+      "notes": "Entrée mélange « framboises, fraises, groseilles, cassis », qui correspond au sachet surgelé du commerce."
+    },
+    {
+      "nom": "Amandes",
+      "ciqual_code": "15041",
+      "quantite": 15,
+      "unite": "g",
+      "quantite_affichee": "15 g d'amandes",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Miel",
+      "ciqual_code": "31008",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de miel",
+      "echelle": "fixe",
+      "notes": "Un filet pour sucrer, au même titre qu'un assaisonnement : 10 g suffisent que le bol fasse 300 ou 600 kcal. Le garder fixe évite qu'un bol calibré haut devienne un dessert."
+    }
+  ],
+  "etapes": [
+    "Dans un bol, verser le fromage blanc. Ajouter les flocons d'avoine et les amandes.",
+    "Déposer les fruits rouges par-dessus, puis arroser de miel.",
+    "Mélanger légèrement, ou savourer tel quel pour profiter de chaque texture."
+  ],
+  "notes": "Annoncée à 399 kcal par MyFitRace pour 48,3 g de glucides, 22,29 g de protéines et 11,28 g de lipides.\n\nAstuces de la recette d'origine : un filet de lait, végétal ou non, assouplit le fromage blanc et enrobe mieux les flocons ; les fruits rouges passés 15 minutes au congélateur donnent un effet glacé façon smoothie bowl ; une pincée de cannelle ou de cacao non sucré varie les saveurs.\n\nSeul le miel est « fixe ». C'est un choix discutable — ce n'est pas un assaisonnement au sens strict — mais il évite qu'un bol calibré à 600 kcal se retrouve avec 15 g de miel et bascule du petit-déjeuner vers le dessert."
+}
