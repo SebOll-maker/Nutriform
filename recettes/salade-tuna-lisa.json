@@ -1,0 +1,114 @@
+{
+  "id": "salade-tuna-lisa",
+  "titre": "Salade tuna lisa",
+  "source": "MyFitRace — « Salade tuna lisa (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 15,
+  "temps_cuisson_min": 10,
+  "tags": ["plat", "poisson", "salade"],
+  "ingredients": [
+    {
+      "nom": "Thon à l'huile d'olive en conserve",
+      "ciqual_code": "26179",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de thon égoutté",
+      "echelle": "variable",
+      "notes": "Entrée « thon germon à l'huile d'olive, égoutté » (192 kcal). Attention : ce n'est PAS le thon au naturel des autres recettes (127 kcal) — l'huile fait 65 kcal d'écart aux 100 g."
+    },
+    {
+      "nom": "Riz basmati cru",
+      "ciqual_code": "9119",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "40 g de riz basmati cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oeuf",
+      "ciqual_code": "22000",
+      "quantite": 58,
+      "unite": "g",
+      "quantite_affichee": "1 oeuf moyen (53 à 63 g)",
+      "echelle": "variable",
+      "unite_piece": 58,
+      "nom_piece": "oeuf"
+    },
+    {
+      "nom": "Haricot vert cru",
+      "ciqual_code": "20061",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de haricots verts",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Poivron rouge cru",
+      "ciqual_code": "20087",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de poivron rouge",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Tomates cerises",
+      "ciqual_code": "20172",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de tomates cerises",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Maïs doux en conserve",
+      "ciqual_code": "20066",
+      "quantite": 25,
+      "unite": "g",
+      "quantite_affichee": "25 g de maïs doux égoutté",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Olives noires",
+      "ciqual_code": "13186",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g d'olives noires",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "1 c. à soupe",
+      "echelle": "variable",
+      "notes": "Elle compose la vinaigrette avec la mayonnaise et le vinaigre : elle assaisonne toute la salade et suit donc sa taille."
+    },
+    {
+      "nom": "Mayonnaise allégée",
+      "ciqual_code": "11079",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle lie la vinaigrette. Fixe : à 297 kcal aux 100 g, la laisser suivre la cible alourdirait vite le plat sans rien apporter au goût."
+    },
+    {
+      "nom": "Vinaigre",
+      "ciqual_code": "11018",
+      "quantite": 10,
+      "unite": "ml",
+      "quantite_affichee": "10 ml de vinaigre",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Cuisson des haricots verts — porter une casserole d'eau salée à ébullition, ajouter les haricots et cuire 10 à 12 minutes jusqu'à ce qu'ils soient tendres. Égoutter et passer sous l'eau froide pour stopper la cuisson et préserver leur couleur. Réserver.",
+    "Cuisson du riz — dans une autre casserole d'eau bouillante salée, cuire le riz selon les indications du paquet, environ 9 minutes. Égoutter et passer sous l'eau froide pour refroidir. Réserver.",
+    "L'oeuf mollet — porter une petite casserole d'eau à ébullition, y plonger délicatement l'oeuf et cuire 6 minutes, ou 5 min 30 s'il sort du réfrigérateur. Le plonger aussitôt dans un bol d'eau froide pour stopper la cuisson, puis l'écaler.",
+    "Légumes et thon — égoutter le thon et l'émietter à la fourchette. Couper les poivrons en petits dés, les tomates cerises en deux et les olives en rondelles.",
+    "Assemblage — dans un grand saladier, mélanger le riz refroidi avec le thon émietté, les haricots verts, le maïs, les tomates cerises, les poivrons et les olives. Mélanger délicatement.",
+    "Vinaigrette — dans un petit bol, fouetter ensemble la mayonnaise, le vinaigre et l'huile d'olive. Saler et poivrer.",
+    "Dressage — verser la vinaigrette sur la salade et bien mélanger. Déposer l'oeuf mollet coupé en deux sur le dessus. Servir immédiatement ou placer au frais."
+  ],
+  "notes": "Annoncée à 649 kcal par MyFitRace pour 43,69 g de glucides, 38,53 g de protéines et 34,21 g de lipides.\n\nSeule recette du lot à utiliser du THON À L'HUILE et non du thon au naturel : 192 kcal aux 100 g contre 127. C'est un point à surveiller si tu substitues un jour l'un à l'autre — l'écart est de 50 kcal sur les 80 g de cette salade.\n\nLa mayonnaise est « fixe » et l'huile d'olive « variable », bien que les deux composent la même vinaigrette. La logique : l'huile assaisonne une salade dont la taille suit la cible, tandis que la mayonnaise sert à lier — il en faut une demi-cuillère, pas davantage, quelle que soit la portion."
+}
