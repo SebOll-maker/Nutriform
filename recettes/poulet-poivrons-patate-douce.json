@@ -1,0 +1,130 @@
+{
+  "id": "poulet-poivrons-patate-douce",
+  "titre": "Brochettes de poulet, poivrons et purée de patate douce",
+  "source": "MyFitRace — « Poulet poivrons & patate douce [600] »",
+  "portions_base": 1,
+  "temps_prepa_min": 15,
+  "temps_cuisson_min": 25,
+  "tags": ["plat", "volaille"],
+  "ingredients": [
+    {
+      "nom": "Escalope de poulet crue",
+      "ciqual_code": "36003",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g d'escalope de poulet",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Patate douce crue",
+      "ciqual_code": "4101",
+      "quantite": 200,
+      "unite": "g",
+      "quantite_affichee": "200 g de patate douce",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Poivron rouge cru",
+      "ciqual_code": "20087",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de poivron rouge",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Lait de coco",
+      "ciqual_code": "18041",
+      "quantite": 30,
+      "unite": "ml",
+      "quantite_affichee": "30 ml de lait de coco",
+      "echelle": "variable",
+      "notes": "Il entre dans la purée et en fait la texture : il suit la quantité de patate douce, donc la cible."
+    },
+    {
+      "nom": "Oignon cru",
+      "ciqual_code": "20034",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g d'oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "variable",
+      "notes": "Elle est mixée dans la purée (option 1) ou versée dessus (option 3) : elle enrichit le plat, elle ne graisse pas seulement la poêle. Variable."
+    },
+    {
+      "nom": "Huile de colza",
+      "ciqual_code": "17130",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait la marinade du poulet avec le citron et les épices : c'est un assaisonnement, la doubler ne rendrait pas le plat meilleur."
+    },
+    {
+      "nom": "Jus de citron",
+      "ciqual_code": "2028",
+      "quantite": 15,
+      "unite": "ml",
+      "quantite_affichee": "le jus d'un demi-citron",
+      "echelle": "fixe",
+      "notes": "MyFitRace compte le demi-fruit (29 g) ; seul son jus entre dans la marinade."
+    },
+    {
+      "nom": "Ail séché en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "1 g",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Graines de cumin",
+      "ciqual_code": "11042",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "20031",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de salade verte au choix",
+      "echelle": "fixe",
+      "notes": "Accompagnement, comme dans le poulet basquaise."
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Huile d'olive de la salade",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Vinaigrette de l'accompagnement : fixe avec lui."
+    }
+  ],
+  "etapes": [
+    "Purée de patate douce, option 1 (à l'eau) — éplucher et couper les patates douces en petits morceaux, les cuire 10 minutes à l'eau bouillante salée. Égoutter puis mixer avec le lait de coco et l'huile d'olive. Saler et poivrer.",
+    "Option 2 (à la poêle) — éplucher et couper les patates douces en morceaux, hacher finement l'oignon. Dans une poêle à feu moyen avec un filet d'huile d'olive, faire revenir l'oignon, ajouter la patate douce et cuire 25 minutes en remuant. Ajouter le lait de coco à mi-cuisson et bien mélanger.",
+    "Option 3 (au four) — laver les patates douces et les envelopper dans du papier aluminium. Enfourner à 190 °C pendant 45 minutes. Une fois cuites, les couper en deux et ajouter un filet d'huile d'olive, du lait de coco, du sel et du poivre.",
+    "Brochettes de poulet — dans un bol, mélanger l'huile de colza, les épices, l'ail, le jus de citron, le sel et le poivre pour faire la marinade. Couper le poulet en morceaux et les poivrons en carrés, les mélanger dans la marinade et laisser reposer quelques minutes. Dans une poêle à feu moyen, cuire le poulet et les poivrons 6 minutes en remuant régulièrement — avec les oignons si l'option 1 a été retenue pour les patates douces.",
+    "Dressage — disposer la purée ou la poêlée de patate douce dans l'assiette, ajouter les brochettes de poulet et de poivrons. Saler et poivrer.",
+    "Salade — laver et essorer la salade, la mélanger avec le vinaigre balsamique et l'huile d'olive. Saler, poivrer et servir immédiatement."
+  ],
+  "notes": "Annoncée à 644 kcal par MyFitRace pour 45,28 g de glucides, 41,67 g de protéines et 30,49 g de lipides.\n\nAstuces de la recette d'origine : piquer les patates douces à la fourchette avant la cuisson au four ; laisser mariner le poulet au frais au moins 30 minutes pour qu'il absorbe mieux les épices et le citron ; les brochettes peuvent se servir sans pique, simplement poêlées.\n\nTrois huiles distinctes dans cette recette, classées différemment selon l'usage : l'huile d'olive de la purée est « variable » car elle est mixée dedans, celle de la vinaigrette est « fixe » avec la salade, et l'huile de colza est « fixe » car elle compose la marinade.\n\nCuriosité de la fiche d'origine : son titre annonce [600] mais l'intitulé de la liste d'ingrédients porte (900). Les valeurs affichées, 644 kcal, correspondent bien à la version [600]."
+}
