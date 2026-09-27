@@ -1,0 +1,59 @@
+{
+  "id": "tagliatelles-saumon-fume",
+  "titre": "Tagliatelles au saumon fumé",
+  "source": "MyFitRace — « Tagliatelles au saumon fumé (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 15,
+  "tags": [
+    "plat",
+    "poisson",
+    "pâtes"
+  ],
+  "ingredients": [
+    {
+      "nom": "Tagliatelles crues",
+      "ciqual_code": "9810",
+      "quantite": 90,
+      "unite": "g",
+      "quantite_affichee": "90 g de tagliatelles crues",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Saumon fumé",
+      "ciqual_code": "26037",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de saumon fumé",
+      "echelle": "variable",
+      "notes": "Entrée générique « Saumon fumé ». Le saumon sauvage fumé (26695) serait bien moins gras, 121 kcal contre 184 : c'est l'écart entre deux produits du même rayon."
+    },
+    {
+      "nom": "Crème légère semi-épaisse",
+      "ciqual_code": "19430",
+      "quantite": 60,
+      "unite": "ml",
+      "quantite_affichee": "60 ml de crème légère",
+      "echelle": "variable",
+      "notes": "Crème à 12-25 % MG et non la crème entière à 30 % des autres recettes : c'est ce que la fiche précise, et cela change beaucoup les lipides."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 3.75,
+      "unite": "ml",
+      "quantite_affichee": "1/4 c. à soupe",
+      "echelle": "variable",
+      "notes": "Elle enrobe les pâtes égouttées, elle ne graisse aucune poêle : elle suit donc la quantité de pâtes."
+    }
+  ],
+  "etapes": [
+    "Plonger les tagliatelles dans une grande casserole d'eau bouillante salée et les cuire selon les indications du paquet.",
+    "Pendant ce temps, découper les tranches de saumon fumé en fines lamelles et les réserver.",
+    "Égoutter les pâtes et ajouter immédiatement l'huile d'olive. Mélanger pour bien les enrober.",
+    "Remettre les pâtes dans la casserole à feu doux et incorporer la crème fraîche. Ajouter une petite louche d'eau de cuisson pour assouplir la sauce et mélanger 30 secondes.",
+    "Ajouter la majorité du saumon fumé à la préparation et mélanger. Garder quelques morceaux pour la présentation.",
+    "Saler et poivrer. Servir immédiatement en disposant les morceaux de saumon réservés sur le dessus."
+  ],
+  "notes": "Annoncée à 616 kcal par MyFitRace pour 66,66 g de glucides, 30,39 g de protéines et 24,39 g de lipides.\n\nLe saumon fumé n'est PAS cuit : il est ajouté hors du feu, sur les pâtes chaudes. C'est ce qui préserve sa texture — le passer à la casserole le ferait durcir.\n\nÀ comparer avec les tagliatelles au saumon FRAIS déjà enregistrées : 622 kcal contre 629, presque les mêmes. Mais la version fraîche apporte 34 g de protéines contre 30, et surtout 0,3 g de sel contre 2,4 ici. Le fumage multiplie le sel par huit à lui seul — c'est le vrai point de comparaison entre les deux recettes, pas les calories.\n\nToute l'huile d'olive est « variable » ici : elle enrobe les pâtes égouttées au lieu de graisser une poêle. C'est la troisième lecture différente de cette même cuillère d'huile dans le lot."
+}
