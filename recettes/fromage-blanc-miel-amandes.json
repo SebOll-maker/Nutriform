@@ -1,0 +1,41 @@
+{
+  "id": "fromage-blanc-miel-amandes",
+  "titre": "Fromage blanc, miel et amandes",
+  "source": "MyFitRace — « Fromage blanc miel (200) »",
+  "portions_base": 1,
+  "temps_prepa_min": 1,
+  "temps_cuisson_min": 0,
+  "tags": ["collation", "rapide", "végétarien", "sans gluten"],
+  "ingredients": [
+    {
+      "nom": "Fromage blanc nature 0 % MG",
+      "ciqual_code": "19644",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de fromage blanc 0 %",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Amandes",
+      "ciqual_code": "15041",
+      "quantite": 15,
+      "unite": "g",
+      "quantite_affichee": "15 g d'amandes",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Miel",
+      "ciqual_code": "31008",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de miel",
+      "echelle": "fixe",
+      "notes": "Fixe, comme dans le bowl d'avoine : une collation calibrée plus haut doit gagner en fromage blanc et en amandes, pas en sucre."
+    }
+  ],
+  "etapes": [
+    "Verser le fromage blanc dans un bol.",
+    "Ajouter le miel et les amandes par-dessus."
+  ],
+  "notes": "Annoncée à 199 kcal par MyFitRace pour 15,15 g de glucides, 14,9 g de protéines, 8,07 g de lipides et 0,18 g de sel.\n\nLa fiche MyFitRace est incohérente sur les lipides : elle annonce 8,07 g au total mais 0,02 g d'acides gras monoinsaturés et 0 g de polyinsaturés, alors que les 15 g d'amandes en apportent à eux seuls près de 6 g de monoinsaturés. Le total est juste, sa décomposition ne l'est pas. Même travers que le sel et le sodium des pancakes protéinés : leurs sous-totaux ne sont pas fiables.\n\nC'est le bowl d'avoine privé de ses flocons et de ses fruits rouges — la version de dix secondes."
+}
