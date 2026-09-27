@@ -128,6 +128,7 @@ commun, et c'est l'intérêt même du partage.
 | `import_ciqual.py` | xlsx ANSES → table `aliment` |
 | `tools/generer_icones.py` | régénère les icônes PNG de la PWA (encodeur PNG maison, pas de Pillow) |
 | `tools/gerer_comptes.py` | comptes en ligne de commande — indispensable à l'amorçage |
+| `tools/auditer_recettes.py` | vérifie que chaque ingrédient pointe vers la bonne fiche Ciqual |
 
 ### Le calibrage calorique (`nutrition.py`)
 

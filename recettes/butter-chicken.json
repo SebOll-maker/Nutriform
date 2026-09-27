@@ -1,0 +1,99 @@
+{
+  "id": "butter-chicken",
+  "titre": "Butter chicken",
+  "source": "MyFitRace — « Butter chicken (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 5,
+  "temps_cuisson_min": 10,
+  "tags": ["plat", "volaille"],
+  "ingredients": [
+    {
+      "nom": "Escalope de poulet crue",
+      "ciqual_code": "36003",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g d'escalope de poulet",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Riz basmati cru",
+      "ciqual_code": "9119",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de riz basmati cru",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Purée de tomate",
+      "ciqual_code": "20170",
+      "quantite": 80,
+      "unite": "g",
+      "quantite_affichee": "80 g de purée de tomate",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon cru",
+      "ciqual_code": "20034",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "40 g d'oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Beurre doux",
+      "ciqual_code": "16400",
+      "quantite": 10,
+      "unite": "g",
+      "quantite_affichee": "10 g de beurre",
+      "echelle": "variable",
+      "notes": "C'est le beurre du « butter chicken » : il fait la sauce avec la crème et la tomate, il ne graisse pas la poêle — l'huile d'olive s'en charge avant lui. Variable, donc."
+    },
+    {
+      "nom": "Crème fraîche 30 % MG",
+      "ciqual_code": "19410",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g de crème fraîche 30 %",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 11.25,
+      "unite": "ml",
+      "quantite_affichee": "3/4 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait revenir l'oignon et dorer le poulet."
+    },
+    {
+      "nom": "Ail séché en poudre",
+      "ciqual_code": "11023",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Paprika en poudre",
+      "ciqual_code": "11049",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Curry en poudre",
+      "ciqual_code": "11005",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Cuisson du riz — porter une casserole d'eau salée à ébullition, ajouter le riz et cuire 9 minutes. Égoutter et réserver.",
+    "Poulet et sauce — dans une poêle, faire chauffer l'huile d'olive à feu moyen. Ajouter l'oignon finement haché et le faire revenir 2 minutes. Couper le poulet en morceaux, l'ajouter et le faire dorer 3 minutes en remuant régulièrement. Ajouter ensuite le beurre, le paprika, le curry et l'ail en poudre ; mélanger et laisser cuire 1 minute pour libérer les arômes. Incorporer la purée de tomates et la crème fraîche, puis laisser mijoter 5 minutes à feu doux.",
+    "Servir le poulet en sauce avec le riz basmati. Saler et poivrer."
+  ],
+  "notes": "Annoncée à 636 kcal par MyFitRace pour 49,5 g de glucides, 42,39 g de protéines et 28,46 g de lipides.\n\nLe beurre est classé « variable » alors qu'il est « fixe » ailleurs : ici il n'est pas une matière grasse de cuisson — l'huile d'olive a déjà fait ce travail — mais l'ingrédient qui donne son nom au plat et compose sa sauce avec la crème et la tomate. L'ordre des étapes le montre bien : il arrive après le poulet doré, avec les épices.\n\nQuatrième déclinaison du couple poulet-riz de ce lot, après le basquaise, le crémeux et les brochettes. Elles se ressemblent en macros mais pas en goût."
+}
