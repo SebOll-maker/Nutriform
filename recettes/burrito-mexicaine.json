@@ -1,0 +1,105 @@
+{
+  "id": "burrito-mexicaine",
+  "titre": "Burrito à la mexicaine",
+  "source": "MyFitRace — « Burrito à la mexicaine (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 10,
+  "temps_cuisson_min": 15,
+  "tags": ["plat", "boeuf"],
+  "ingredients": [
+    {
+      "nom": "Tortilla de blé",
+      "ciqual_code": "7815",
+      "quantite": 41,
+      "unite": "g",
+      "quantite_affichee": "1 tortilla souple (41 g)",
+      "echelle": "variable",
+      "unite_piece": 41,
+      "nom_piece": "tortilla",
+      "notes": "La fiche d'origine écrit « 1 Tortilla (41 g) — environ 2 tortillas », ce qui se contredit. Les 42,4 g de glucides annoncés ne collent qu'avec UNE tortilla : c'est la quantité retenue. Comptée à la pièce entière, on ne garnit pas 1,4 tortilla."
+    },
+    {
+      "nom": "Steak haché de boeuf 15 % MG",
+      "ciqual_code": "6254",
+      "quantite": 130,
+      "unite": "g",
+      "quantite_affichee": "130 g de steak haché 15 % MG",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Haricots rouges cuits",
+      "ciqual_code": "20503",
+      "quantite": 40,
+      "unite": "g",
+      "quantite_affichee": "40 g de haricots rouges",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Maïs doux en conserve",
+      "ciqual_code": "20066",
+      "quantite": 20,
+      "unite": "g",
+      "quantite_affichee": "20 g de maïs doux égoutté",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Purée de tomate",
+      "ciqual_code": "20170",
+      "quantite": 60,
+      "unite": "g",
+      "quantite_affichee": "60 g de purée de tomate",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Tomate",
+      "ciqual_code": "20276",
+      "quantite": 60,
+      "unite": "g",
+      "quantite_affichee": "60 g de tomate",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon cru",
+      "ciqual_code": "20034",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g d'oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "20031",
+      "quantite": 100,
+      "unite": "g",
+      "quantite_affichee": "100 g de salade verte au choix",
+      "echelle": "variable",
+      "notes": "Ici la salade GARNIT le burrito, elle ne l'accompagne pas : elle est donc « variable », contrairement à celle du poulet basquaise qui arrive à côté dans l'assiette. C'est la même feuille de laitue, mais pas le même rôle."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 11.25,
+      "unite": "ml",
+      "quantite_affichee": "3/4 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait revenir l'oignon et le boeuf dans la poêle."
+    },
+    {
+      "nom": "Mélange d'épices mexicaines (chilli)",
+      "ciqual_code": "11081",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "1 g",
+      "echelle": "fixe",
+      "notes": "Ciqual n'a pas d'entrée « épices mexicaines » : l'entrée générique « Epice (aliment moyen) » en tient lieu. À 1 g, l'approximation ne pèse rien."
+    }
+  ],
+  "etapes": [
+    "Cuisson du bœuf et des légumes — émincer l'oignon. Dans une poêle chaude avec un filet d'huile d'olive, le faire revenir 2 minutes. Ajouter le bœuf haché et le mélange d'épices mexicaines, cuire 5 minutes en remuant régulièrement.",
+    "Haricots et sauce tomate — incorporer la purée de tomates et les haricots rouges dans la poêle. Mélanger et laisser mijoter à feu doux 3 minutes, pour que les saveurs se développent.",
+    "La tortilla — la réchauffer 20 secondes au micro-ondes ou dans une poêle chaude, pour la rendre plus souple.",
+    "Assemblage — sur la tortilla, disposer quelques feuilles de salade, des lamelles de tomates et un peu de maïs. Ajouter la préparation de bœuf et haricots. Plier les côtés, rouler fermement et poser la jointure vers le bas.",
+    "Finition — déguster tel quel, ou faire dorer 1 minute par côté dans une poêle chaude pour un effet croustillant. Saler et poivrer."
+  ],
+  "notes": "Annoncée à 637 kcal par MyFitRace pour 42,41 g de glucides, 37,28 g de protéines et 33,34 g de lipides.\n\nAstuces de la recette d'origine : une touche de paprika fumé ou de cumin dans la viande pour un goût plus authentique ; pour un burrito croustillant, le passer rapidement à la poêle ou sous le grill sans ajouter de matière grasse.\n\nLa salade verte est « variable » ici alors qu'elle est « fixe » dans le poulet basquaise : même ingrédient, rôle différent. Elle garnit le burrito au lieu de l'accompagner."
+}
