@@ -5,7 +5,12 @@
   "portions_base": 1,
   "temps_prepa_min": 1,
   "temps_cuisson_min": 0,
-  "tags": ["collation", "rapide", "sans gluten", "sans lactose"],
+  "tags": [
+    "collation",
+    "rapide",
+    "sans gluten",
+    "sans lactose"
+  ],
   "ingredients": [
     {
       "nom": "Blanc de poulet en tranche",
@@ -29,5 +34,5 @@
   "etapes": [
     "Prendre le fruit de son choix et les tranches de volaille."
   ],
-  "notes": "Annoncée à 195 kcal par MyFitRace pour 17,72 g de glucides, 25,25 g de protéines et 2,34 g de lipides.\n\nCollation à deux ingrédients, la plus protéinée du lot : 25 g de protéines pour 200 kcal, soit la moitié des calories. À comparer aux amandes ou aux noix, qui n'en apportent presque pas.\n\nLa fiche d'origine se contredit dans son propre titre : « jambon de dinde » d'un côté, « blanc de poulet en tranche » dans les ingrédients. L'écart entre les deux est de six calories aux 100 g."
+  "notes": "Annoncée à 195 kcal par MyFitRace pour 17,72 g de glucides, 25,25 g de protéines et 2,34 g de lipides.\n\nCollation à deux ingrédients, la plus protéinée du lot : 25 g de protéines pour 200 kcal, soit la moitié des calories. À comparer aux amandes ou aux noix, qui n'en apportent presque pas.\n\nLa fiche d'origine se contredit dans son propre titre : « jambon de dinde » d'un côté, « blanc de poulet en tranche » dans les ingrédients. L'écart entre les deux est de six calories aux 100 g.\n\nSEL : 2.2 g par portion selon Ciqual, 2,24 g selon MyFitRace — les deux concordent. C'est beaucoup pour une collation de 200 kcal, et cela vient entièrement de la charcuterie de volaille. Une poignée d'amandes, à calories comparables, n'en apporte aucun."
 }
