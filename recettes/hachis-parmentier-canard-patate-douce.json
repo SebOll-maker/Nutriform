@@ -1,0 +1,98 @@
+{
+  "id": "hachis-parmentier-canard-patate-douce",
+  "titre": "Hachis parmentier de canard à la patate douce",
+  "source": "MyFitRace — « Hachis parmentier de canard à la patate douce (600) »",
+  "portions_base": 1,
+  "temps_prepa_min": 45,
+  "temps_cuisson_min": 30,
+  "tags": ["plat", "volaille"],
+  "ingredients": [
+    {
+      "nom": "Confit de canard",
+      "ciqual_code": "8110",
+      "quantite": 110,
+      "unite": "g",
+      "quantite_affichee": "110 g de confit de canard",
+      "echelle": "variable",
+      "notes": "Entrée « Confit de canard, appertisé » (273 kcal), soit le morceau tel qu'il sort du bocal — c'est ce que compte MyFitRace, et c'est ce que tu pèses à l'achat. Mais la recette fait retirer la peau et les os : ce qui finit dans le plat est plus proche de l'entrée « viande de cuisse sans peau » (195 kcal), soit environ 85 kcal de moins. Le chiffre retenu ici majore donc légèrement."
+    },
+    {
+      "nom": "Patate douce crue",
+      "ciqual_code": "4101",
+      "quantite": 150,
+      "unite": "g",
+      "quantite_affichee": "150 g de patate douce",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Oignon cru",
+      "ciqual_code": "20034",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g d'oignon",
+      "echelle": "variable"
+    },
+    {
+      "nom": "Crème fraîche 30 % MG",
+      "ciqual_code": "19410",
+      "quantite": 25,
+      "unite": "g",
+      "quantite_affichee": "25 g de crème fraîche 30 %",
+      "echelle": "variable",
+      "notes": "Elle fait l'onctuosité de la purée : elle suit la patate douce."
+    },
+    {
+      "nom": "Huile d'olive vierge extra",
+      "ciqual_code": "17270",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe",
+      "notes": "Elle fait revenir l'oignon dans la poêle."
+    },
+    {
+      "nom": "Noix de muscade en poudre",
+      "ciqual_code": "11048",
+      "quantite": 1,
+      "unite": "g",
+      "quantite_affichee": "à votre convenance",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Salade verte",
+      "ciqual_code": "20031",
+      "quantite": 50,
+      "unite": "g",
+      "quantite_affichee": "50 g de salade verte au choix",
+      "echelle": "fixe",
+      "notes": "Accompagnement."
+    },
+    {
+      "nom": "Vinaigre balsamique",
+      "ciqual_code": "11091",
+      "quantite": 7.5,
+      "unite": "ml",
+      "quantite_affichee": "1/2 c. à soupe",
+      "echelle": "fixe"
+    },
+    {
+      "nom": "Huile d'olive de la salade",
+      "ciqual_code": "17270",
+      "quantite": 3.75,
+      "unite": "ml",
+      "quantite_affichee": "1/4 c. à soupe",
+      "echelle": "fixe"
+    }
+  ],
+  "etapes": [
+    "Préchauffer le four à 180 °C.",
+    "Cuisson des patates douces — les éplucher, les couper en morceaux et les cuire dans une cocotte d'eau bouillante 35 minutes, jusqu'à ce qu'elles soient bien tendres.",
+    "La purée — égoutter puis écraser les patates douces. Ajouter la crème fraîche, la muscade, le sel et le poivre. Bien mélanger pour obtenir une texture lisse et onctueuse.",
+    "Le confit — retirer la peau et désosser le confit de canard, ne conserver que la chair. L'effilocher à la fourchette.",
+    "Oignons et confit — émincer l'oignon et le faire revenir dans une poêle avec l'huile d'olive 3 minutes. Ajouter le confit effiloché et cuire encore 2 minutes en mélangeant.",
+    "Montage — dans un plat à gratin, répartir la viande au fond puis recouvrir de purée.",
+    "Cuisson — enfourner à 180 °C pendant 30 minutes, jusqu'à ce que le dessus soit légèrement doré.",
+    "Servir avec la salade verte assaisonnée de vinaigre balsamique et d'huile d'olive."
+  ],
+  "notes": "Annoncée à 642 kcal par MyFitRace pour 33,5 g de glucides, 32,46 g de protéines et 40,55 g de lipides.\n\nLe point délicat est le confit. Ciqual distingue le morceau entier tel qu'il sort du bocal (273 kcal aux 100 g) et la seule chair de cuisse sans peau (195 kcal). La recette fait retirer la peau, mais les 110 g annoncés correspondent au morceau entier. J'ai retenu le morceau entier, comme MyFitRace, ce qui majore d'environ 85 kcal par rapport à ce qui est réellement mangé. Si tu veux l'autre lecture, il suffit de remplacer le code 8110 par 8109 dans le fichier.\n\nC'est de loin la recette la plus grasse du lot : 40 g de lipides, dont l'essentiel vient du confit et de la crème."
+}
