@@ -17,3 +17,7 @@ recettes/Photos Recette/
 .DS_Store
 Thumbs.db
 *.log
+
+# Page privee : images et PDF copies depuis Etude-de-cas/ au moment de publier
+deploy/page-privee/*.png
+deploy/page-privee/*.pdf
