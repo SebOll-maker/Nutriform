@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 1170" width="1480" height="1170" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<title>Nutriform — architecture réseau et applicative</title>
+<style>
+  .panel{fill:#f7f8fa;stroke:#d8dce3;stroke-width:1.5}
+  .box{fill:#ffffff;stroke:#c6ccd6;stroke-width:1.4}
+  .boxnet{fill:#ffffff;stroke:#3b6fd4;stroke-width:1.6}
+  .boxapp{fill:#ffffff;stroke:#0f766e;stroke-width:1.6}
+  .boxwarn{fill:#fff8ed;stroke:#c2801a;stroke-width:1.5}
+  .boxkey{fill:#f2f7ff;stroke:#3b6fd4;stroke-width:1.4}
+  .mini{fill:#fbfcfe;stroke:#c6ccd6;stroke-width:1.2}
+  .minihot{fill:#eaf1ff;stroke:#3b6fd4;stroke-width:1.6}
+  .t{fill:#1f2937;font-size:13.5px}
+  .tb{fill:#111827;font-size:15px;font-weight:600}
+  .tm{fill:#6b7280;font-size:12.5px}
+  .twarn{fill:#8a5a12;font-size:12.5px}
+  .lab{fill:#2c56a8;font-size:12px;font-weight:600}
+</style>
+<defs>
+  <marker id="fleche" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#5b667a"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="1480" height="1170" fill="#ffffff"/>
+
+<text x="40" y="46" fill="#111827" font-size="27" font-weight="700">Nutriform — architecture réseau et applicative</text>
+<text class="tm" x="40" y="72">VPS Hostinger 76.13.63.150 · Ubuntu 22.04 · relevé du 28/09/2026 · https://nutriform.seboll.tech</text>
+
+<rect class="panel" x="36" y="96" width="676" height="1036" rx="14"/>
+<text class="tb" x="60" y="128" fill="#2c56a8">1 · RÉSEAU — du téléphone au conteneur</text>
+
+<rect class="boxnet" x="64" y="146" width="620" height="82" rx="9"/>
+<text class="tb" x="82" y="172">Clients</text>
+<text class="t" x="82" y="194">iPhone — PWA installée sur l'écran d'accueil · Navigateur sur le PC</text>
+<text class="tm" x="82" y="215">2 comptes nominatifs : Sébastien (admin) et Mumu — mots de passe hachés en scrypt</text>
+
+<line x1="374" y1="228" x2="374" y2="266" stroke="#5b667a" stroke-width="1.6" marker-end="url(#fleche)"/>
+<text class="lab" x="390" y="252">HTTPS 443 — TLS, certificats Let's Encrypt (4 domaines)</text>
+
+<rect class="boxnet" x="64" y="272" width="620" height="62" rx="9"/>
+<text class="tb" x="82" y="298">DNS</text>
+<text class="t" x="82" y="320">nutriform.seboll.tech → enregistrement A → 76.13.63.150</text>
+
+<line x1="374" y1="334" x2="374" y2="372" stroke="#5b667a" stroke-width="1.6" marker-end="url(#fleche)"/>
+
+<rect class="boxnet" x="64" y="378" width="620" height="112" rx="9"/>
+<text class="tb" x="82" y="404">Périmètre — ufw + Fail2ban</text>
+<text class="t" x="82" y="426">ufw : seuls <tspan font-weight="600">22 (SSH), 80 (ACME) et 443</tspan> sont ouverts. Tout le reste est fermé.</text>
+<text class="t" x="82" y="448">Fail2ban : 4 prisons — sshd (mode agressif), nginx-http-auth, nginx-botsearch,</text>
+<text class="t" x="82" y="469">recidive, qui bannit tous les ports et double la durée à chaque récidive.</text>
+
+<line x1="374" y1="490" x2="374" y2="528" stroke="#5b667a" stroke-width="1.6" marker-end="url(#fleche)"/>
+
+<rect class="boxnet" x="64" y="534" width="620" height="198" rx="9"/>
+<text class="tb" x="82" y="560">nginx — terminaison TLS et routage par nom de domaine</text>
+<rect class="mini" x="82" y="574" width="584" height="26" rx="6"/>
+<text class="t" x="94" y="592">000-defaut · IP nue ou hôte inconnu → <tspan font-weight="600">return 444</tspan> (connexion fermée)</text>
+<rect class="minihot" x="82" y="606" width="584" height="26" rx="6"/>
+<text class="t" x="94" y="624">nutriform.seboll.tech → proxy_pass <tspan font-weight="600">127.0.0.1:5001</tspan></text>
+<rect class="mini" x="82" y="638" width="584" height="26" rx="6"/>
+<text class="t" x="94" y="656">demo-ncr.seboll.tech → 127.0.0.1:4180 (oauth2-proxy → SSO Keycloak)</text>
+<rect class="mini" x="82" y="670" width="584" height="26" rx="6"/>
+<text class="t" x="94" y="688">auth.seboll.tech → 127.0.0.1:8081 · seboll.tech → 127.0.0.1:8082 (vitrine)</text>
+<text class="tm" x="82" y="718">Nutriform n'est pas derrière le SSO : il a ses propres comptes — voir panneau 2.</text>
+
+<line x1="374" y1="732" x2="374" y2="770" stroke="#5b667a" stroke-width="1.6" marker-end="url(#fleche)"/>
+<text class="lab" x="390" y="756">HTTP en clair, mais sur la loopback seulement</text>
+
+<rect class="boxnet" x="64" y="776" width="620" height="196" rx="9"/>
+<text class="tb" x="82" y="802">Docker — tous les ports publiés sur 127.0.0.1</text>
+<rect class="minihot" x="82" y="816" width="286" height="48" rx="6"/>
+<text class="tb" x="94" y="836" font-size="13.5">nutriform-app</text>
+<text class="tm" x="94" y="855">image nutriform:local</text>
+<rect class="mini" x="380" y="816" width="286" height="48" rx="6"/>
+<text class="tb" x="392" y="836" font-size="13.5">keycloak + keycloak-db</text>
+<text class="tm" x="392" y="855">PostgreSQL 16, jamais exposé</text>
+<rect class="mini" x="82" y="872" width="286" height="48" rx="6"/>
+<text class="tb" x="94" y="892" font-size="13.5">ncr-app + oauth2-proxy</text>
+<text class="tm" x="94" y="911">intranet qualité, derrière le SSO</text>
+<rect class="mini" x="380" y="872" width="286" height="48" rx="6"/>
+<text class="tb" x="392" y="892" font-size="13.5">site-vitrine</text>
+<text class="tm" x="392" y="911">seboll.tech</text>
+<text class="tm" x="82" y="945">restart unless-stopped · l'unité systemd nutriform.service est conservée</text>
+<text class="tm" x="82" y="963">mais désactivée depuis la conteneurisation du 28/09/2026.</text>
+
+<rect class="boxwarn" x="64" y="988" width="620" height="78" rx="9"/>
+<text class="tb" x="82" y="1012" fill="#8a5a12">Pourquoi la loopback, et non 0.0.0.0</text>
+<text class="twarn" x="82" y="1033">Docker insère ses règles avant la chaîne INPUT : un port publié sur 0.0.0.0</text>
+<text class="twarn" x="82" y="1052">échapperait à ufw comme à Fail2ban. nginx reste le seul point d'entrée.</text>
+
+<rect class="panel" x="752" y="96" width="692" height="1036" rx="14"/>
+<text class="tb" x="776" y="128" fill="#0f766e">2 · APPLICATION — à l'intérieur du conteneur</text>
+
+<rect class="boxapp" x="780" y="146" width="636" height="74" rx="9"/>
+<text class="tb" x="798" y="172">waitress → Flask</text>
+<text class="t" x="798" y="194">32 routes : 13 en lecture seule, 19 en écriture · TZ=Europe/Paris</text>
+<text class="tm" x="798" y="213">Python 3.12 · Flask 3.1 · waitress 3.0 · openpyxl · aucune dépendance front</text>
+
+<line x1="1098" y1="220" x2="1098" y2="256" stroke="#5b667a" stroke-width="1.6" marker-end="url(#fleche)"/>
+
+<rect class="boxapp" x="780" y="262" width="636" height="196" rx="9"/>
+<text class="tb" x="798" y="288">Chaîne de garde — franchie par chaque requête</text>
+<rect class="boxkey" x="798" y="302" width="600" height="30" rx="7"/>
+<text class="t" x="810" y="322"><tspan font-weight="600">before_request</tspan> — jeton CSRF exigé sur toute requête non-GET, sinon 400</text>
+<rect class="boxkey" x="798" y="338" width="600" height="30" rx="7"/>
+<text class="t" x="810" y="358"><tspan font-weight="600">@login_required</tspan> — sinon /connexion?suivant=… (destination validée)</text>
+<rect class="boxkey" x="798" y="374" width="600" height="30" rx="7"/>
+<text class="t" x="810" y="394"><tspan font-weight="600">@admin_required</tspan> — gestion des comptes seulement, jamais les données</text>
+<rect class="boxkey" x="798" y="410" width="600" height="30" rx="7"/>
+<text class="t" x="810" y="430"><tspan font-weight="600">pid()</tspan> — l'identité vient de la SESSION, jamais de la requête</text>
+<text class="tm" x="798" y="452">Cookie de session : Secure + HttpOnly + SameSite=Strict</text>
+
+<line x1="1098" y1="458" x2="1098" y2="494" stroke="#5b667a" stroke-width="1.6" marker-end="url(#fleche)"/>
+
+<rect class="boxapp" x="780" y="500" width="636" height="152" rx="9"/>
+<text class="tb" x="798" y="526">Modules métier — aucun ne lit la requête, aucun n'écrit de HTML</text>
+<rect class="mini" x="798" y="540" width="292" height="46" rx="6"/>
+<text class="tb" x="810" y="560" font-size="13.5">nutrition.py</text>
+<text class="tm" x="810" y="578">calibrage calorique, arrondi aux pièces</text>
+<rect class="mini" x="1106" y="540" width="292" height="46" rx="6"/>
+<text class="tb" x="1118" y="560" font-size="13.5">personnes.py</text>
+<text class="tm" x="1118" y="578">scrypt — le condensat ne sort pas</text>
+<rect class="mini" x="798" y="594" width="292" height="46" rx="6"/>
+<text class="tb" x="810" y="614" font-size="13.5">planning · journal · courses</text>
+<text class="tm" x="810" y="632">personne_id en 1er argument</text>
+<rect class="mini" x="1106" y="594" width="292" height="46" rx="6"/>
+<text class="tb" x="1118" y="614" font-size="13.5">recettes · aliments · db</text>
+<text class="tm" x="1118" y="632">données partagées, schéma versionné</text>
+
+<line x1="1098" y1="652" x2="1098" y2="688" stroke="#5b667a" stroke-width="1.6" marker-end="url(#fleche)"/>
+
+<rect class="boxapp" x="780" y="694" width="636" height="212" rx="9"/>
+<text class="tb" x="798" y="720">Données — deux mondes, montés depuis l'hôte</text>
+<rect class="mini" x="798" y="734" width="600" height="82" rx="6"/>
+<text class="tb" x="810" y="754" font-size="13.5">SQLite · /opt/nutriform/data/nutriform.db → /data</text>
+<text class="t" x="810" y="776"><tspan fill="#0f766e" font-weight="600">Privées</tspan> (personne_id) : planning · journal · poids · reglage · courses_coche</text>
+<text class="t" x="810" y="797"><tspan fill="#2c56a8" font-weight="600">Partagées</tspan> : aliment 3 487 (Ciqual + 3 perso) · unite_equiv 9 · personne 2</text>
+<rect class="mini" x="798" y="824" width="600" height="46" rx="6"/>
+<text class="tb" x="810" y="844" font-size="13.5">Recettes · /opt/nutriform/recettes → /app/recettes</text>
+<text class="t" x="810" y="862">50 fichiers JSON, communs à tous les comptes, versionnés dans Git</text>
+<text class="tm" x="798" y="892">Sauvegarde quotidienne : /etc/cron.daily → /root/sauvegardes, 30 jours de rétention</text>
+
+<rect class="boxwarn" x="780" y="928" width="636" height="72" rx="9"/>
+<text class="tb" x="798" y="952" fill="#8a5a12">La règle qui tient tout l'édifice</text>
+<text class="twarn" x="798" y="973">L'administrateur crée et désactive des comptes, mais aucune route ne lui</text>
+<text class="twarn" x="798" y="992">donne accès au journal, aux pesées ni au planning d'un autre. 102 assertions.</text>
+
+<rect class="box" x="780" y="1014" width="636" height="88" rx="9"/>
+<text class="tb" x="798" y="1038">Chaîne de livraison</text>
+<text class="t" x="798" y="1060">PC → git push → GitHub (dépôt privé) → tar + scp → /opt/nutriform</text>
+<text class="t" x="798" y="1081">→ docker compose build &amp; up. La base et les recettes survivent au déploiement.</text>
+
+</svg>
