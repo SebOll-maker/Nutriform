@@ -28,9 +28,5 @@ vérifie en trichant délibérément sur les identifiants d'URL.
 
 ## Ce que le schéma ne dit pas
 
-Le déploiement décrit en bas à droite passe encore par `installer-vps.sh`, écrit
-pour systemd. Depuis la conteneurisation du 28/09/2026, l'unité est désactivée
-et le script ne sait pas reconstruire l'image : voir la note de `DEPLOY.md`.
-
 Pour régénérer le schéma après un changement d'infrastructure, refaire le relevé
 sur le serveur — le SVG est écrit à la main, il ne se génère pas tout seul.

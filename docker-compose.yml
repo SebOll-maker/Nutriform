@@ -1,0 +1,34 @@
+# Nutriform — suivi nutritionnel familial.
+# Chaine : nginx hote (TLS) -> 127.0.0.1:5001 -> conteneur
+#
+# Deux bind mounts, volontairement :
+#   ./data     la base SQLite. Reste a /opt/nutriform/data/nutriform.db sur l'hote,
+#              donc /etc/cron.daily/nutriform-sauvegarde continue de marcher sans
+#              la moindre modification.
+#   ./recettes l'appli y ECRIT au runtime (recettes.ecrire), et tu y deposes les
+#              JSON produits depuis tes sessions Claude Code. Dans l'image, il
+#              faudrait reconstruire a chaque recette ajoutee.
+name: nutriform
+
+services:
+  app:
+    build: .
+    image: nutriform:local
+    container_name: nutriform-app
+    restart: unless-stopped
+    # uid:gid de l'utilisateur "nutriform" de l'hote
+    user: "113:121"
+    environment:
+      NF_DB: /data/nutriform.db
+      # 0.0.0.0 dans le conteneur ; la publication ci-dessous le limite a la
+      # loopback de l'hote, donc rien n'est expose a l'exterieur.
+      NF_HOST: 0.0.0.0
+      NF_PORT: "5001"
+      NF_SECRET: ${NF_SECRET:?manquant}
+      PYTHONUTF8: "1"
+      TZ: Europe/Paris
+    volumes:
+      - ./data:/data
+      - ./recettes:/app/recettes
+    ports:
+      - "127.0.0.1:5001:5001"

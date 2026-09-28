@@ -11,16 +11,18 @@ le 5000).
 ## La voie courte
 
 [`installer-vps.sh`](installer-vps.sh) fait tout ce qui suit, et le fait de
-manière **idempotente** : le relancer met le code à jour sans toucher à la
-base, aux comptes ni au certificat. Il prend une sauvegarde avant chaque mise
-à jour, et refuse de démarrer si `NF_PERSONNE_DEFAUT` traîne dans l'unité
-systemd.
+manière **idempotente** : il reconstruit l'image et redémarre le conteneur sans
+toucher à la base, aux recettes, au `NF_SECRET` ni au certificat. Il prend une
+sauvegarde avant chaque mise à jour, refuse de démarrer si une variable de
+confort (`NF_PERSONNE_DEFAUT`, `NF_COOKIE_HTTP`) traîne côté serveur, et vérifie
+en fin de course que le cookie de session est bien `Secure`, `HttpOnly` et
+`SameSite=Strict`.
 
 Depuis le PC :
 
 ```bash
 cd "C:/Users/sebas/Dev/Application Nutriform"
-tar --exclude=.venv --exclude=.git --exclude=__pycache__     --exclude='*/__pycache__' --exclude=data/ciqual     --exclude=data/sauvegardes --exclude='data/*.db'     --exclude='recettes/Photos Recette' -czf /tmp/nutriform.tgz .
+tar --exclude=.venv --exclude=.git --exclude=__pycache__     --exclude='*/__pycache__' --exclude=data/ciqual     --exclude=data/sauvegardes --exclude='data/*.db'     --exclude='recettes/Photos Recette' --exclude=Etude-de-cas     -czf /tmp/nutriform.tgz .
 scp /tmp/nutriform.tgz deploy/installer-vps.sh root@76.13.63.150:/tmp/
 scp data/nutriform.db root@76.13.63.150:/tmp/     # 1re fois seulement
 ssh root@76.13.63.150 "bash /tmp/installer-vps.sh"
@@ -29,12 +31,39 @@ ssh root@76.13.63.150 "bash /tmp/installer-vps.sh"
 La troisième ligne n'est utile qu'au premier déploiement, pour emporter les
 comptes et les données déjà saisis. **Ensuite, ne jamais la refaire** : elle
 écraserait les données du serveur, qui sont devenues les vraies. Le script
-protège d'ailleurs contre cela — si une base existe déjà sur le serveur, il la
-garde et ignore `/tmp/nutriform.db`.
+protège d'ailleurs contre cela — si une base existe déjà, il la garde et ignore
+`/tmp/nutriform.db`.
 
-Le reste de ce document explique chaque étape, pour la comprendre ou la
-reprendre à la main.
+## L'application tourne dans Docker
 
+Depuis le 28/09/2026, Nutriform n'est plus lancée par systemd mais par
+`docker compose`, à partir du `Dockerfile` et du `docker-compose.yml` **du
+dépôt**. L'ancienne unité `nutriform.service` est conservée sur disque mais
+désactivée ; l'installeur l'arrête et la désactive s'il la trouve active, parce
+que deux processus se disputeraient le port 5001.
+
+Deux choses restent délibérément **sur l'hôte**, montées dans le conteneur :
+
+| Chemin hôte | Dans le conteneur | Pourquoi |
+|---|---|---|
+| `/opt/nutriform/data` | `/data` | la base reste accessible à la sauvegarde `cron`, qui n'a rien à savoir de Docker |
+| `/opt/nutriform/recettes` | `/app/recettes` | l'application y écrit, et tu y déposes les JSON — sinon il faudrait reconstruire l'image à chaque recette |
+
+Le conteneur tourne sous l'uid:gid de l'utilisateur `nutriform` de l'hôte
+(113:121), figé dans le compose pour que les fichiers montés gardent leur
+propriétaire. L'installeur refuse de continuer si cet uid a changé.
+
+Le `NF_SECRET` vit dans `/opt/nutriform/.env` (chmod 600), jamais dans le
+dépôt : le compose le réclame et échoue s'il manque.
+
+```bash
+cd /opt/nutriform
+docker compose ps
+docker compose logs -f --tail=50
+docker compose restart
+```
+
+## 1. Choisir le sous-domaine
 ## 1. Choisir le sous-domaine
 
 Créer un enregistrement DNS `A` pour `nutriform.seboll.tech` vers l'IP du VPS
@@ -79,7 +108,10 @@ chown -R nutriform:nutriform /opt/nutriform
 > envoyer `data/nutriform.db` par `scp`. Les recettes JSON, elles, sont déjà
 > dans l'archive.
 
-## 4. Service systemd
+## 4. Service systemd — HISTORIQUE, remplacé par Docker
+
+> Conservé pour mémoire : l'application tournait ainsi jusqu'au 28/09/2026.
+> Voir « L'application tourne dans Docker » plus haut.
 
 ```bash
 cp /opt/nutriform/deploy/nutriform.service /etc/systemd/system/
