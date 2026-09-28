@@ -1,0 +1,119 @@
+{
+  "doc_type": "Étude de cas",
+  "title": "Étude de cas",
+  "subtitle": "Nutriform — un suivi nutritionnel familial, de la recette calibrée au serveur",
+  "disclaimer": "<b>Projet personnel, captures de démonstration.</b> Nutriform est une application développée pour un usage familial. Les écrans reproduits ici utilisent un <b>compte fictif</b> et des <b>recettes neutres écrites pour l'occasion</b> : aucune donnée de santé réelle ni aucune recette tierce n'y figure.",
+  "sections": {
+    "contexte": "Suivre un régime alimentaire suppose de savoir ce que l'on mange, en quelle quantité, et de s'y tenir sur la durée. Le besoin s'est élargi en cours de route : <b>partager l'outil avec des proches qui ne vivent pas sous le même toit</b>, donc sans jamais mélanger les données des uns et des autres.",
+    "probleme": {
+      "intro": "Les applications de suivi existantes butent toutes sur les mêmes limites :",
+      "bullets": [
+        "<b>Une recette donne une portion, pas la vôtre.</b> Passer d'une portion à 400 kcal à la même recette à 700 kcal impose de recalculer chaque ingrédient à la main — et de se tromper.",
+        "<b>Tout ne se divise pas.</b> Mettre « 1,3 œuf » dans une recette n'a aucun sens, pas plus que 3,4 feuilles de lasagne : un calcul purement proportionnel produit des quantités incuisinables.",
+        "<b>Les valeurs nutritionnelles divergent.</b> Une fiche d'application grand public annonçait <b>0,19 g de sel</b> pour un plat qui en contient près de <b>9 g</b> d'après l'étiquette réelle de la sauce employée — soit près du double de l'apport quotidien recommandé.",
+        "<b>Partager n'est pas mutualiser.</b> Des proches peuvent partager des recettes ; leur poids et leur journal alimentaire, non."
+      ]
+    },
+    "solution": {
+      "intro": "Une <b>application web autonome</b>, installable sur l'écran d'accueil d'un iPhone, hébergée sur un serveur personnel :",
+      "bullets": [
+        "<b>Calibrage calorique</b> : la même recette se décline sur n'importe quelle cible. Les assaisonnements sont marqués « fixes » et ne bougent pas ; seuls les ingrédients principaux suivent.",
+        "<b>Arrondi aux unités indivisibles</b> : œufs, tranches de pain, feuilles de lasagne sont comptés en pièces entières, et les autres ingrédients se réajustent pour retomber sur la cible.",
+        "<b>Base officielle</b> : table Ciqual 2025 de l'ANSES, 3 484 aliments, complétée par des aliments personnels saisis d'après l'étiquette du produit réellement acheté.",
+        "<b>Planning hebdomadaire, liste de courses</b> entre deux dates agrégée sur les quantités réellement calibrées, <b>journal</b> et courbe de poids.",
+        "<b>Un compte par personne</b>, avec un cloisonnement strict : l'administrateur gère les comptes et ne peut lire aucune donnée personnelle."
+      ]
+    },
+    "architecture": {
+      "titre": "L'architecture",
+      "intro": "L'application est conteneurisée et publiée derrière un serveur web unique. Les deux schémas ci-dessous ont été <b>relevés sur le serveur</b>, pas dessinés de mémoire : règles de pare-feu, ports publiés, montages et comptages de tables proviennent d'une inspection de la machine en production.",
+      "bullets": [
+        "<b>Un seul point d'entrée.</b> Le pare-feu n'ouvre que SSH, HTTP et HTTPS ; tous les conteneurs publient sur la boucle locale. Un port publié largement échapperait au pare-feu comme au bannisseur d'adresses.",
+        "<b>L'adresse IP nue ne répond rien</b> : un hôte inconnu obtient une connexion fermée, sans page ni bannière de version.",
+        "<b>L'identité vient de la session, jamais de la requête.</b> C'est la règle qui garantit le cloisonnement, et une suite de tests la vérifie en trichant délibérément sur les identifiants d'URL.",
+        "<b>Chaîne de garde</b> : jeton anti-CSRF sur toute écriture, cookie de session chiffré, restreint au domaine et inaccessible au JavaScript.",
+        "<b>Sauvegarde quotidienne</b> de la base, avec 30 jours de rétention."
+      ],
+      "images": [
+        {
+          "file": "00-architecture-reseau.png",
+          "lead": "Le chemin du téléphone au conteneur",
+          "caption": "DNS, terminaison TLS, pare-feu et bannissement automatique, routage par nom de domaine, puis les conteneurs — tous publiés sur la boucle locale."
+        },
+        {
+          "file": "00-architecture-application.png",
+          "lead": "L'intérieur de l'application",
+          "caption": "La chaîne de garde franchie par chaque requête, les modules métier, et la séparation entre données privées et données partagées."
+        }
+      ]
+    }
+  },
+  "images_titre": "Le fonctionnement, écran par écran",
+  "images": [
+    {
+      "file": "02-recette-calibrage.png",
+      "lead": "Calibrage d'une recette — le cœur de l'outil",
+      "caption": "La même recette demandée à 700 kcal : le poulet, le riz et les brocolis sont recalculés, tandis que l'huile d'olive reste figée à 7,5 g parce qu'elle sert à la cuisson. Les macronutriments, les fibres et le sel de la portion sont calculés dans la foulée."
+    },
+    {
+      "file": "01-accueil.png",
+      "lead": "Aujourd'hui — l'état de la journée en un coup d'œil",
+      "caption": "Énergie et macronutriments consommés face aux objectifs personnels, ce qu'il reste à manger, et les repas déjà prévus au planning — reportables au journal en deux clics."
+    },
+    {
+      "file": "03-planning.png",
+      "lead": "Planning — sept jours, quatre créneaux",
+      "caption": "Chaque repas porte sa cible calorique. Le total du jour se compare à l'objectif, et une journée se duplique d'un clic sur une autre."
+    },
+    {
+      "file": "04-courses.png",
+      "lead": "Liste de courses — entre deux dates, regroupée par rayon",
+      "caption": "Les ingrédients sont cumulés à partir des quantités réellement calibrées, pas des quantités d'origine. Les cases cochées sont mémorisées : on coche sur le téléphone, c'est à jour sur l'ordinateur."
+    },
+    {
+      "file": "05-journal.png",
+      "lead": "Journal et poids — ce qui a réellement été mangé",
+      "caption": "Un repas planifié se reporte en deux clics, un aliment seul s'ajoute à la volée. Le suivi du poids et sa courbe complètent la journée. Ces données sont strictement privées."
+    }
+  ],
+  "resultat": {
+    "titre": "Ce que l'application a changé",
+    "colonnes": [
+      "Avant",
+      "Après"
+    ],
+    "lignes": [
+      [
+        "Une recette = une seule portion figée",
+        "La même recette servie à 400, 600 ou 700 kcal"
+      ],
+      [
+        "Quantités recalculées à la main, au risque de l'erreur",
+        "Recalcul instantané, assaisonnements figés, pièces arrondies"
+      ],
+      [
+        "Valeurs nutritionnelles reprises telles quelles",
+        "Table officielle de l'ANSES, et l'étiquette du produit quand elle diffère"
+      ],
+      [
+        "Liste de courses reconstituée de mémoire",
+        "Agrégée entre deux dates, regroupée par rayon, cochable"
+      ],
+      [
+        "Outil mono-utilisateur",
+        "Un compte par personne, données personnelles cloisonnées"
+      ]
+    ],
+    "estimation": "Le bénéfice s'est surtout révélé sur la <b>fiabilité des chiffres</b>. Le recoupement systématique des 33 recettes transcrites avec les valeurs annoncées par leur source a fait apparaître des écarts que le calcul explique : sauces sucrées trois fois plus caloriques que l'équivalent générique, teneurs en sel sous-estimées d'un facteur vingt, sous-totaux incohérents entre le sel et le sodium d'une même fiche.",
+    "hypotheses": "<b>Transparence</b> : projet personnel, sans client ni mission facturée — aucun gain en heures n'est avancé ici. Les écarts nutritionnels cités sont reproductibles : ils proviennent du calcul sur la table Ciqual 2025 et des étiquettes des produits effectivement utilisés."
+  },
+  "further": [
+    "<b>Stack</b> : Python · Flask · SQLite · waitress — aucune dépendance front, aucun framework JavaScript.",
+    "<b>Exploitation</b> : conteneur Docker derrière nginx, TLS Let's Encrypt, pare-feu et bannissement automatique des adresses hostiles, sauvegarde quotidienne.",
+    "<b>Qualité</b> : 394 assertions réparties en 7 suites autonomes, dont une consacrée au seul cloisonnement entre comptes et une autre à la migration de schéma sans perte de données.",
+    "<b>Sécurité</b> : analyse statique du code à chaque évolution ; une redirection ouverte et l'absence de protection anti-CSRF ont été détectées puis corrigées.",
+    "<b>Site &amp; contact</b> : seboll.tech — démonstration et détails techniques sur demande."
+  ],
+  "signature": "Conçu par Sébastien Ollagnier — ingénieur qualité &amp; industrialisation, spécialisé dans la digitalisation et l'automatisation des processus.",
+  "internal_note": "Projet PERSONNEL, pas une mission client : ne jamais le présenter comme une réalisation facturée. Les captures utilisent un compte fictif (« Camille ») et trois recettes neutres écrites pour l'occasion — le dépôt réel est privé parce qu'il contient des recettes appartenant à leur éditeur, qui ne doivent pas être publiées. Le schéma d'architecture est régénéré depuis deploy/architecture.svg : après un changement d'infrastructure, refaire le relevé sur le serveur avant de le réutiliser."
+}
